@@ -22,6 +22,8 @@ public class Game implements Runnable, KeyListener {
 	// FIELDS
 	// ===============================================
 
+    private String strDisplay = "";
+
 	public static final Dimension DIM = new Dimension(1100, 900); //the dimension of the game.
 	private GamePanel gmpPanel;
 	public static Random R = new Random();
@@ -33,6 +35,7 @@ public class Game implements Runnable, KeyListener {
 	private ArrayList<Tuple> tupMarkForRemovals;
 	private ArrayList<Tuple> tupMarkForAdds;
 	private boolean bMuted = true;
+    private OffScreenImage offScreenImage;
 	
 
 	private final int PAUSE = 80, // p key
@@ -63,7 +66,8 @@ public class Game implements Runnable, KeyListener {
 
 	public Game() {
 
-		gmpPanel = new GamePanel(DIM);
+        offScreenImage = new OffScreenImage();
+		gmpPanel = new GamePanel(DIM,offScreenImage);
 		gmpPanel.addKeyListener(this);
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
@@ -111,6 +115,9 @@ public class Game implements Runnable, KeyListener {
 		while (Thread.currentThread() == thrAnim) {
 			tick();
 			spawnNewShipFloater();
+
+            drawOffScreen();
+
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
@@ -176,12 +183,16 @@ public class Game implements Runnable, KeyListener {
 						if (!CommandCenter.getFalcon().getProtected()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 							CommandCenter.spawnFalcon(false);
+                            createDebris((Sprite)movFoe, tupMarkForAdds);
+                            createDebris((Sprite)movFriend, tupMarkForAdds);
+
 							killFoe(movFoe);
 						}
 					}
 					//not the falcon
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+                        createDebris((Sprite)movFoe, tupMarkForAdds);
 						killFoe(movFoe);
 					}//end else 
 
@@ -230,6 +241,17 @@ public class Game implements Runnable, KeyListener {
 		System.gc();
 		
 	}//end meth
+
+
+    private void createDebris(Sprite spr, ArrayList tupTups){
+
+        Point[] pntCs = spr.getObjectPoints();
+        for (int nC = 0; nC < pntCs.length -1 ; nC++) {
+            tupTups.add(new Tuple(CommandCenter.movDebris, new Debris(spr, pntCs[nC], pntCs[nC+1])));
+        }
+        tupTups.add(new Tuple(CommandCenter.movDebris, new Debris(spr, pntCs[0], pntCs[pntCs.length-1])));
+
+    }
 
 	private void killFoe(Movable movFoe) {
 		
@@ -339,7 +361,166 @@ public class Game implements Runnable, KeyListener {
 
 		}
 	}
-	
+
+
+    public void drawOffScreen() {
+        if (offScreenImage.getGrpOff() == null) {
+            offScreenImage.reset();
+        }
+
+        Graphics grpOff = offScreenImage.getGrpOff();
+        // Fill in background with black.
+        grpOff.setColor(Color.black);
+        grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
+
+        drawScore(grpOff);
+
+        if (!CommandCenter.isPlaying()) {
+            displayTextOnScreen();
+        } else if (CommandCenter.isPaused()) {
+            strDisplay = "Game Paused";
+            grpOff.drawString(strDisplay,
+                    (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4);
+        }
+
+        //playing and not paused!
+        else {
+
+            //draw them in decreasing level of importance
+            //friends will be on top layer and debris on the bottom
+            iterateMovables(grpOff,
+                    CommandCenter.movDebris,
+                    CommandCenter.movFloaters,
+                    CommandCenter.movFoes,
+                    CommandCenter.movFriends);
+
+
+            drawNumberShipsLeft(grpOff);
+            if (CommandCenter.isGameOver()) {
+                CommandCenter.setPlaying(false);
+                //bPlaying = false;
+            }
+        }
+
+        //when we call repaint, repaint calls update(g)
+        gmpPanel.repaint();
+    }
+
+
+
+
+
+
+    //for each movable array, process it.
+    private void iterateMovables(Graphics g, CopyOnWriteArrayList<Movable>...movMovz){
+
+        for (CopyOnWriteArrayList<Movable> movMovs : movMovz) {
+            for (Movable mov : movMovs) {
+
+                mov.move();
+                mov.draw(g);
+                mov.fadeInOut();
+                mov.expire();
+            }
+        }
+
+    }
+
+
+    //offscreen
+    // Draw the number of falcons left on the bottom-right of the screen.
+    private void drawNumberShipsLeft(Graphics g) {
+        Falcon fal = CommandCenter.getFalcon();
+        double[] dLens = fal.getLengths();
+        int nLen = fal.getDegrees().length;
+        Point[] pntMs = new Point[nLen];
+        int[] nXs = new int[nLen];
+        int[] nYs = new int[nLen];
+
+        //convert to cartesean points
+        for (int nC = 0; nC < nLen; nC++) {
+            pntMs[nC] = new Point((int) (10 * dLens[nC] * Math.sin(Math
+                    .toRadians(90) + fal.getDegrees()[nC])),
+                    (int) (10 * dLens[nC] * Math.cos(Math.toRadians(90)
+                            + fal.getDegrees()[nC])));
+        }
+
+        //set the color to white
+        g.setColor(Color.white);
+        //for each falcon left (not including the one that is playing)
+        for (int nD = 1; nD < CommandCenter.getNumFalcons(); nD++) {
+            //create x and y values for the objects to the bottom right using cartesean points again
+            for (int nC = 0; nC < fal.getDegrees().length; nC++) {
+                nXs[nC] = pntMs[nC].x + Game.DIM.width - (20 * nD);
+                nYs[nC] = pntMs[nC].y + Game.DIM.height - 40;
+            }
+            g.drawPolygon(nXs, nYs, nLen);
+        }
+    }
+
+
+
+    //move to Game and pass in the offScreenImage
+    // This method draws some text to the middle of the screen before/after a game
+    private void displayTextOnScreen() {
+
+        Graphics grpOff = offScreenImage.getGrpOff();
+        strDisplay = "GAME OVER";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4);
+
+        strDisplay = "use the arrow keys to turn and thrust";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 40);
+
+        strDisplay = "use the space bar to fire";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 80);
+
+        strDisplay = "'S' to Start";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 120);
+
+        strDisplay = "'P' to Pause";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 160);
+
+        strDisplay = "'Q' to Quit";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 200);
+        strDisplay = "left pinkie on 'A' for Shield";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 240);
+
+        strDisplay = "left index finger on 'F' for Guided Missile";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 280);
+
+        strDisplay = "'Numeric-Enter' for Hyperspace";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - offScreenImage.getFmt().stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                + offScreenImage.getFontHeight() + 320);
+    }
+
+
+
+
+    private void drawScore(Graphics g) {
+        g.setColor(Color.white);
+        g.setFont(offScreenImage.getFnt());
+        if (CommandCenter.getScore() != 0) {
+            g.drawString("SCORE :  " + CommandCenter.getScore(), offScreenImage.getFontWidth(), offScreenImage.getFontHeight());
+        } else {
+            g.drawString("NO SCORE", offScreenImage.getFontWidth(), offScreenImage.getFontHeight());
+        }
+    }
 	
 	
 
