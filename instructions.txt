@@ -134,3 +134,27 @@ have traversed the points counter-clockwise with the same good result).
 Some addition info:
 the M key is for muting music. 
 the f-key is for firing the cruise missile. 
+
+
+
+Some features of the game you should be aware of:
+
+1/ This game uses double-buffered images for smooth animation. If you try to draw to the graphics context of the GamePanel direclty the screen will
+flicker. The avoid this flickering, we use an off-screen called OffScreenImage. As we iterate the movables in the game, we
+draw to the offscreen image, then once we're done iterating and we've drawn everything onto the offScreenImage for that animation frame, we write
+that offscreenImage to the gamePanel in one fell-swoop. The time between animation frames is 45ms, which is plenty of time
+for us to draw all the objects on the offscreenImage.   You can see this in the drawOffScreen() method.
+
+
+2/ This game uses an animation thread which animates the game. You are not guaranteed 45ms between animations frames, however if your algorithm is
+efficient, then the time between animation frames should usually be 45ms at minimum.
+
+3/ The game uses the most efficient method for colission detection available. As all sprites are cicrumscribed by circles, a colission occurs when
+ the distance between the center points of the sprites is less than the sum of their radii.
+
+4/ You must not mutate a data-structure while you're iterating it. To avoid mutating the movable array-lists while we're iterating them, we use an ArrayList
+of Tuples. A tuple takes two references, one is an arrayList of movables, and other is the movable that should either be added or removed.
+After each colission detection iteration is complete, we iterate the ArrayList<Tuple> and mutate the movable array-list as required.
+
+
+
