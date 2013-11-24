@@ -118,7 +118,7 @@ public class Game implements Runnable, KeyListener {
 
             drawOffScreen();
 
-			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
+			//gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
 														// the frames of the animation
