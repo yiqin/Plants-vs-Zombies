@@ -32,8 +32,8 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	private Graphics grpOff;
 	
 	private GameFrame gmf;
-	private Font fnt = new Font("SansSerif", Font.BOLD, 12);
-	private Font fntBig = new Font("SansSerif", Font.BOLD + Font.ITALIC, 36);
+	private Font fnt = new Font("Times", Font.BOLD, 12);
+	private Font fntBig = new Font("Times", Font.BOLD + Font.ITALIC, 36);
 	private FontMetrics fmt; 
 	private int nFontWidth;
 	private int nFontHeight;
@@ -73,7 +73,9 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 			g.drawString("NO SCORE", nFontWidth, nFontHeight);
 		}
 	}
-	
+
+
+
 	@SuppressWarnings("unchecked")
 	public void update(Graphics g) {
 		if (grpOff == null || Game.DIM.width != dimOff.width
@@ -86,7 +88,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		// Fill in background with black.
 
         System.out.println("updating...");
-		grpOff.setColor(Color.yellow);
+		grpOff.setColor(Color.black);
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
 		drawScore(grpOff);

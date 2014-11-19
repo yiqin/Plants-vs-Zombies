@@ -158,6 +158,7 @@ public class Falcon extends Sprite {
 		if (getFadeValue() == 255) {
 			colShip = Color.white;
 		} else {
+            System.out.println("The air plane is not ready yet...");
 			colShip = new Color(adjustColor(getFadeValue(), 200), adjustColor(
 					getFadeValue(), 175), getFadeValue());
 		}
@@ -175,8 +176,11 @@ public class Falcon extends Sprite {
 //		} //end if shield
 
 		//thrusting
+        // If thrusting.......
 		if (bFlame) {
 			g.setColor(colShip);
+
+            System.out.println("With thrusting........");
 			//the flame
 			for (int nC = 0; nC < FLAME.length; nC++) {
 				if (nC % 2 != 0) //odd
@@ -211,11 +215,13 @@ public class Falcon extends Sprite {
 			} //end assign flame points
 
 			//g.setColor( Color.white );
+
+            // We draw the flight by hand....
 			g.fillPolygon(nXFlames, nYFlames, FLAME.length);
 
 		} //end if flame
 
-		drawShipWithColor(g, colShip);
+		// drawShipWithColor(g, colShip);
 
 	} //end draw()
 

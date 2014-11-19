@@ -11,8 +11,13 @@ public class CommandCenter {
 	private static int nNumFalcon;
 	private static int nLevel;
 	private static long lScore;
+
+    // This is the flight.......   Why call it falShip....... So confused.
 	private static Falcon falShip;
-	private static boolean bPlaying;
+
+
+
+    private static boolean bPlaying;
 	private static boolean bPaused;
 	
 	// These ArrayLists are thread-safe
@@ -65,6 +70,8 @@ public class CommandCenter {
 		movFloaters.clear();
 	}
 
+
+    // Controller the process of the game.
 	public static boolean isPlaying() {
 		return bPlaying;
 	}
@@ -88,6 +95,8 @@ public class CommandCenter {
 		return false;
 	}
 
+
+    // Game setting
 	public static int getLevel() {
 		return nLevel;
 	}
@@ -101,6 +110,8 @@ public class CommandCenter {
 	}
 
 	public static void setLevel(int n) {
+
+
 		nLevel = n;
 	}
 
@@ -120,22 +131,20 @@ public class CommandCenter {
 		falShip = falParam;
 	}
 
+
+
+    // no called
 	public static CopyOnWriteArrayList<Movable> getMovDebris() {
 		return movDebris;
 	}
-
-
 
 	public static CopyOnWriteArrayList<Movable> getMovFriends() {
 		return movFriends;
 	}
 
-
-
 	public static CopyOnWriteArrayList<Movable> getMovFoes() {
 		return movFoes;
 	}
-
 
 	public static CopyOnWriteArrayList<Movable> getMovFloaters() {
 		return movFloaters;

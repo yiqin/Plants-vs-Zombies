@@ -99,10 +99,8 @@ public class Cruise extends Sprite {
 		else{ 
 			drawAlt(g);
 		}
-		
+
 	}
-	
-	
 
     public void drawAlt(Graphics g) {
     	setXcoords( new int[dDegreesAlts.length]);

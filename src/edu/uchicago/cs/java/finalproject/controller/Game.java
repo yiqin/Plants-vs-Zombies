@@ -234,6 +234,7 @@ public class Game implements Runnable, KeyListener {
 		
 	}//end meth
 
+    // Control the animation
 	private void killFoe(Movable movFoe) {
 		
 		if (movFoe instanceof Asteroid){
@@ -354,9 +355,17 @@ public class Game implements Runnable, KeyListener {
 		}
 	}
 
+
+
+
+
+
+
 	// ===============================================
 	// KEYLISTENER METHODS
 	// ===============================================
+
+    // Two methods are needed to control the fal........
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -454,6 +463,7 @@ public class Game implements Runnable, KeyListener {
 	@Override
 	// Just need it b/c of KeyListener implementation
 	public void keyTyped(KeyEvent e) {
+        
 	}
 	
 
@@ -462,7 +472,7 @@ public class Game implements Runnable, KeyListener {
 
 // ===============================================
 // ==A tuple takes a reference to an ArrayList and a reference to a Movable
-//This class is used in the collision detection method, to avoid mutating the array list while we are iterating
+// This class is used in the collision detection method, to avoid mutating the array list while we are iterating
 // it has two public methods that either remove or add the movable from the appropriate ArrayList 
 // ===============================================
 

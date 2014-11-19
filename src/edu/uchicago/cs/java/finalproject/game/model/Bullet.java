@@ -10,8 +10,7 @@ public class Bullet extends Sprite {
 
 	  private final double FIRE_POWER = 35.0;
 
-	 
-	
+
 public Bullet(Falcon fal){
 		
 		super();
