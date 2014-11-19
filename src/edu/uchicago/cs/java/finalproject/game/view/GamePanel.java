@@ -82,12 +82,17 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 			imgOff = createImage(Game.DIM.width, Game.DIM.height);
 			grpOff = imgOff.getGraphics();
 		}
+        // Change background here.
 		// Fill in background with black.
-		grpOff.setColor(Color.black);
+
+        System.out.println("updating...");
+		grpOff.setColor(Color.yellow);
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
 		drawScore(grpOff);
-		
+
+
+
 		if (!CommandCenter.isPlaying()) {
 			displayTextOnScreen();
 		} else if (CommandCenter.isPaused()) {
