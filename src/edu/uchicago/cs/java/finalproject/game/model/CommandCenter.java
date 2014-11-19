@@ -31,7 +31,19 @@ public class CommandCenter {
 		setNumFalcons(3);
 		spawnFalcon(true);
 	}
-	
+
+
+    public static void initGame(int numFalcon, int nScore){
+        setLevel(1);
+
+        setScore(nScore);
+
+        setNumFalcons(numFalcon);
+
+        spawnFalcon(true);
+    }
+
+    // Spawn is to generate......
 	// The parameter is true if this is for the beginning of the game, otherwise false
 	// When you spawn a new falcon, you need to decrement its number
 	public static void spawnFalcon(boolean bFirst) {
@@ -44,7 +56,6 @@ public class CommandCenter {
 		}
 		
 		Sound.playSound("shipspawn.wav");
-
 	}
 	
 	public static void clearAll(){

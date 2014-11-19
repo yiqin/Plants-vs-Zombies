@@ -3,6 +3,7 @@ package edu.uchicago.cs.java.finalproject.controller;
 import sun.audio.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -22,7 +23,7 @@ public class Game implements Runnable, KeyListener {
 	// FIELDS
 	// ===============================================
 
-	public static final Dimension DIM = new Dimension(1100, 900); //the dimension of the game.
+	public static final Dimension DIM = new Dimension(1100, 700); //the dimension of the game.
 	private GamePanel gmpPanel;
 	public static Random R = new Random();
 	public final static int ANI_DELAY = 45; // milliseconds between screen
@@ -35,6 +36,7 @@ public class Game implements Runnable, KeyListener {
 	private boolean bMuted = true;
 	
 
+    // ASCII value
 	private final int PAUSE = 80, // p key
 			QUIT = 81, // q key
 			LEFT = 37, // rotate left; left arrow
@@ -61,15 +63,17 @@ public class Game implements Runnable, KeyListener {
 	// ==CONSTRUCTOR
 	// ===============================================
 
-	public Game() {
+	public Game() throws IOException {
+
+        System.out.println("Start game");
 
 		gmpPanel = new GamePanel(DIM);
 		gmpPanel.addKeyListener(this);
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
 		clpMusicBackground = Sound.clipForLoopFactory("music-background.wav");
-	
 
+        System.out.println(HTTPRequest.get("https://javafinalpro.firebaseio.com/.json"));
 	}
 
 	// ===============================================
@@ -139,7 +143,6 @@ public class Game implements Runnable, KeyListener {
 
 	private void checkCollisions() {
 
-		
 		//@formatter:off
 		//for each friend in movFriends
 			//for each foe in movFoes
@@ -261,14 +264,8 @@ public class Game implements Runnable, KeyListener {
 			//remove the original Foe
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 		}
-		
-		
-		
 
-		
-		
-		
-		
+
 	}
 
 	//some methods for timing events in the game,
@@ -294,8 +291,15 @@ public class Game implements Runnable, KeyListener {
 
 	// Called when user presses 's'
 	private void startGame() {
+        System.out.println("user presses s");
+
 		CommandCenter.clearAll();
-		CommandCenter.initGame();
+
+        // CommandCenter.initGame();
+        CommandCenter.initGame(5, 6);
+
+
+
 		CommandCenter.setLevel(0);
 		CommandCenter.setPlaying(true);
 		CommandCenter.setPaused(false);

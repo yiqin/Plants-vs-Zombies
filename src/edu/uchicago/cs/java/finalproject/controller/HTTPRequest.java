@@ -1,22 +1,23 @@
-package Test;
+package edu.uchicago.cs.java.finalproject.controller;
 
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
- * Created by yiqin on 11/17/14.
+ * Created by yiqin on 11/19/14.
  */
-public class test {
+public class HTTPRequest {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(httpGet("https://javafinalpro.firebaseio.com/.json"));
+
+        System.out.println(get("https://javafinalpro.firebaseio.com/.json"));
     }
 
     // HTTP GET Method.
-    public static String httpGet(String urlStr) throws IOException {
+    public static String get(String urlStr) throws IOException {
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -36,4 +37,5 @@ public class test {
         conn.disconnect();
         return sb.toString();
     }
+
 }

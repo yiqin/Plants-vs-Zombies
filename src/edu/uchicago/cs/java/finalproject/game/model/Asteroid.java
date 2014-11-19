@@ -119,7 +119,8 @@ public class Asteroid extends Sprite {
 	public void move(){
 		super.move();
 		
-		//an asteroid spins, so you need to adjust the orientation at each move()
+		// an asteroid spins, so you need to adjust the orientation at each move()
+
 		setOrientation(getOrientation() + getSpin());
 		
 	}

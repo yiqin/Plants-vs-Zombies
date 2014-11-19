@@ -45,6 +45,8 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	// ==============================================================
 	
 	public GamePanel(Dimension dim){
+        System.out.println("Create Game Panel.");
+
 	    gmf = new GameFrame();
 		gmf.getContentPane().add(this);
 		gmf.pack();
