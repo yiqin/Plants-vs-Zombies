@@ -465,9 +465,19 @@ public class Game implements Runnable, KeyListener {
 	public void keyTyped(KeyEvent e) {
         
 	}
-	
 
-	
+
+    // ===============================================
+    // FireBase METHODS
+    // ===============================================
+
+    // Two methods are needed to control the fal........
+
+
+
+
+
+
 }
 
 // ===============================================
