@@ -45,7 +45,12 @@ public class Falcon extends Sprite {
 		super();
 
 		ArrayList<Point> pntCs = new ArrayList<Point>();
-		
+
+
+        // Every sprite is a circle.
+        //
+
+
 		// top of ship
 		pntCs.add(new Point(0, 18)); 
 		

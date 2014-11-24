@@ -134,7 +134,8 @@ public class Asteroid extends Sprite {
 		this.nSpin = nSpin;
 	}
 	
-	//this is for an asteroid only
+	// this is for an asteroid only
+    // Generate a random shape.
 	  public void assignRandomShape ()
 	  {
 	    int nSide = Game.R.nextInt( 7 ) + 7;

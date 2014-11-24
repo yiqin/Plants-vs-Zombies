@@ -23,7 +23,7 @@ public class Game implements Runnable, KeyListener {
 	// FIELDS
 	// ===============================================
 
-	public static final Dimension DIM = new Dimension(1100, 700); //the dimension of the game.
+	public static final Dimension DIM = new Dimension(700, 700); //the dimension of the game.
 	private GamePanel gmpPanel;
 	public static Random R = new Random();
 	public final static int ANI_DELAY = 45; // milliseconds between screen
@@ -329,8 +329,6 @@ public class Game implements Runnable, KeyListener {
 		}
 		
 		return bAsteroidFree;
-
-		
 	}
 	
 	private void checkNewLevel(){
