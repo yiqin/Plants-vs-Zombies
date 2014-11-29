@@ -141,6 +141,10 @@ public class Game implements Runnable, KeyListener {
 		} // end while
 	} // end run
 
+
+    // Iterator<>  implement
+
+
 	private void checkCollisions() {
 
 		//@formatter:off
@@ -157,8 +161,8 @@ public class Game implements Runnable, KeyListener {
 		
 		//we use this ArrayList to keep pairs of movMovables/movTarget for either
 		//removal or insertion into our arrayLists later on
-		tupMarkForRemovals = new ArrayList<Tuple>();
-		tupMarkForAdds = new ArrayList<Tuple>();
+		tupMarkForRemovals.clear(); //  = new ArrayList<Tuple>();
+		tupMarkForAdds.clear(); //  = new ArrayList<Tuple>();
 
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
@@ -175,6 +179,7 @@ public class Game implements Runnable, KeyListener {
 				if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
 
 					//falcon
+                    // Check the flight. If the falcon is not protected. it will die....
 					if ((movFriend instanceof Falcon) ){
 						if (!CommandCenter.getFalcon().getProtected()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
@@ -183,6 +188,7 @@ public class Game implements Runnable, KeyListener {
 						}
 					}
 					//not the falcon
+                    //
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 						killFoe(movFoe);
@@ -218,7 +224,13 @@ public class Game implements Runnable, KeyListener {
 				}//end if 
 			}//end inner for
 		}//end if not null
-		
+
+
+
+        // Find collisions first.
+        // We create an arrayList, and then we remove them.
+
+
 		//remove these objects from their appropriate ArrayLists
 		//this happens after the above iterations are done
 		for (Tuple tup : tupMarkForRemovals) 
@@ -234,6 +246,8 @@ public class Game implements Runnable, KeyListener {
 		
 	}//end meth
 
+
+    // When the bullet hit the Asteroid, or any collision.
     // Control the animation
 	private void killFoe(Movable movFoe) {
 		
@@ -241,6 +255,8 @@ public class Game implements Runnable, KeyListener {
 
 			//we know this is an Asteroid, so we can cast without threat of ClassCastException
 			Asteroid astExploded = (Asteroid)movFoe;
+
+
 			//big asteroid 
 			if(astExploded.getSize() == 0){
 				//spawn two medium Asteroids

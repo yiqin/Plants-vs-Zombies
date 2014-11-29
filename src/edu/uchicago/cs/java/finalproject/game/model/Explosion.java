@@ -7,6 +7,11 @@ import java.awt.Graphics;
 /**
  * Created by yiqin on 11/24/14.
  */
+
+/*
+ Use MovableAdapter to update all
+ */
+
 public class Explosion extends MovableAdapter {
 
     private int mExpiry;
@@ -16,7 +21,7 @@ public class Explosion extends MovableAdapter {
 
     public Explosion(Bullet bullet){
         mCenter = bullet.getCenter();
-        mExpiry = 20;
+        mExpiry = 20; //  this is to control the time, I think.
         mRadiux = 10;
     }
 
@@ -27,8 +32,15 @@ public class Explosion extends MovableAdapter {
 
 
     // Control the animation........
+    // this is call GamePanel
     @Override
     public void expire(){
+        if (mExpiry > 0){
+
+        } else {
+            CommandCenter.getMovDebris().remove(this);
+        }
+
 
     }
 

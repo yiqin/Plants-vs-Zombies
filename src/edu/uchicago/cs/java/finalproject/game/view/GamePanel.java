@@ -126,6 +126,8 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	} 
 
 
+     // O(n^2), this is not efficient.
+
 	
 	//for each movable array, process it.
 	private void iterateMovables(Graphics g, CopyOnWriteArrayList<Movable>...movMovz){
@@ -136,7 +138,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 				mov.move();
 				mov.draw(g);
 				mov.fadeInOut();
-				mov.expire();
+				mov.expire();   // call the special animation.... here.
 			}
 		}
 		
