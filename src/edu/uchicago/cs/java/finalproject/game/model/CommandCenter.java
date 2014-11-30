@@ -19,13 +19,20 @@ public class CommandCenter {
 
     private static boolean bPlaying;
 	private static boolean bPaused;
-	
+
+
+    //
 	// These ArrayLists are thread-safe
 	public static CopyOnWriteArrayList<Movable> movDebris = new CopyOnWriteArrayList<Movable>();
 	public static CopyOnWriteArrayList<Movable> movFriends = new CopyOnWriteArrayList<Movable>();
 	public static CopyOnWriteArrayList<Movable> movFoes = new CopyOnWriteArrayList<Movable>();
 	public static CopyOnWriteArrayList<Movable> movFloaters = new CopyOnWriteArrayList<Movable>();
-	
+
+
+    // Suns
+    // We use ArrayList to hold all movSun...
+    public static CopyOnWriteArrayList<Movable> movSun = new CopyOnWriteArrayList<Movable>();
+
 
 	// Constructor made private - static Utility class only
 	private CommandCenter() {}
@@ -68,6 +75,8 @@ public class CommandCenter {
 		movFriends.clear();
 		movFoes.clear();
 		movFloaters.clear();
+
+        movSun.clear();
 	}
 
 
@@ -151,6 +160,9 @@ public class CommandCenter {
 	}
 
 
-	
+
+    public static CopyOnWriteArrayList<Movable> getMovSun() {
+        return movSun;
+    }
 	
 }

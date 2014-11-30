@@ -21,8 +21,7 @@ public class Asteroid extends Sprite {
 		
 		//call Sprite constructor
 		super();
-		
-		
+
 		//the spin will be either plus or minus 0-9
 		int nSpin = Game.R.nextInt(10);
 		if(nSpin %2 ==0)
@@ -90,9 +89,7 @@ public class Asteroid extends Sprite {
 
 		setRadius(RAD/(nSizeNew * 2));
 		setCenter(astExploded.getCenter());
-		
-		
-		
+
 
 	}
 	

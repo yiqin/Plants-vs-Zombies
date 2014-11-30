@@ -17,13 +17,16 @@ import edu.uchicago.cs.java.finalproject.sounds.Sound;
 // == This Game class is the CONTROLLER
 // ===============================================
 
-public class Game implements Runnable, KeyListener {
+public class Game implements Runnable, KeyListener, MouseListener {
 
 	// ===============================================
 	// FIELDS
 	// ===============================================
 
-	public static final Dimension DIM = new Dimension(700, 700); //the dimension of the game.
+    public final static int SCREEN_WIDTH = 1200;
+    public final static int SCREEN_HEIGHT = 600;
+
+	public static final Dimension DIM = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT); //the dimension of the game.
 	private GamePanel gmpPanel;
 	public static Random R = new Random();
 	public final static int ANI_DELAY = 45; // milliseconds between screen
@@ -69,6 +72,7 @@ public class Game implements Runnable, KeyListener {
 
 		gmpPanel = new GamePanel(DIM);
 		gmpPanel.addKeyListener(this);
+        gmpPanel.addMouseListener(this);
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
 		clpMusicBackground = Sound.clipForLoopFactory("music-background.wav");
@@ -104,6 +108,8 @@ public class Game implements Runnable, KeyListener {
 	// implements runnable - must have run method
 	public void run() {
 
+        System.out.println("Updating in Game.....");
+
 		// lower this thread's priority; let the "main" aka 'Event Dispatch'
 		// thread do what it needs to do first
 		thrAnim.setPriority(Thread.MIN_PRIORITY);
@@ -119,6 +125,7 @@ public class Game implements Runnable, KeyListener {
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
 														// the frames of the animation
+
 
 			//this might be a good place to check for collisions
 			checkCollisions();
@@ -166,6 +173,10 @@ public class Game implements Runnable, KeyListener {
 
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
+
+
+
+
 
 		for (Movable movFriend : CommandCenter.movFriends) {
 			for (Movable movFoe : CommandCenter.movFoes) {
@@ -285,6 +296,9 @@ public class Game implements Runnable, KeyListener {
 
 	}
 
+    // ===============================================
+    // Mouse click METHODS
+    // ===============================================
 	//some methods for timing events in the game,
 	//such as the appearance of UFOs, floaters (power-ups), etc. 
 	public void tick() {
@@ -292,6 +306,9 @@ public class Game implements Runnable, KeyListener {
 			nTick = 0;
 		else
 			nTick++;
+
+        System.out.println("Updating in Game.....");
+        generateNewSun();
 	}
 
 	public int getTick() {
@@ -316,7 +333,6 @@ public class Game implements Runnable, KeyListener {
         CommandCenter.initGame(5, 6);
 
 
-
 		CommandCenter.setLevel(0);
 		CommandCenter.setPlaying(true);
 		CommandCenter.setPaused(false);
@@ -324,6 +340,7 @@ public class Game implements Runnable, KeyListener {
 		   // clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
+    // Generate new Asteroid....................
 	//this method spawns new asteroids
 	private void spawnAsteroids(int nNum) {
 		for (int nC = 0; nC < nNum; nC++) {
@@ -331,8 +348,20 @@ public class Game implements Runnable, KeyListener {
 			CommandCenter.movFoes.add(new Asteroid(0));
 		}
 	}
-	
-	
+
+    private void generateNewSun(){
+        int tick = getTick();
+        if (tick%40 == 0){
+            int tempTick = (int)(Math.random()*10);
+            if (tempTick%7 == 0){
+                int randomNum = (int)(Math.random()*SCREEN_WIDTH);
+                CommandCenter.movSun.add(new Sun(randomNum));
+            }
+        }
+    }
+
+
+
 	private boolean isLevelClear(){
 		//if there are no more Asteroids on the screen
 		
@@ -489,6 +518,22 @@ public class Game implements Runnable, KeyListener {
 
 
 
+    // ===============================================
+    // Mouse click METHODS
+    // ===============================================
+
+    // Two methods are needed to control the fal........
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+        System.out.println("Mouse Clicked: "+e.getX()+", "+e.getY());
+
+    }
+    // Just need these because of MouseListener implementation
+    public void mouseReleased(MouseEvent arg0) {}
+    public void mouseEntered(MouseEvent arg0) {}
+    public void mouseExited(MouseEvent arg0) {}
+    public void mousePressed(MouseEvent arg0) {}
 
 
 

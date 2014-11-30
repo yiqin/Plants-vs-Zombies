@@ -87,7 +87,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
         // Change background here.
 		// Fill in background with black.
 
-        System.out.println("updating...");
+        // System.out.println("updating...");
 		grpOff.setColor(Color.black);
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
@@ -105,14 +105,17 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		
 		//playing and not paused!
 		else {
-			
+
+            // Generate sun randomly
+
+
 			//draw them in decreasing level of importance
 			//friends will be on top layer and debris on the bottom
 			iterateMovables(grpOff, 
 					   CommandCenter.movDebris,
 			           CommandCenter.movFloaters, 
 			           CommandCenter.movFoes,
-			           CommandCenter.movFriends);
+			           CommandCenter.movFriends, CommandCenter.movSun);
 			
 			
 			drawNumberShipsLeft(grpOff);

@@ -79,7 +79,7 @@ public class Falcon extends Sprite {
 
 		assignPolarPoints(pntCs);
 
-		setColor(Color.white);
+		setColor(Color.red);
 		
 		//put falcon in the middle.
 		setCenter(new Point(Game.DIM.width / 2, Game.DIM.height / 2));
@@ -156,12 +156,13 @@ public class Falcon extends Sprite {
 		}
 	}
 
+    // This is called again and again........................
 	public void draw(Graphics g) {
 
 		//does the fading at the beginning or after hyperspace
 		Color colShip;
 		if (getFadeValue() == 255) {
-			colShip = Color.white;
+			colShip = Color.red;
 		} else {
             System.out.println("The air plane is not ready yet...");
 			colShip = new Color(adjustColor(getFadeValue(), 200), adjustColor(
@@ -226,7 +227,7 @@ public class Falcon extends Sprite {
 
 		} //end if flame
 
-		// drawShipWithColor(g, colShip);
+		drawShipWithColor(g, colShip);
 
 	} //end draw()
 
