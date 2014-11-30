@@ -73,7 +73,7 @@ public class Game implements Runnable, KeyListener {
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
 		clpMusicBackground = Sound.clipForLoopFactory("music-background.wav");
 
-        System.out.println(HTTPRequest.get("https://javafinalpro.firebaseio.com/.json"));
+        // System.out.println(HTTPRequest.get("https://javafinalpro.firebaseio.com/.json"));
 	}
 
 	// ===============================================
@@ -161,8 +161,8 @@ public class Game implements Runnable, KeyListener {
 		
 		//we use this ArrayList to keep pairs of movMovables/movTarget for either
 		//removal or insertion into our arrayLists later on
-		tupMarkForRemovals.clear(); //  = new ArrayList<Tuple>();
-		tupMarkForAdds.clear(); //  = new ArrayList<Tuple>();
+		tupMarkForRemovals = new ArrayList<Tuple>();
+		tupMarkForAdds = new ArrayList<Tuple>();
 
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
