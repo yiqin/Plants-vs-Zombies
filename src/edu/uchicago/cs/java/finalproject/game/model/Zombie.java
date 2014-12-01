@@ -95,6 +95,7 @@ public class Zombie extends Sprite {
         g.setColor(Color.red);
         g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
         //now draw a white border
+
         g.setColor(Color.lightGray);
         g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
 
@@ -131,7 +132,7 @@ public class Zombie extends Sprite {
 
         g.setColor(Color.black);
         // g.fillOval(getCenter().x-40,getCenter().y-10, 30, 10);
-        g.fillArc(getCenter().x-45,getCenter().y-10, 35, 10,90,-180);
+        g.fillArc(getCenter().x-45,getCenter().y-10, 35, 10,85,-180);
 
         // int xPoly[] = {getCenter().x-30,getCenter().x-2,getCenter().x-20};
         // int yPoly[] = {getCenter().y,getCenter().y,getCenter().y-10};

@@ -199,7 +199,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                 nFoeRadiux = movFoe.getRadius();
 
                 //detect collision
-                if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
+                if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux-20)) {
 
                     //falcon
                     // Check the flight. If the falcon is not protected. it will die....
@@ -208,6 +208,8 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                         tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
                             // CommandCenter.spawnFalcon(false);
                             // killFoe(movFoe);
+                        // killlllll
+                        tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 
                     }
                     //not the falcon
