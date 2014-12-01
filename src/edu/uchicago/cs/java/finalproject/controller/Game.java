@@ -592,7 +592,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		if (fal != null) {
 			switch (nKey) {
 			case FIRE:
-				CommandCenter.movFriends.add(new Bullet(fal));
+				// CommandCenter.movFriends.add(new Bullet(fal));
 				Sound.playSound("laser.wav");
 				break;
 				

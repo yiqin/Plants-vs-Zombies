@@ -19,7 +19,7 @@ public class Explosion extends MovableAdapter {
     private int mRadiux;
 
 
-    public Explosion(Bullet bullet){
+    public Explosion(RegularBullet bullet){
         mCenter = bullet.getCenter();
         mExpiry = 20; //  this is to control the time, I think.
         mRadiux = 10;
