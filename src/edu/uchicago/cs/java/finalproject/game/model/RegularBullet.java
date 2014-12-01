@@ -23,7 +23,7 @@ public class RegularBullet extends Sprite  {
         Point peashooterRelativePoint = peashooter.getCenter();
 
         // Control position.....
-        setCenter(new Point((int)peashooterRelativePoint.getX()+20, (int)peashooterRelativePoint.getY()));
+        setCenter(new Point((int)peashooterRelativePoint.getX()+20, (int)peashooterRelativePoint.getY()-20));
 
         //set the bullet orientation to the falcon (ship) orientation
         setOrientation(peashooter.getOrientation());

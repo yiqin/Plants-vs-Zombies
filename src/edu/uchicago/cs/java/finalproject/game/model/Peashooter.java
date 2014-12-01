@@ -13,6 +13,9 @@ public class Peashooter extends Sprite {
         super();
 
         setRadius(PEASHOOTER_RADIUS);
+
+
+
         setCenter(new Point(x, y));
 
     }
@@ -35,7 +38,7 @@ public class Peashooter extends Sprite {
         // g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
 
         g.setColor(Color.RED);
-        g.fillRect(getCenter().x, getCenter().y, 100, 100);
+        g.fillRect(getCenter().x-50, getCenter().y-50, 100, 100);
     }
 
 }

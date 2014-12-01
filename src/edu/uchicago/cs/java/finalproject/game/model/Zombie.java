@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Zombie extends Sprite {
 
-    private final static int ZOMBIE_RADIUS = 20;
+    private final static int ZOMBIE_RADIUS = 50;
 
     private final static int SCALER = 3;
 
@@ -18,6 +18,11 @@ public class Zombie extends Sprite {
         ArrayList<Point> pntCs = new ArrayList<Point>();
 
         setRadius(ZOMBIE_RADIUS);
+
+
+        if (y==0){
+            y = 300;
+        }
 
         setCenter(new Point(1190, y));
 
@@ -41,12 +46,9 @@ public class Zombie extends Sprite {
         pntCs.add(new Point(11*SCALER, -2*SCALER));
         pntCs.add(new Point(4*SCALER, -3*SCALER));
         pntCs.add(new Point(2*SCALER, -10*SCALER));
-        pntCs.add(new Point(4*SCALER, -12*SCALER));
-        pntCs.add(new Point(2*SCALER, -13*SCALER));
+
 
         //left points
-        pntCs.add(new Point(-2*SCALER, -13*SCALER));
-        pntCs.add(new Point(-4*SCALER, -12*SCALER));
         pntCs.add(new Point(-2*SCALER, -10*SCALER));
         pntCs.add(new Point(-4*SCALER, -3*SCALER));
         pntCs.add(new Point(-11*SCALER, -2*SCALER));
@@ -85,7 +87,7 @@ public class Zombie extends Sprite {
         g.setColor(Color.red);
         g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
 
-        System.out.println("DRAW ZOMBIE>>>>>>>>>>>>>>>");
+        // System.out.println("DRAW ZOMBIE>>>>>>>>>>>>>>>");
 
         // g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
 

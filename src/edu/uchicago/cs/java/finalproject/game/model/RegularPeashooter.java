@@ -19,6 +19,45 @@ public class RegularPeashooter extends Peashooter {
     public RegularPeashooter(Point newPoint){
         super(newPoint);
         initBullet =  (int)(Math.random()*130);
+
+
+        int x = (int)newPoint.getX();
+        int y = (int)newPoint.getY();
+
+        int modX = x%100;
+        int modY = y%100;
+
+        if(modX<50){
+            x = x-modX;
+        }
+        else {
+            x = x+100-modX;
+        }
+
+        if(modY<50){
+            y = y-modY;
+        }
+        else {
+            y = y+100-modY;
+        }
+        /*
+        if(modX<50){
+            x = ((int)Math.ceil(newPoint.getX()/100))*100;
+        }
+        else {
+            x = ((int)Math.floor(newPoint.getX()/100))*100;
+        }
+
+        if(modY<50){
+            y = ((int)Math.ceil(newPoint.getY()/100))*100;
+        }
+        else {
+            y = ((int)Math.floor(newPoint.getY()/100))*100;
+        }
+        */
+
+        setCenter(new Point(x, y));
+
     }
 
     public void move() {

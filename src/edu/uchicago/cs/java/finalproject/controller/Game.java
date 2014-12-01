@@ -168,7 +168,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 	private void checkCollisions() {
 
-        System.out.println("Check Collisions..............");
+        // System.out.println("Check Collisions..............");
 
 		//@formatter:off
 		//for each friend in movFriends
@@ -473,7 +473,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         if (tick%5 == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
-                int randomNum = 100+(int)(Math.random()*SCREEN_HEIGHT)-400;
+                int randomNum = (Game.R.nextInt()%4)*100+200;
                 CommandCenter.movFoes.add(new Zombie(randomNum));
             }
         }
@@ -487,8 +487,8 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     ///////////////////////////////////////
     private void generateCandidatePlants(){
-        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(400,600));
-        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(800,600));
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(400,600+50));
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(800,600+50));
     }
 
 	private boolean isLevelClear(){
@@ -668,7 +668,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
     // Create a candidate
     public void mouseReleased(MouseEvent e) {
         if (CommandCenter.isPlanting && e.getY()<550){
-            generateNewPeashooter(new Point(e.getX()-50,e.getY()-50));
+            generateNewPeashooter(new Point(e.getX(),e.getY()));
 
         }
         CommandCenter.clearMovTemp();
@@ -685,7 +685,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     public void mouseDragged(MouseEvent e) {
         System.out.println("Mouse Dragged: "+e.getX()+", "+e.getY());
-        CommandCenter.setPlantPosition(new Point(e.getX()-50,e.getY()-50));
+        CommandCenter.setPlantPosition(new Point(e.getX(),e.getY()));
 
 
 
