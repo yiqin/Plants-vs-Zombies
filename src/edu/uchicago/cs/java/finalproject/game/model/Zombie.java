@@ -17,6 +17,7 @@ public class Zombie extends Sprite {
     private int leftFootX = -stepLength;
     private int rightFootX = stepLength;
 
+    private int speed = 1;
 
     public Zombie(int y){
         super();
@@ -32,7 +33,7 @@ public class Zombie extends Sprite {
 
         setCenter(new Point(1190, y));
 
-        setDeltaX(-0.5);
+        setDeltaX(-speed*0.5);
 
         // plot some figure...
         // pntCs.add(new Point(0,18));
@@ -46,9 +47,12 @@ public class Zombie extends Sprite {
         pntCs.add(new Point(0*SCALER, 18*SCALER));
 
         //right points
+        pntCs.add(new Point(10*SCALER, 18*SCALER));
+        pntCs.add(new Point(12*SCALER, 20*SCALER));
+        pntCs.add(new Point(12*SCALER, 18*SCALER));
         pntCs.add(new Point(12*SCALER, 0*SCALER));
-        pntCs.add(new Point(13*SCALER, -2*SCALER));
-        pntCs.add(new Point(13*SCALER, -4*SCALER));
+        // pntCs.add(new Point(13*SCALER, -2*SCALER));
+        // pntCs.add(new Point(13*SCALER, -4*SCALER));
         pntCs.add(new Point(11*SCALER, -2*SCALER));
         pntCs.add(new Point(4*SCALER, -3*SCALER));
         pntCs.add(new Point(2*SCALER, -10*SCALER));
@@ -58,9 +62,10 @@ public class Zombie extends Sprite {
         pntCs.add(new Point(-2*SCALER, -10*SCALER));
         pntCs.add(new Point(-4*SCALER, -3*SCALER));
         pntCs.add(new Point(-11*SCALER, -2*SCALER));
-        pntCs.add(new Point(-13*SCALER, -4*SCALER));
-        pntCs.add(new Point(-13*SCALER, -2*SCALER));
+        // pntCs.add(new Point(-13*SCALER, -4*SCALER));
+        // pntCs.add(new Point(-13*SCALER, -2*SCALER));
         pntCs.add(new Point(-12*SCALER, 0*SCALER));
+        pntCs.add(new Point(-12*SCALER, 18*SCALER));
 
 
 
@@ -90,16 +95,10 @@ public class Zombie extends Sprite {
         g.setColor(Color.red);
         g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
         //now draw a white border
-        g.setColor(Color.red);
+        g.setColor(Color.lightGray);
         g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
 
-        // System.out.println("DRAW ZOMBIE>>>>>>>>>>>>>>>");
-
-        // g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
-
-
-        // g.drawLine(getCenter().x,getCenter().y,getCenter().x-30, getCenter().y+40);
-
+        g.setColor(Color.red);
         if(leftFootX < -stepLength){
             isSwingToLeft = false;
         }
@@ -108,19 +107,43 @@ public class Zombie extends Sprite {
         }
 
         if (isSwingToLeft){
-            leftFootX--;
-            rightFootX++;
+            leftFootX=leftFootX-speed;
+            rightFootX=rightFootX+speed;
         }
         else {
-            leftFootX++;
-            rightFootX--;
+            leftFootX=leftFootX+speed;
+            rightFootX=rightFootX-speed;
         }
 
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(4));
+        g2.drawLine(getCenter().x+3,getCenter().y+20,getCenter().x-leftFootX, getCenter().y+40);
+        g2.drawLine(getCenter().x+3,getCenter().y+20,getCenter().x-rightFootX, getCenter().y+40);
+
+        g2.setStroke(new BasicStroke(2));
+        g2.drawLine(getCenter().x,getCenter().y+10, getCenter().x-15, getCenter().y+20);
+        g2.drawLine(getCenter().x,getCenter().y+10, getCenter().x+12, getCenter().y+18);
+        // g2.drawLine(getCenter().x,getCenter().y+20, getCenter().x-15, getCenter().y+15);
+
+        g2.setStroke(new BasicStroke(1));
 
 
 
-        g.drawLine(getCenter().x,getCenter().y,getCenter().x-leftFootX, getCenter().y+40);
-        g.drawLine(getCenter().x,getCenter().y,getCenter().x-rightFootX, getCenter().y+40);
+        g.setColor(Color.black);
+        // g.fillOval(getCenter().x-40,getCenter().y-10, 30, 10);
+        g.fillArc(getCenter().x-45,getCenter().y-10, 35, 10,90,-180);
+
+        // int xPoly[] = {getCenter().x-30,getCenter().x-2,getCenter().x-20};
+        // int yPoly[] = {getCenter().y,getCenter().y,getCenter().y-10};
+
+        // g.fillPolygon(xPoly, yPoly, xPoly.length);
+
+
+        g.setColor(Color.darkGray);
+        g.fillOval(getCenter().x-20, getCenter().y-30, 12, 10);
+
+
+
     }
 
 }
