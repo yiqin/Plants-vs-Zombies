@@ -100,6 +100,9 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.setColor(Color.black);
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
+        grpOff.setColor(Color.white);
+        grpOff.fillRect(0, Game.DIM.height-200, Game.DIM.width, 200);
+
 		drawScore(grpOff);
         drawSunCredit(grpOff);
 

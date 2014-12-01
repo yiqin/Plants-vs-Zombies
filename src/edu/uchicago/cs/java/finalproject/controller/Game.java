@@ -24,7 +24,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
 	// ===============================================
 
     public final static int SCREEN_WIDTH = 1200;
-    public final static int SCREEN_HEIGHT = 600;
+    public final static int SCREEN_HEIGHT = 800;
 
 	public static final Dimension DIM = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT); //the dimension of the game.
 	private GamePanel gmpPanel;
@@ -124,6 +124,8 @@ public class Game implements Runnable, KeyListener, MouseListener {
 		while (Thread.currentThread() == thrAnim) {
 			tick();
 			spawnNewShipFloater();
+            generateNewPeashooter();
+
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
@@ -375,6 +377,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
 		   // clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
+    // No use anymore.....
     // Generate new Asteroid....................
 	//this method spawns new asteroids
 	private void spawnAsteroids(int nNum) {
@@ -395,6 +398,9 @@ public class Game implements Runnable, KeyListener, MouseListener {
         }
     }
 
+    private void generateNewPeashooter(){
+        CommandCenter.movSun.add(new Peashooter(300,300));
+    }
 
 
 	private boolean isLevelClear(){
@@ -419,7 +425,6 @@ public class Game implements Runnable, KeyListener, MouseListener {
 			
 			spawnAsteroids(CommandCenter.getLevel() + 2);
 			CommandCenter.setLevel(CommandCenter.getLevel() + 1);
-
 		}
 	}
 	
