@@ -10,6 +10,7 @@ public class Peashooter extends Sprite {
     public Peashooter(int x, int y){
         super();
 
+        setRadius(100);
         setCenter(new Point(x, y));
 
     }

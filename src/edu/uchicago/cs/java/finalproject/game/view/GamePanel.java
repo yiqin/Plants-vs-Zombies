@@ -128,7 +128,9 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 					   CommandCenter.movDebris,
 			           CommandCenter.movFloaters, 
 			           CommandCenter.movFoes,
-			           CommandCenter.movFriends, CommandCenter.movSun);
+			           CommandCenter.movFriends,
+                       CommandCenter.movSun,
+                       CommandCenter.movCandidate);
 			
 			
 			drawNumberShipsLeft(grpOff);

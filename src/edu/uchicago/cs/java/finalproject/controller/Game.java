@@ -17,7 +17,7 @@ import edu.uchicago.cs.java.finalproject.sounds.Sound;
 // == This Game class is the CONTROLLER
 // ===============================================
 
-public class Game implements Runnable, KeyListener, MouseListener {
+public class Game implements Runnable, KeyListener, MouseListener, MouseMotionListener {
 
 	// ===============================================
 	// FIELDS
@@ -40,6 +40,11 @@ public class Game implements Runnable, KeyListener, MouseListener {
 
     // Handle sunflowers
     private ArrayList<Tuple> tupMarkForRemovalsFromMouseSelect;
+
+
+    private boolean isSelectedCandidate = false;
+
+    private Peashooter candidatePeashooter;
 
 
     // ASCII value
@@ -76,6 +81,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
 		gmpPanel = new GamePanel(DIM);
 		gmpPanel.addKeyListener(this);
         gmpPanel.addMouseListener(this);
+        gmpPanel.addMouseMotionListener(this);
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
 		clpMusicBackground = Sound.clipForLoopFactory("music-background.wav");
@@ -125,6 +131,16 @@ public class Game implements Runnable, KeyListener, MouseListener {
 			tick();
 			spawnNewShipFloater();
             generateNewPeashooter();
+
+            ///
+            ///
+            ///
+            ///
+            ///
+            ///
+            ///
+            generateCandidatePlants();
+
 
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
@@ -300,7 +316,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
 	}
 
     // Remove sunflower
-    private void checkMouseSelection(MouseEvent e) {
+    private void checkMouseClicked(MouseEvent e) {
         tupMarkForRemovalsFromMouseSelect = new ArrayList<Tuple>();
 
         Point pntSumCenter, pntFoeCenter;
@@ -322,6 +338,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
                 }
             }//end if
         }//end outer for
+
 
         //remove these objects from their appropriate ArrayLists
         //this happens after the above iterations are done
@@ -399,9 +416,14 @@ public class Game implements Runnable, KeyListener, MouseListener {
     }
 
     private void generateNewPeashooter(){
-        CommandCenter.movSun.add(new Peashooter(300,300));
+        // Need to update later.......
+        CommandCenter.movCandidate.add(new Peashooter(300,300));
     }
 
+    ///////////////////////////////////////
+    private void generateCandidatePlants(){
+        CommandCenter.movCandidate.add(new Peashooter(400,600));
+    }
 
 	private boolean isLevelClear(){
 		//if there are no more Asteroids on the screen
@@ -565,18 +587,42 @@ public class Game implements Runnable, KeyListener, MouseListener {
     // Two methods are needed to control the fal........
     @Override
     public void mouseClicked(MouseEvent e) {
-        checkMouseSelection(e);
+        checkMouseClicked(e);
 
         System.out.println("Mouse Clicked: "+e.getX()+", "+e.getY());
 
     }
     // Just need these because of MouseListener implementation
-    public void mouseReleased(MouseEvent arg0) {}
+
     public void mouseEntered(MouseEvent arg0) {}
     public void mouseExited(MouseEvent arg0) {}
-    public void mousePressed(MouseEvent arg0) {}
 
 
+
+    // Create a candidate
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    // Select candidate
+    public void mousePressed(MouseEvent e) {
+        System.out.println("Mouse Pressed: "+e.getX()+", "+e.getY());
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        System.out.println("Mouse Dragged: "+e.getX()+", "+e.getY());
+
+
+    }
+
+
+    public void mouseMoved(MouseEvent e){
+
+
+        if (isSelectedCandidate){
+            System.out.println("Mouse Moved: "+e.getX()+", "+e.getY());
+        }
+    }
 
 }
 

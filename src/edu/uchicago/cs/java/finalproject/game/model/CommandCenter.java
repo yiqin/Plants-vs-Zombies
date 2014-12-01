@@ -34,6 +34,7 @@ public class CommandCenter {
     // Suns
     // We use ArrayList to hold all movSun...
     public static CopyOnWriteArrayList<Movable> movSun = new CopyOnWriteArrayList<Movable>();
+    public static CopyOnWriteArrayList<Movable> movCandidate = new CopyOnWriteArrayList<Movable>();
 
 
 	// Constructor made private - static Utility class only
@@ -81,6 +82,7 @@ public class CommandCenter {
 		movFloaters.clear();
 
         movSun.clear();
+        movCandidate.clear();
 	}
 
 
@@ -177,5 +179,5 @@ public class CommandCenter {
     public static CopyOnWriteArrayList<Movable> getMovSun() {
         return movSun;
     }
-	
+	public static CopyOnWriteArrayList<Movable> getMovCandidate() { return  movCandidate; }
 }
