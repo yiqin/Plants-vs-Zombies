@@ -206,6 +206,11 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                     if ((movFriend instanceof RegularBullet) ){
 
                         tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+
+                        int explodeX = (int)movFriend.getCenter().getX();
+                        int explodeY = (int)movFriend.getCenter().getY();
+
+                        CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
                             // CommandCenter.spawnFalcon(false);
                             // killFoe(movFoe);
                         // killlllll
