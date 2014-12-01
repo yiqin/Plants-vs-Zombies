@@ -12,6 +12,8 @@ public class CommandCenter {
 	private static int nLevel;
 	private static long lScore;
 
+    private static long lSunCredit;
+
     // This is the flight.......   Why call it falShip....... So confused.
 	private static Falcon falShip;
 
@@ -40,6 +42,7 @@ public class CommandCenter {
 	public static void initGame(){
 		setLevel(1);
 		setScore(0);
+        setSunCredit(300);
 		setNumFalcons(3);
 		spawnFalcon(true);
 	}
@@ -49,6 +52,7 @@ public class CommandCenter {
         setLevel(1);
 
         setScore(nScore);
+        setSunCredit(300);
 
         setNumFalcons(numFalcon);
 
@@ -110,13 +114,22 @@ public class CommandCenter {
 		return nLevel;
 	}
 
-	public  static long getScore() {
+	public static long getScore() {
 		return lScore;
 	}
 
 	public static void setScore(long lParam) {
 		lScore = lParam;
 	}
+
+    public static long getSunCredit() {
+        return lSunCredit;
+    }
+
+    public static void setSunCredit(long lParam) {
+        lSunCredit = lParam;
+    }
+
 
 	public static void setLevel(int n) {
 

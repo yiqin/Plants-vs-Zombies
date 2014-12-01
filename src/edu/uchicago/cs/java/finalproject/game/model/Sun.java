@@ -8,6 +8,9 @@ import java.util.ArrayList;
  */
 public class Sun extends Sprite {
 
+    private final static int SUN_RADIUS = 100;
+
+    public long credit = 100;
 
     public Sun(int x){
         super();
@@ -15,7 +18,7 @@ public class Sun extends Sprite {
         // ArrayList<Point> pntCs = new ArrayList<Point>();
 
         setExpire(400);
-        setRadius(6);
+        setRadius(SUN_RADIUS);
 
         setCenter(new Point(x, 0));
 
@@ -62,8 +65,6 @@ public class Sun extends Sprite {
         // g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
 
         g.setColor(Color.YELLOW);
-        g.fillOval(getCenter().x, getCenter().y, 100, 100);
-
-
+        g.fillOval(getCenter().x, getCenter().y, SUN_RADIUS, SUN_RADIUS);
     }
 }

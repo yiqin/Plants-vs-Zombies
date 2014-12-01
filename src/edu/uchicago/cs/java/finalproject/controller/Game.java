@@ -37,7 +37,10 @@ public class Game implements Runnable, KeyListener, MouseListener {
 	private ArrayList<Tuple> tupMarkForRemovals;
 	private ArrayList<Tuple> tupMarkForAdds;
 	private boolean bMuted = true;
-	
+
+    // Handle sunflowers
+    private ArrayList<Tuple> tupMarkForRemovalsFromMouseSelect;
+
 
     // ASCII value
 	private final int PAUSE = 80, // p key
@@ -292,9 +295,41 @@ public class Game implements Runnable, KeyListener, MouseListener {
 			//remove the original Foe
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 		}
-
-
 	}
+
+    // Remove sunflower
+    private void checkMouseSelection(MouseEvent e) {
+        tupMarkForRemovalsFromMouseSelect = new ArrayList<Tuple>();
+
+        Point pntSumCenter, pntFoeCenter;
+        int nFriendRadiux, nFoeRadiux;
+
+        for (Movable movSun : CommandCenter.movSun) {
+
+            pntSumCenter = movSun.getCenter();
+            pntFoeCenter = new Point(e.getX(), e.getY());
+            nFriendRadiux = movSun.getRadius();
+            nFoeRadiux = 10;
+
+                //detect collision
+            if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
+                if ((movSun instanceof Sun) ){
+                    tupMarkForRemovalsFromMouseSelect.add(new Tuple(CommandCenter.movSun, movSun));
+                    CommandCenter.setSunCredit(CommandCenter.getSunCredit() + ((Sun) movSun).credit);
+                    Sound.playSound("pacman_eatghost.wav");
+                }
+            }//end if
+        }//end outer for
+
+        //remove these objects from their appropriate ArrayLists
+        //this happens after the above iterations are done
+        for (Tuple tup : tupMarkForRemovalsFromMouseSelect)
+            tup.removeMovable();
+
+        //call garbage collection
+        System.gc();
+    }
+
 
     // ===============================================
     // Mouse click METHODS
@@ -351,7 +386,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
 
     private void generateNewSun(){
         int tick = getTick();
-        if (tick%40 == 0){
+        if (tick%30 == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (int)(Math.random()*SCREEN_WIDTH);
@@ -525,6 +560,7 @@ public class Game implements Runnable, KeyListener, MouseListener {
     // Two methods are needed to control the fal........
     @Override
     public void mouseClicked(MouseEvent e) {
+        checkMouseSelection(e);
 
         System.out.println("Mouse Clicked: "+e.getX()+", "+e.getY());
 

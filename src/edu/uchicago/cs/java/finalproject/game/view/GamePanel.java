@@ -32,7 +32,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	private Graphics grpOff;
 	
 	private GameFrame gmf;
-	private Font fnt = new Font("Times", Font.BOLD, 12);
+	private Font fnt = new Font("Times", Font.BOLD, 20);  // set font size.
 	private Font fntBig = new Font("Times", Font.BOLD + Font.ITALIC, 36);
 	private FontMetrics fmt; 
 	private int nFontWidth;
@@ -74,6 +74,15 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		}
 	}
 
+     private void drawSunCredit(Graphics g){
+         g.setColor(Color.white);
+         g.setFont(fnt);
+         if (CommandCenter.getSunCredit() != 0) {
+             g.drawString("SUN CREDITS :  " + CommandCenter.getSunCredit(), nFontWidth, nFontHeight*2);
+         } else {
+             g.drawString("NO SUN CREDITS", nFontWidth, nFontHeight*2);
+         }
+     }
 
 
 	@SuppressWarnings("unchecked")
@@ -92,6 +101,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
 		drawScore(grpOff);
+        drawSunCredit(grpOff);
 
 
 
