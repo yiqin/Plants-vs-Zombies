@@ -1,6 +1,7 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.awt.Point;
 
 import edu.uchicago.cs.java.finalproject.sounds.Sound;
 
@@ -34,7 +35,16 @@ public class CommandCenter {
     // Suns
     // We use ArrayList to hold all movSun...
     public static CopyOnWriteArrayList<Movable> movSun = new CopyOnWriteArrayList<Movable>();
+
+    public static CopyOnWriteArrayList<Movable> movPlants = new CopyOnWriteArrayList<Movable>();
+
     public static CopyOnWriteArrayList<Movable> movCandidate = new CopyOnWriteArrayList<Movable>();
+
+    public static CopyOnWriteArrayList<Movable> movTemp = new CopyOnWriteArrayList<Movable>();
+
+    public static Peashooter plant;
+
+    public static Boolean isPlanting = false;
 
 
 	// Constructor made private - static Utility class only
@@ -83,6 +93,8 @@ public class CommandCenter {
 
         movSun.clear();
         movCandidate.clear();
+        movTemp.clear();
+        movPlants.clear();
 	}
 
 
@@ -156,6 +168,21 @@ public class CommandCenter {
 	}
 
 
+    public static void setPlant(Peashooter newPlant){
+        // Outside the screen
+        // Be careful about this type...........
+        plant = new Peashooter(-200,-200);
+        movTemp.clear();
+        movTemp.add(plant);
+        isPlanting = true;
+    }
+
+    public static void setPlantPosition(Point newPoint){
+        plant.setCenter(newPoint);
+
+    }
+
+
 
     // no called
 	public static CopyOnWriteArrayList<Movable> getMovDebris() {
@@ -180,4 +207,9 @@ public class CommandCenter {
         return movSun;
     }
 	public static CopyOnWriteArrayList<Movable> getMovCandidate() { return  movCandidate; }
+
+    public static void clearMovTemp() {
+        movTemp.clear();
+        isPlanting = false;
+    }
 }

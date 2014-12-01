@@ -7,13 +7,23 @@ import java.awt.*;
  */
 public class Peashooter extends Sprite {
 
+    private final static int PEASHOOTER_RADIUS = 100;
+
     public Peashooter(int x, int y){
         super();
 
-        setRadius(100);
+        setRadius(PEASHOOTER_RADIUS);
         setCenter(new Point(x, y));
 
     }
+
+    public Peashooter(Point newPoint){
+        super();
+
+        setRadius(PEASHOOTER_RADIUS);
+        setCenter(new Point((int)newPoint.getX(), (int)newPoint.getY()));
+    }
+
 
     @Override
     public void draw(Graphics g) {

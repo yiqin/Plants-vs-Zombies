@@ -33,7 +33,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 											// updates (animation)
 	private Thread thrAnim;
 	private int nLevel = 1;
-	private int nTick = 0;
+	private static int nTick = 0;
 	private ArrayList<Tuple> tupMarkForRemovals;
 	private ArrayList<Tuple> tupMarkForAdds;
 	private boolean bMuted = true;
@@ -130,8 +130,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		while (Thread.currentThread() == thrAnim) {
 			tick();
 			spawnNewShipFloater();
-            generateNewPeashooter();
-
             ///
             ///
             ///
@@ -199,6 +197,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 
 
+        /*
 		for (Movable movFriend : CommandCenter.movFriends) {
 			for (Movable movFoe : CommandCenter.movFoes) {
 
@@ -275,7 +274,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 		//call garbage collection
 		System.gc();
-		
+		*/
 	}//end meth
 
 
@@ -349,13 +348,40 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         System.gc();
     }
 
+    private void checkMousePress(MouseEvent e){
+
+        Point pntSumCenter, pntFoeCenter;
+        int nFriendRadiux, nFoeRadiux;
+
+        for (Movable movSun : CommandCenter.movCandidate) {
+
+            pntSumCenter = movSun.getCenter();
+            pntFoeCenter = new Point(e.getX(), e.getY());
+            nFriendRadiux = movSun.getRadius();
+            nFoeRadiux = 10;
+
+            //detect collision
+            if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
+                if ((movSun instanceof Peashooter) ){
+
+                    CommandCenter.setPlant(new Peashooter(e.getX()-50,e.getY()-50));
+
+
+                    // Sound.playSound("pacman_eatghost.wav");
+                }
+            }//end if
+        }//end outer for
+
+    }
+
+
 
     // ===============================================
-    // Mouse click METHODS
+    // Random METHODS
     // ===============================================
 	//some methods for timing events in the game,
 	//such as the appearance of UFOs, floaters (power-ups), etc. 
-	public void tick() {
+	public static void tick() {
 		if (nTick == Integer.MAX_VALUE)
 			nTick = 0;
 		else
@@ -365,7 +391,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         generateNewSun();
 	}
 
-	public int getTick() {
+	public static int getTick() {
 		return nTick;
 	}
 
@@ -404,7 +430,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		}
 	}
 
-    private void generateNewSun(){
+    private static void generateNewSun(){
         int tick = getTick();
         if (tick%30 == 0){
             int tempTick = (int)(Math.random()*10);
@@ -415,14 +441,15 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         }
     }
 
-    private void generateNewPeashooter(){
+    private void generateNewPeashooter(Point newPoint){
         // Need to update later.......
-        CommandCenter.movCandidate.add(new Peashooter(300,300));
+        CommandCenter.movPlants.add(new RegularPeashooter(newPoint));
     }
 
     ///////////////////////////////////////
     private void generateCandidatePlants(){
-        CommandCenter.movCandidate.add(new Peashooter(400,600));
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(400,600));
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(800,600));
     }
 
 	private boolean isLevelClear(){
@@ -601,16 +628,26 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     // Create a candidate
     public void mouseReleased(MouseEvent e) {
+        if (CommandCenter.isPlanting && e.getY()<500){
+            generateNewPeashooter(new Point(e.getX()-50,e.getY()-50));
+
+        }
+        CommandCenter.clearMovTemp();
 
     }
 
     // Select candidate
     public void mousePressed(MouseEvent e) {
         System.out.println("Mouse Pressed: "+e.getX()+", "+e.getY());
+
+        checkMousePress(e);
+
     }
 
     public void mouseDragged(MouseEvent e) {
         System.out.println("Mouse Dragged: "+e.getX()+", "+e.getY());
+        CommandCenter.setPlantPosition(new Point(e.getX()-50,e.getY()-50));
+
 
 
     }
