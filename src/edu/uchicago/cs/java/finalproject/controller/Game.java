@@ -42,11 +42,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
     private ArrayList<Tuple> tupMarkForRemovalsFromMouseSelect;
 
 
-    private boolean isSelectedCandidate = false;
-
-    private Peashooter candidatePeashooter;
-
-
     // ASCII value
 	private final int PAUSE = 80, // p key
 			QUIT = 81, // q key
@@ -655,10 +650,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     public void mouseMoved(MouseEvent e){
 
-
-        if (isSelectedCandidate){
-            System.out.println("Mouse Moved: "+e.getX()+", "+e.getY());
-        }
     }
 
 }
