@@ -12,6 +12,12 @@ public class Zombie extends Sprite {
 
     private final static int SCALER = 3;
 
+    private boolean isSwingToLeft = true;
+    private int stepLength = 10;
+    private int leftFootX = -stepLength;
+    private int rightFootX = stepLength;
+
+
     public Zombie(int y){
         super();
 
@@ -61,7 +67,7 @@ public class Zombie extends Sprite {
         assignPolarPoints(pntCs);
 
 
-        setOrientation(-90);
+        setOrientation(-100);
     }
 
     public void move(){
@@ -94,8 +100,27 @@ public class Zombie extends Sprite {
 
         // g.drawLine(getCenter().x,getCenter().y,getCenter().x-30, getCenter().y+40);
 
+        if(leftFootX < -stepLength){
+            isSwingToLeft = false;
+        }
+        else if(leftFootX > stepLength){
+            isSwingToLeft = true;
+        }
+
+        if (isSwingToLeft){
+            leftFootX--;
+            rightFootX++;
+        }
+        else {
+            leftFootX++;
+            rightFootX--;
+        }
 
 
+
+
+        g.drawLine(getCenter().x,getCenter().y,getCenter().x-leftFootX, getCenter().y+40);
+        g.drawLine(getCenter().x,getCenter().y,getCenter().x-rightFootX, getCenter().y+40);
     }
 
 }
