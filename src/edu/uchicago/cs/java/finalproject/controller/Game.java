@@ -496,7 +496,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
     ///////////////////////////////////////
     private void generateCandidatePlants(){
         CommandCenter.movCandidate.add(new CandidateRegularPeashooter(400,600+50));
-        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(800,600+50));
+        CommandCenter.movCandidate.add(new CandidateIcePeashooter(800,600+50));
     }
 
 	private boolean isLevelClear(){

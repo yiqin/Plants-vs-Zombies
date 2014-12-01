@@ -20,6 +20,7 @@ public class RegularPeashooter extends Peashooter {
         super(newPoint);
         initBullet =  (int)(Math.random()*130);
 
+        mainColor = Color.cyan;
 
         int x = (int)newPoint.getX();
         int y = (int)newPoint.getY();
