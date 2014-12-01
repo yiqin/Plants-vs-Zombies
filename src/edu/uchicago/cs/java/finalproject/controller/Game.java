@@ -313,6 +313,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     // When the bullet hit the Asteroid, or any collision.
     // Control the animation
+    /*
 	private void killFoe(Movable movFoe) {
 		
 		if (movFoe instanceof Asteroid){
@@ -346,7 +347,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 		}
 	}
-
+    */
     // Remove sunflower
     private void checkMouseClicked(MouseEvent e) {
         tupMarkForRemovalsFromMouseSelect = new ArrayList<Tuple>();
@@ -460,7 +461,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	private void spawnAsteroids(int nNum) {
 		for (int nC = 0; nC < nNum; nC++) {
 			//Asteroids with size of zero are big
-			CommandCenter.movFoes.add(new Asteroid(0));
+			// CommandCenter.movFoes.add(new Asteroid(0));
 		}
 	}
 
@@ -503,10 +504,12 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		
 		boolean bAsteroidFree = true;
 		for (Movable movFoe : CommandCenter.movFoes) {
-			if (movFoe instanceof Asteroid){
+			/*
+            if (movFoe instanceof Asteroid){
 				bAsteroidFree = false;
 				break;
 			}
+			*/
 		}
 		
 		return bAsteroidFree;
