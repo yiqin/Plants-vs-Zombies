@@ -168,6 +168,8 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 	private void checkCollisions() {
 
+        System.out.println("Check Collisions..............");
+
 		//@formatter:off
 		//for each friend in movFriends
 			//for each foe in movFoes
@@ -188,9 +190,38 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
 
+        for (Movable movFriend : CommandCenter.movFriends) {
+            for (Movable movFoe : CommandCenter.movFoes) {
 
+                pntFriendCenter = movFriend.getCenter();
+                pntFoeCenter = movFoe.getCenter();
+                nFriendRadiux = movFriend.getRadius();
+                nFoeRadiux = movFoe.getRadius();
 
+                //detect collision
+                if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
 
+                    //falcon
+                    // Check the flight. If the falcon is not protected. it will die....
+                    if ((movFriend instanceof RegularBullet) ){
+
+                        tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+                            // CommandCenter.spawnFalcon(false);
+                            // killFoe(movFoe);
+
+                    }
+                    //not the falcon
+                    //
+
+                    //explode/remove foe
+                }//end if
+            }//end inner for
+        }//end outer for
+
+        for (Tuple tup : tupMarkForRemovals)
+            tup.removeMovable();
+
+        System.gc();
 
         /*
 		for (Movable movFriend : CommandCenter.movFriends) {
@@ -323,7 +354,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             nFriendRadiux = movSun.getRadius();
             nFoeRadiux = 10;
 
-                //detect collision
+            //detect collision
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
                 if ((movSun instanceof Sun) ){
                     tupMarkForRemovalsFromMouseSelect.add(new Tuple(CommandCenter.movSun, movSun));
@@ -384,6 +415,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
         System.out.println("Updating in Game.....");
         generateNewSun();
+        generateNewZombie();
 	}
 
 	public static int getTick() {
@@ -435,6 +467,18 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }
         }
     }
+
+    private static void generateNewZombie(){
+        int tick = getTick();
+        if (tick%5 == 0){
+            int tempTick = (int)(Math.random()*10);
+            if (tempTick%7 == 0){
+                int randomNum = 100+(int)(Math.random()*SCREEN_HEIGHT)-400;
+                CommandCenter.movFoes.add(new Zombie(randomNum));
+            }
+        }
+    }
+
 
     private void generateNewPeashooter(Point newPoint){
         // Need to update later.......
@@ -623,7 +667,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     // Create a candidate
     public void mouseReleased(MouseEvent e) {
-        if (CommandCenter.isPlanting && e.getY()<500){
+        if (CommandCenter.isPlanting && e.getY()<550){
             generateNewPeashooter(new Point(e.getX()-50,e.getY()-50));
 
         }

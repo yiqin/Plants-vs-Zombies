@@ -8,33 +8,15 @@ import java.util.ArrayList;
  */
 public class RegularBullet extends Sprite  {
 
-    private final static int REGULAR_BULLET_RADIUS = 50;
+    private final static int REGULAR_BULLET_RADIUS = 40;
 
     private final double FIRE_POWER = 10.0;
-
-
 
     public RegularBullet(Peashooter peashooter){
 
         super();
+        setRadius(REGULAR_BULLET_RADIUS);
 
-
-        //defined the points on a cartesean grid
-        ArrayList<Point> pntCs = new ArrayList<Point>();
-
-        pntCs.add(new Point(0,3)); //top point
-
-        pntCs.add(new Point(1,-1));
-        pntCs.add(new Point(0,-2));
-        pntCs.add(new Point(-1,-1));
-
-        assignPolarPoints(pntCs);
-
-        //a bullet expires after 20 frames
-        setRadius(6);
-
-
-        //everything is relative to the falcon ship that fired the bullet
         setDeltaX( FIRE_POWER );
         setDeltaY( 0 );
 
@@ -45,7 +27,6 @@ public class RegularBullet extends Sprite  {
 
         //set the bullet orientation to the falcon (ship) orientation
         setOrientation(peashooter.getOrientation());
-
     }
 
     public void move() {
