@@ -8,15 +8,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.Point;
-import java.awt.event.WindowEvent;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import javax.swing.JFrame;
 
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 import edu.uchicago.cs.java.finalproject.game.model.CommandCenter;
-import edu.uchicago.cs.java.finalproject.game.model.Falcon;
 import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
 
@@ -133,9 +129,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
                        CommandCenter.movTemp,
                        CommandCenter.movPlants,
                        CommandCenter.movDebris);
-			
-			
-			drawNumberShipsLeft(grpOff);
+
 			if (CommandCenter.isGameOver()) {
 				CommandCenter.setPlaying(false);
 				//bPlaying = false;
@@ -162,37 +156,6 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 			}
 		}
 		
-	}
-	
-
-	// Draw the number of falcons left on the bottom-right of the screen. 
-	private void drawNumberShipsLeft(Graphics g) {
-		Falcon fal = CommandCenter.getFalcon();
-		double[] dLens = fal.getLengths();
-		int nLen = fal.getDegrees().length;
-		Point[] pntMs = new Point[nLen];
-		int[] nXs = new int[nLen];
-		int[] nYs = new int[nLen];
-	
-		//convert to cartesean points
-		for (int nC = 0; nC < nLen; nC++) {
-			pntMs[nC] = new Point((int) (10 * dLens[nC] * Math.sin(Math
-					.toRadians(90) + fal.getDegrees()[nC])),
-					(int) (10 * dLens[nC] * Math.cos(Math.toRadians(90)
-							+ fal.getDegrees()[nC])));
-		}
-		
-		//set the color to white
-		g.setColor(Color.white);
-		//for each falcon left (not including the one that is playing)
-		for (int nD = 1; nD < CommandCenter.getNumFalcons(); nD++) {
-			//create x and y values for the objects to the bottom right using cartesean points again
-			for (int nC = 0; nC < fal.getDegrees().length; nC++) {
-				nXs[nC] = pntMs[nC].x + Game.DIM.width - (20 * nD);
-				nYs[nC] = pntMs[nC].y + Game.DIM.height - 40;
-			}
-			g.drawPolygon(nXs, nYs, nLen);
-		} 
 	}
 	
 	private void initView() {

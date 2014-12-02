@@ -15,10 +15,6 @@ public class CommandCenter {
 
     private static long lSunCredit;
 
-    // This is the flight.......   Why call it falShip....... So confused.
-	private static Falcon falShip;
-
-
 
     private static boolean bPlaying;
 	private static boolean bPaused;
@@ -56,7 +52,6 @@ public class CommandCenter {
 		setScore(0);
         setSunCredit(300);
 		setNumFalcons(3);
-		spawnFalcon(true);
 	}
 
 
@@ -68,23 +63,8 @@ public class CommandCenter {
 
         setNumFalcons(numFalcon);
 
-        spawnFalcon(true);
     }
 
-    // Spawn is to generate......
-	// The parameter is true if this is for the beginning of the game, otherwise false
-	// When you spawn a new falcon, you need to decrement its number
-	public static void spawnFalcon(boolean bFirst) {
-
-		if (getNumFalcons() != 0) {
-			falShip = new Falcon();
-			movFriends.add(falShip);
-			if (!bFirst)
-			    setNumFalcons(getNumFalcons() - 1);
-		}
-		
-		Sound.playSound("shipspawn.wav");
-	}
 	
 	public static void clearAll(){
 		movDebris.clear();
@@ -159,15 +139,6 @@ public class CommandCenter {
 	public static void setNumFalcons(int nParam) {
 		nNumFalcon = nParam;
 	}
-	
-	public static Falcon getFalcon(){
-		return falShip;
-	}
-	
-	public static void setFalcon(Falcon falParam){
-		falShip = falParam;
-	}
-
 
     public static void setPlant(Peashooter newPlant, int type){
         // Outside the screen

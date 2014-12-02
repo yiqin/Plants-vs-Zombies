@@ -420,7 +420,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		else
 			nTick++;
 
-        System.out.println("Updating in Game.....");
+        // System.out.println("Updating in Game.....");
         generateNewSun();
         generateNewZombie();
 	}
@@ -523,12 +523,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	}
 	
 	private void checkNewLevel(){
-		
 		if (isLevelClear() ){
-			if (CommandCenter.getFalcon() !=null)
-				CommandCenter.getFalcon().setProtected(true);
-			
-			spawnAsteroids(CommandCenter.getLevel() + 2);
 			CommandCenter.setLevel(CommandCenter.getLevel() + 1);
 		}
 	}
@@ -557,14 +552,11 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		Falcon fal = CommandCenter.getFalcon();
 		int nKey = e.getKeyCode();
 		// System.out.println(nKey);
 
 		if (nKey == START && !CommandCenter.isPlaying())
 			startGame();
-
-		if (fal != null) {
 
 			switch (nKey) {
 			case PAUSE:
@@ -577,59 +569,24 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			case QUIT:
 				System.exit(0);
 				break;
-			case UP:
-				fal.thrustOn();
-				if (!CommandCenter.isPaused())
-					clpThrust.loop(Clip.LOOP_CONTINUOUSLY);
-				break;
-			case LEFT:
-				fal.rotateLeft();
-				break;
-			case RIGHT:
-				fal.rotateRight();
-				break;
-
-			// possible future use
-			// case KILL:
-			// case SHIELD:
-			// case NUM_ENTER:
-
 			default:
 				break;
 			}
-		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		Falcon fal = CommandCenter.getFalcon();
 		int nKey = e.getKeyCode();
 		 System.out.println(nKey);
 
-		if (fal != null) {
+
 			switch (nKey) {
 			case FIRE:
 				// CommandCenter.movFriends.add(new Bullet(fal));
 				Sound.playSound("laser.wav");
 				break;
-				
-			//special is a special weapon, current it just fires the cruise missile. 
-			case SPECIAL:
-				CommandCenter.movFriends.add(new Cruise(fal));
-				//Sound.playSound("laser.wav");
-				break;
-				
-			case LEFT:
-				fal.stopRotating();
-				break;
-			case RIGHT:
-				fal.stopRotating();
-				break;
-			case UP:
-				fal.thrustOff();
-				clpThrust.stop();
-				break;
-				
+
+
 			case MUTE:
 				if (!bMuted){
 					stopLoopingSounds(clpMusicBackground);
@@ -645,7 +602,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			default:
 				break;
 			}
-		}
 	}
 
 	@Override
