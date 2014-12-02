@@ -31,7 +31,7 @@ public class Zombie extends Sprite {
         setRadius(ZOMBIE_RADIUS);
 
 
-        if (y==0){
+        if (y<100){
             y = 300;
         }
 

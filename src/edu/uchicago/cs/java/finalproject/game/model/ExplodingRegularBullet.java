@@ -109,7 +109,7 @@ public class ExplodingRegularBullet extends Sprite {
     @Override
     public void expire() {
         if (getExpire() == 0){
-            CommandCenter.movFriends.remove(this);
+            CommandCenter.movDebris.remove(this);
         }
         else{
             setExpire(getExpire() - 1);

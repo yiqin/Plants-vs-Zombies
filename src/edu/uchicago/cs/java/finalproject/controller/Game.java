@@ -210,7 +210,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                         int explodeX = (int)movFriend.getCenter().getX();
                         int explodeY = (int)movFriend.getCenter().getY();
 
-                        CommandCenter.movFriends.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
+                        CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
 
                         // Kill Zombie..............................
                             // CommandCenter.spawnFalcon(false);
