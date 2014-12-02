@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class RegularBullet extends Sprite  {
 
     private final static int REGULAR_BULLET_RADIUS = 40;
-
     private final double FIRE_POWER = 10.0;
 
     private Color bulletColor;

@@ -226,8 +226,10 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }//end inner for
         }//end outer for
 
+
         for (Tuple tup : tupMarkForRemovals)
             tup.removeMovable();
+
 
         if (nTick % 300 == 0) {
             System.gc();
@@ -614,7 +616,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
     public void mouseClicked(MouseEvent e) {
         checkMouseClicked(e);
 
-        System.out.println("Mouse Clicked: "+e.getX()+", "+e.getY());
+        // System.out.println("Mouse Clicked: "+e.getX()+", "+e.getY());
 
     }
     // Just need these because of MouseListener implementation
@@ -636,17 +638,15 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     // Select candidate
     public void mousePressed(MouseEvent e) {
-        System.out.println("Mouse Pressed: "+e.getX()+", "+e.getY());
+        // System.out.println("Mouse Pressed: "+e.getX()+", "+e.getY());
 
         checkMousePress(e);
 
     }
 
     public void mouseDragged(MouseEvent e) {
-        System.out.println("Mouse Dragged: "+e.getX()+", "+e.getY());
+        // System.out.println("Mouse Dragged: "+e.getX()+", "+e.getY());
         CommandCenter.setPlantPosition(new Point(e.getX(),e.getY()));
-
-
 
     }
 
