@@ -211,10 +211,12 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                         int explodeY = (int)movFriend.getCenter().getY();
 
                         CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
+
+                        // Kill Zombie..............................
                             // CommandCenter.spawnFalcon(false);
-                            // killFoe(movFoe);
+                        killFoe(movFriend, movFoe);
                         // killlllll
-                        tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
+                        // tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 
                     }
                     //not the falcon
@@ -313,33 +315,27 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     // When the bullet hit the Asteroid, or any collision.
     // Control the animation
-    /*
-	private void killFoe(Movable movFoe) {
+
+	private void killFoe(Movable movFriend, Movable movFoe) {
 		
-		if (movFoe instanceof Asteroid){
+		if (movFoe instanceof Zombie){
 
 			//we know this is an Asteroid, so we can cast without threat of ClassCastException
-			Asteroid astExploded = (Asteroid)movFoe;
-
+			Zombie astExploded = (Zombie)movFoe;
+            RegularBullet bullet = (RegularBullet)movFriend;
 
 			//big asteroid 
-			if(astExploded.getSize() == 0){
-				//spawn two medium Asteroids
-				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
-				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
-				
-			} 
-			//medium size aseroid exploded
-			else if(astExploded.getSize() == 1){
-				//spawn three small Asteroids
-				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
-				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
-				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
-			}
-			//remove the original Foe	
-			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
-		
-			
+			if(astExploded.getSize() == 1) {
+                tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
+            }
+            else {
+
+                astExploded.isHit(bullet.bulletType);
+            }
+			//remove the original Foe
+
+
+
 		} 
 		//not an asteroid
 		else {
@@ -347,7 +343,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 		}
 	}
-    */
+
     // Remove sunflower
     private void checkMouseClicked(MouseEvent e) {
         tupMarkForRemovalsFromMouseSelect = new ArrayList<Tuple>();

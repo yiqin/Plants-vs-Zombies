@@ -13,12 +13,20 @@ public class RegularBullet extends Sprite  {
     private final double FIRE_POWER = 10.0;
 
     private Color bulletColor;
+    public int bulletType;
 
     public RegularBullet(Peashooter peashooter){
 
         super();
 
         bulletColor = peashooter.mainColor;
+        if(bulletColor.equals(Color.green)){
+            bulletType = 0;
+        }
+        else if(bulletColor.equals(Color.cyan)){
+            bulletType = 1;
+        }
+
 
         setRadius(REGULAR_BULLET_RADIUS);
 

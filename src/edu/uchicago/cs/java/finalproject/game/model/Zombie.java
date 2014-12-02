@@ -19,6 +19,10 @@ public class Zombie extends Sprite {
 
     private int speed = 1;
 
+    private int nSize = 3;
+
+    private int iceTime = 0;
+
     public Zombie(int y){
         super();
 
@@ -87,8 +91,15 @@ public class Zombie extends Sprite {
 
     @Override
     public void draw(Graphics g) {
-        // g.setColor(Color.BLUE);
-        // g.fillRect(getCenter().x-40, getCenter().y-40, 80, 80);
+        if(speed==0){
+            g.setColor(Color.cyan);
+            g.fillRect(getCenter().x-33, getCenter().y-50, 60, 90);
+            iceTime++;
+        }
+
+        if(iceTime==200){
+            recover();
+        }
 
         super.draw(g);
         //fill this polygon (with whatever color it has)
@@ -145,6 +156,30 @@ public class Zombie extends Sprite {
 
 
 
+    }
+
+    public int getSize(){
+        return nSize;
+    }
+
+    public void isHit(int bulletType){
+        nSize--;
+        if (bulletType==1){
+            frozen();
+        }
+
+    }
+
+    public void frozen(){
+        speed = 0;
+        iceTime = 0;
+        setDeltaX(-speed*0.25);
+    }
+
+    public void recover(){
+        speed =1;
+        iceTime = 0;
+        setDeltaX(-speed*0.5);
     }
 
 }
