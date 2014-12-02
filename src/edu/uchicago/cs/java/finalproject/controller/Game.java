@@ -124,16 +124,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		// this thread animates the scene
 		while (Thread.currentThread() == thrAnim) {
 			tick();
-			spawnNewShipFloater();
-            ///
-            ///
-            ///
-            ///
-            ///
-            ///
-            ///
             generateCandidatePlants();
-
 
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
@@ -190,7 +181,12 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
 
+
+
         for (Movable movFriend : CommandCenter.movFriends) {
+
+            int offset = 0;
+
             for (Movable movFoe : CommandCenter.movFoes) {
 
                 pntFriendCenter = movFriend.getCenter();
@@ -199,18 +195,18 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                 nFoeRadiux = movFoe.getRadius();
 
                 //detect collision
-                if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux-20)) {
+                if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux-20+offset)) {
 
                     //falcon
                     // Check the flight. If the falcon is not protected. it will die....
                     if ((movFriend instanceof RegularBullet) ){
 
                         tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-
+                        offset = 40;
                         int explodeX = (int)movFriend.getCenter().getX();
                         int explodeY = (int)movFriend.getCenter().getY();
 
-                        CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
+                        CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY+5)));
 
                         // Kill Zombie..............................
                             // CommandCenter.spawnFalcon(false);
@@ -422,14 +418,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 	public static int getTick() {
 		return nTick;
-	}
-
-	private void spawnNewShipFloater() {
-		//make the appearance of power-up dependent upon ticks and levels
-		//the higher the level the more frequent the appearance
-		if (nTick % (SPAWN_NEW_SHIP_FLOATER - nLevel * 7) == 0) {
-			CommandCenter.movFloaters.add(new NewShipFloater());
-		}
 	}
 
 	// Called when user presses 's'
