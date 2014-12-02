@@ -202,7 +202,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                     if ((movFriend instanceof RegularBullet) ){
 
                         tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-                        offset = 40;
+                        offset = 20;
                         int explodeX = (int)movFriend.getCenter().getX();
                         int explodeY = (int)movFriend.getCenter().getY();
 
@@ -616,7 +616,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     // Create a candidate
     public void mouseReleased(MouseEvent e) {
-        if (CommandCenter.isPlanting && e.getY()<550){
+        if (CommandCenter.isPlanting && e.getY()<550 && e.getY()> 51){
             generateNewPeashooter(new Point(e.getX(),e.getY()));
 
         }
