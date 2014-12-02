@@ -62,11 +62,11 @@ public class CommandCenter {
         setSunCredit(300);
 
         setNumFalcons(numFalcon);
-
     }
 
 	
 	public static void clearAll(){
+        System.out.println("Clean....");
 		movDebris.clear();
 		movFriends.clear();
 		movFoes.clear();

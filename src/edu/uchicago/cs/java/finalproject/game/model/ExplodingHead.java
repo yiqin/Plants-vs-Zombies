@@ -40,7 +40,7 @@ public class ExplodingHead extends Sprite  {
         setExpire(MAX_EXPIRE);
         setRadius(ZOMBIE_RADIUS);
 
-        playExplosionSounds();					// randomly plays an explosion sound
+        // playExplosionSounds();					// randomly plays an explosion sound
 
 
         ArrayList<Point> pntCs = new ArrayList<Point>();

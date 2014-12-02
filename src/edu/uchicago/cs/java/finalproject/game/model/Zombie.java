@@ -104,7 +104,6 @@ public class Zombie extends Sprite {
         //
         //fill this polygon (with whatever color it has)
 
-
         if (nSize >= 2){
             super.draw(g);
             // 1
@@ -151,13 +150,6 @@ public class Zombie extends Sprite {
         // g2.drawLine(getCenter().x,getCenter().y+20, getCenter().x-15, getCenter().y+15);
 
         g2.setStroke(new BasicStroke(1));
-
-
-
-
-
-
-
     }
 
     public int getSize(){

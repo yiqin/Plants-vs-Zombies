@@ -25,6 +25,12 @@ public class Explosion extends MovableAdapter {
         mRadiux = 10;
     }
 
+    public Explosion(){
+        mCenter = new Point(-200,-200);
+        mExpiry = 20; //  this is to control the time, I think.
+        mRadiux = 10;
+    }
+
     @Override
     public void draw(Graphics g){
 

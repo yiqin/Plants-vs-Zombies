@@ -39,7 +39,8 @@ public class ExplodingRegularBullet extends Sprite {
         setExpire(MAX_EXPIRE);
         setRadius(MIN_EXPLOSION_RADIUS);
 
-        playExplosionSounds();					// randomly plays an explosion sound
+        // playExplosionSounds();					// randomly plays an explosion sound
+        // This is the reason that generate a null???????
     }
 
 
