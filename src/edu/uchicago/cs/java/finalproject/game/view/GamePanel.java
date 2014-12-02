@@ -124,15 +124,15 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
 			//draw them in decreasing level of importance
 			//friends will be on top layer and debris on the bottom
-			iterateMovables(grpOff, 
-					   CommandCenter.movDebris,
+			iterateMovables(grpOff,
 			           CommandCenter.movFloaters, 
 			           CommandCenter.movFoes,
 			           CommandCenter.movFriends,
                        CommandCenter.movSun,
                        CommandCenter.movCandidate,
                        CommandCenter.movTemp,
-                       CommandCenter.movPlants);
+                       CommandCenter.movPlants,
+                       CommandCenter.movDebris);
 			
 			
 			drawNumberShipsLeft(grpOff);

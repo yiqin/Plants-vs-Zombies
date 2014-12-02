@@ -210,17 +210,18 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                         int explodeX = (int)movFriend.getCenter().getX();
                         int explodeY = (int)movFriend.getCenter().getY();
 
-                        CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
+                        CommandCenter.movFriends.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY)));
 
                         // Kill Zombie..............................
                             // CommandCenter.spawnFalcon(false);
                         killFoe(movFriend, movFoe);
                         // killlllll
                         // tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
-
                     }
-                    //not the falcon
-                    //
+                    else if ((movFriend instanceof ExplodingRegularBullet)){
+                        // killFoe(movFriend, movFoe);
+                    }
+
 
                     //explode/remove foe
                 }//end if
@@ -230,8 +231,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         for (Tuple tup : tupMarkForRemovals)
             tup.removeMovable();
 
-        System.gc();
-
+        if (nTick % 300 == 0) {
+            System.gc();
+        }
         /*
 		for (Movable movFriend : CommandCenter.movFriends) {
 			for (Movable movFoe : CommandCenter.movFoes) {
@@ -307,8 +309,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		for (Tuple tup : tupMarkForAdds) 
 			tup.addMovable();
 
-		//call garbage collection
-		System.gc();
+
 		*/
 	}//end meth
 
@@ -324,17 +325,19 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			Zombie astExploded = (Zombie)movFoe;
             RegularBullet bullet = (RegularBullet)movFriend;
 
-			//big asteroid 
+
 			if(astExploded.getSize() == 1) {
+                // Remove
                 tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
             }
             else {
-
+                // Head down
                 astExploded.isHit(bullet.bulletType);
+                if(astExploded.getSize()==1){
+                    CommandCenter.movDebris.add(new ExplodingHead(new Point(astExploded.getCenter())));
+                }
             }
 			//remove the original Foe
-
-
 
 		} 
 		//not an asteroid
@@ -374,8 +377,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         for (Tuple tup : tupMarkForRemovalsFromMouseSelect)
             tup.removeMovable();
 
-        //call garbage collection
-        System.gc();
     }
 
     private void checkMousePress(MouseEvent e){

@@ -93,7 +93,7 @@ public class Zombie extends Sprite {
     public void draw(Graphics g) {
         if(speed==0){
             g.setColor(Color.cyan);
-            g.fillRect(getCenter().x-33, getCenter().y-50, 60, 90);
+            g.fillRect(getCenter().x-33, getCenter().y-50, 60, 92);
             iceTime++;
         }
 
@@ -101,14 +101,27 @@ public class Zombie extends Sprite {
             recover();
         }
 
-        super.draw(g);
+        //
         //fill this polygon (with whatever color it has)
-        g.setColor(Color.red);
-        g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
-        //now draw a white border
 
-        g.setColor(Color.lightGray);
-        g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
+
+        if (nSize >= 2){
+            super.draw(g);
+            // 1
+            g.setColor(Color.red);
+            g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
+            //now draw a white border
+            // 2
+            g.setColor(Color.lightGray);
+            g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
+            // 3
+            g.setColor(Color.black);
+            g.fillArc(getCenter().x-45,getCenter().y-10, 35, 10,85,-175);
+            // 4
+            g.setColor(Color.darkGray);
+            g.fillOval(getCenter().x-20, getCenter().y-30, 12, 10);
+        }
+
 
         g.setColor(Color.red);
         if(leftFootX < -stepLength){
@@ -141,18 +154,7 @@ public class Zombie extends Sprite {
 
 
 
-        g.setColor(Color.black);
-        // g.fillOval(getCenter().x-40,getCenter().y-10, 30, 10);
-        g.fillArc(getCenter().x-45,getCenter().y-10, 35, 10,85,-180);
 
-        // int xPoly[] = {getCenter().x-30,getCenter().x-2,getCenter().x-20};
-        // int yPoly[] = {getCenter().y,getCenter().y,getCenter().y-10};
-
-        // g.fillPolygon(xPoly, yPoly, xPoly.length);
-
-
-        g.setColor(Color.darkGray);
-        g.fillOval(getCenter().x-20, getCenter().y-30, 12, 10);
 
 
 
