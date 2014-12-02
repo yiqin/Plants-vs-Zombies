@@ -1,7 +1,7 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
+import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.awt.Point;
 
 import edu.uchicago.cs.java.finalproject.sounds.Sound;
 
@@ -44,6 +44,7 @@ public class CommandCenter {
 
     public static Peashooter plant;
 
+    public static int plantType = 0;
     public static Boolean isPlanting = false;
 
 
@@ -168,10 +169,16 @@ public class CommandCenter {
 	}
 
 
-    public static void setPlant(Peashooter newPlant){
+    public static void setPlant(Peashooter newPlant, int type){
         // Outside the screen
         // Be careful about this type...........
         plant = new Peashooter(-200,-200);
+        if(type == 0){
+            plantType = 0;
+        }
+        else if(type == 1){
+            plantType = 1;
+        }
         movTemp.clear();
         movTemp.add(plant);
         isPlanting = true;
@@ -179,6 +186,16 @@ public class CommandCenter {
 
     public static void setPlantPosition(Point newPoint){
         plant.setCenter(newPoint);
+        // plant.mainColor = Color.CYAN;
+
+
+        if(plantType == 0){
+            plant.mainColor = Color.green;
+        }
+        else if(plantType == 1){
+            plant.mainColor = Color.CYAN;
+        }
+
 
     }
 

@@ -12,9 +12,14 @@ public class RegularBullet extends Sprite  {
 
     private final double FIRE_POWER = 10.0;
 
+    private Color bulletColor;
+
     public RegularBullet(Peashooter peashooter){
 
         super();
+
+        bulletColor = peashooter.mainColor;
+
         setRadius(REGULAR_BULLET_RADIUS);
 
         setDeltaX( FIRE_POWER );
@@ -40,7 +45,7 @@ public class RegularBullet extends Sprite  {
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.green);
+        g.setColor(bulletColor);
         g.fillOval(getCenter().x, getCenter().y, REGULAR_BULLET_RADIUS, REGULAR_BULLET_RADIUS);
     }
 

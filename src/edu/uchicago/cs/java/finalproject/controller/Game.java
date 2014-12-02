@@ -398,7 +398,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
                 if ((movSun instanceof Peashooter) ){
 
-                    CommandCenter.setPlant(new Peashooter(e.getX()-50,e.getY()-50));
+
+                    CommandCenter.setPlant(new Peashooter(e.getX()-50,e.getY()-50),((Peashooter) movSun).typeIndicator);
+
 
 
                     // Sound.playSound("pacman_eatghost.wav");
@@ -490,7 +492,15 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private void generateNewPeashooter(Point newPoint){
         // Need to update later.......
-        CommandCenter.movPlants.add(new RegularPeashooter(newPoint));
+
+        if(CommandCenter.plantType==0){
+            CommandCenter.movPlants.add(new RegularPeashooter(newPoint));
+        }
+        else if (CommandCenter.plantType==1){
+            CommandCenter.movPlants.add(new IcePeashooter(newPoint));
+        }
+
+
     }
 
     ///////////////////////////////////////

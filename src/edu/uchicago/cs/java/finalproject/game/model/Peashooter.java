@@ -11,6 +11,8 @@ public class Peashooter extends Sprite {
 
     public Color mainColor = Color.green;
 
+    public int typeIndicator = 0;
+
     public Peashooter(int x, int y){
         super();
 
