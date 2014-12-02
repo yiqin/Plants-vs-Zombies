@@ -162,30 +162,29 @@ public class ExplodingHead extends Sprite  {
         }
         else{
             setExpire(getExpire() - 1);
-            if (getExpire()>MAX_EXPIRE-10){
-                setDeltaY(-1);
-                setDeltaX(1);
-            }
-            else if(getExpire()>MAX_EXPIRE-30) {
-                setDeltaY(1);
-                setDeltaX(0);
-            }
+        }
+
+        if (getExpire()>MAX_EXPIRE-10){
+            setDeltaY(-1);
+            setDeltaX(1);
+        }
+        else if(getExpire()>MAX_EXPIRE-30) {
+            setDeltaY(1);
+            setDeltaX(0);
+        }
 
 
-            if (getExpire()>MAX_EXPIRE-10){
-                setOrientation(getOrientation()+1);
+        if (getExpire()>MAX_EXPIRE-10){
+            setOrientation(getOrientation()+1);
+        }
+        else if(getExpire()<MAX_EXPIRE-10 && getExpire()>MAX_EXPIRE-20) {
+            // setOrientation(getOrientation()-1);
+        }
+        else{
+            if (getExpire()%10==0){
+                headRotation = headRotation*(-1);
             }
-            else if(getExpire()<MAX_EXPIRE-10 && getExpire()>MAX_EXPIRE-20) {
-                // setOrientation(getOrientation()-1);
-            }
-            else{
-                if (getExpire()%10==0){
-                    headRotation = headRotation*(-1);
-                }
-                setOrientation(getOrientation()-1*headRotation);
-            }
-
-
+            setOrientation(getOrientation()-1*headRotation);
         }
     }
 

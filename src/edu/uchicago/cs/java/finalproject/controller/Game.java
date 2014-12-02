@@ -218,9 +218,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                         // killlllll
                         // tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
                     }
-                    else if ((movFriend instanceof ExplodingRegularBullet)){
-                        // killFoe(movFriend, movFoe);
-                    }
+
 
 
                     //explode/remove foe
@@ -340,11 +338,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			//remove the original Foe
 
 		} 
-		//not an asteroid
-		else {
-			//remove the original Foe
-			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
-		}
+
 	}
 
     // Remove sunflower
@@ -376,7 +370,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         //this happens after the above iterations are done
         for (Tuple tup : tupMarkForRemovalsFromMouseSelect)
             tup.removeMovable();
-
     }
 
     private void checkMousePress(MouseEvent e){
@@ -527,9 +520,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			CommandCenter.setLevel(CommandCenter.getLevel() + 1);
 		}
 	}
-	
-	
-	
+
 
 	// Varargs for stopping looping-music-clips
 	private static void stopLoopingSounds(Clip... clpClips) {
@@ -537,11 +528,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			clp.stop();
 		}
 	}
-
-
-
-
-
 
 
 	// ===============================================
