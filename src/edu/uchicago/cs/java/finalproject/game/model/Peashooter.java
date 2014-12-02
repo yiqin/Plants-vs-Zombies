@@ -40,8 +40,6 @@ public class Peashooter extends Sprite {
         g.setColor(Color.RED);
         // g.fillRect(getCenter().x-50, getCenter().y-50, 100, 100);
 
-
-
         g.setColor(mainColor);
         g.fillOval(getCenter().x-40, getCenter().y-30, 55, 45);
 
@@ -57,15 +55,11 @@ public class Peashooter extends Sprite {
 
         g2.setStroke(new BasicStroke(1));
 
-
-
         g.setColor(Color.white);
         g.fillOval(getCenter().x, getCenter().y-15, 8, 12);
 
         g.setColor(Color.black);
         g.fillOval(getCenter().x+4, getCenter().y-12, 4, 6);
-
-
 
         g.setColor(Color.darkGray);
         g.fillOval(getCenter().x+20, getCenter().y-18, 30, 36);

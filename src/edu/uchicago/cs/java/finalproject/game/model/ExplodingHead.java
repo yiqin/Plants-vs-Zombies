@@ -16,8 +16,6 @@ public class ExplodingHead extends Sprite  {
     // ==============================================================
 
     private final int MAX_EXPIRE = 100;					// how long the explosion lasts
-    private final int MIN_EXPLOSION_RADIUS = 30;		// size of the explosion immediately after the click
-    private final int MAX_EXPLOSION_RADIUS = 275;		// maximum size of the explosion before becoming small again
     private final static int SCALER = 3;
     private final static int ZOMBIE_RADIUS = 50;
 
@@ -42,21 +40,7 @@ public class ExplodingHead extends Sprite  {
 
         // playExplosionSounds();					// randomly plays an explosion sound
 
-
         ArrayList<Point> pntCs = new ArrayList<Point>();
-
-        // setCenter(new Point(1190, (int)pnt.getY()));
-
-
-        // plot some figure...
-        // pntCs.add(new Point(0,18));
-        /*
-        pntCs.add(new Point(20,20));
-        pntCs.add(new Point(-20,20));
-        pntCs.add(new Point(20,-20));
-        pntCs.add(new Point(-20,-20));
-        */
-        // top of ship
         pntCs.add(new Point(0*SCALER, 18*SCALER));
 
         //right points
@@ -64,26 +48,16 @@ public class ExplodingHead extends Sprite  {
         pntCs.add(new Point(12*SCALER, 20*SCALER));
         pntCs.add(new Point(12*SCALER, 18*SCALER));
         pntCs.add(new Point(12*SCALER, 0*SCALER));
-        // pntCs.add(new Point(13*SCALER, -2*SCALER));
-        // pntCs.add(new Point(13*SCALER, -4*SCALER));
         pntCs.add(new Point(11*SCALER, -2*SCALER));
         pntCs.add(new Point(4*SCALER, -3*SCALER));
-        // pntCs.add(new Point(2*SCALER, -10*SCALER));
-
 
         //left points
-        // pntCs.add(new Point(-2*SCALER, -10*SCALER));
         pntCs.add(new Point(-4*SCALER, -3*SCALER));
         pntCs.add(new Point(-11*SCALER, -2*SCALER));
-        // pntCs.add(new Point(-13*SCALER, -4*SCALER));
-        // pntCs.add(new Point(-13*SCALER, -2*SCALER));
         pntCs.add(new Point(-12*SCALER, 0*SCALER));
         pntCs.add(new Point(-12*SCALER, 18*SCALER));
 
-
-
         assignPolarPoints(pntCs);
-
 
         setOrientation(-100);
     }
@@ -131,15 +105,12 @@ public class ExplodingHead extends Sprite  {
         setCenter(new Point(xUpdate, yUpdate));
     }
 
-    // The draw method is overriden to create the explosion effect.  Colored circles animate the explosion, with each circle
-    // gradually growing larger, then smaller.
     @Override
     public void draw(Graphics g) {
         super.draw(g);
         // 1
         g.setColor(Color.red);
         g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
-        //now draw a white border
         // 2
         g.setColor(Color.lightGray);
         g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
@@ -149,12 +120,8 @@ public class ExplodingHead extends Sprite  {
         // 4
         g.setColor(Color.darkGray);
         g.fillOval(getCenter().x-20, getCenter().y-30, 12, 10);
-
-        // setOrientation(getOrientation()+10);
-
     }
 
-    // Overrides the expire method - once an object expires remove it from the movFriends array list
     @Override
     public void expire() {
         if (getExpire() == 0){
@@ -173,12 +140,11 @@ public class ExplodingHead extends Sprite  {
             setDeltaX(0);
         }
 
-
         if (getExpire()>MAX_EXPIRE-10){
             setOrientation(getOrientation()+1);
         }
         else if(getExpire()<MAX_EXPIRE-10 && getExpire()>MAX_EXPIRE-20) {
-            // setOrientation(getOrientation()-1);
+
         }
         else{
             if (getExpire()%10==0){
@@ -187,5 +153,5 @@ public class ExplodingHead extends Sprite  {
             setOrientation(getOrientation()-1*headRotation);
         }
     }
-
+    
 }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Zombie extends Sprite {
 
     private final static int ZOMBIE_RADIUS = 50;
-
     private final static int SCALER = 3;
 
     private boolean isSwingToLeft = true;
@@ -39,15 +38,6 @@ public class Zombie extends Sprite {
 
         setDeltaX(-speed*0.5);
 
-        // plot some figure...
-        // pntCs.add(new Point(0,18));
-        /*
-        pntCs.add(new Point(20,20));
-        pntCs.add(new Point(-20,20));
-        pntCs.add(new Point(20,-20));
-        pntCs.add(new Point(-20,-20));
-        */
-        // top of ship
         pntCs.add(new Point(0*SCALER, 18*SCALER));
 
         //right points
@@ -55,8 +45,6 @@ public class Zombie extends Sprite {
         pntCs.add(new Point(12*SCALER, 20*SCALER));
         pntCs.add(new Point(12*SCALER, 18*SCALER));
         pntCs.add(new Point(12*SCALER, 0*SCALER));
-        // pntCs.add(new Point(13*SCALER, -2*SCALER));
-        // pntCs.add(new Point(13*SCALER, -4*SCALER));
         pntCs.add(new Point(11*SCALER, -2*SCALER));
         pntCs.add(new Point(4*SCALER, -3*SCALER));
         pntCs.add(new Point(2*SCALER, -10*SCALER));
@@ -66,16 +54,10 @@ public class Zombie extends Sprite {
         pntCs.add(new Point(-2*SCALER, -10*SCALER));
         pntCs.add(new Point(-4*SCALER, -3*SCALER));
         pntCs.add(new Point(-11*SCALER, -2*SCALER));
-        // pntCs.add(new Point(-13*SCALER, -4*SCALER));
-        // pntCs.add(new Point(-13*SCALER, -2*SCALER));
         pntCs.add(new Point(-12*SCALER, 0*SCALER));
         pntCs.add(new Point(-12*SCALER, 18*SCALER));
 
-
-
         assignPolarPoints(pntCs);
-
-
         setOrientation(-100);
     }
 
@@ -101,15 +83,11 @@ public class Zombie extends Sprite {
             recover();
         }
 
-        //
-        //fill this polygon (with whatever color it has)
-
         if (nSize >= 2){
             super.draw(g);
             // 1
             g.setColor(Color.red);
             g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
-            //now draw a white border
             // 2
             g.setColor(Color.lightGray);
             g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
@@ -120,7 +98,6 @@ public class Zombie extends Sprite {
             g.setColor(Color.darkGray);
             g.fillOval(getCenter().x-20, getCenter().y-30, 12, 10);
         }
-
 
         g.setColor(Color.red);
         if(leftFootX < -stepLength){
@@ -147,7 +124,6 @@ public class Zombie extends Sprite {
         g2.setStroke(new BasicStroke(2));
         g2.drawLine(getCenter().x,getCenter().y+10, getCenter().x-15, getCenter().y+20);
         g2.drawLine(getCenter().x,getCenter().y+10, getCenter().x+12, getCenter().y+18);
-        // g2.drawLine(getCenter().x,getCenter().y+20, getCenter().x-15, getCenter().y+15);
 
         g2.setStroke(new BasicStroke(1));
     }
@@ -161,7 +137,6 @@ public class Zombie extends Sprite {
         if (bulletType==1){
             frozen();
         }
-
     }
 
     public void frozen(){

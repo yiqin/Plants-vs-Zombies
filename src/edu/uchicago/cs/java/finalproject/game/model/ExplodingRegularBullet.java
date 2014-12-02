@@ -65,8 +65,6 @@ public class ExplodingRegularBullet extends Sprite {
         }
     }
 
-    // The draw method is overriden to create the explosion effect.  Colored circles animate the explosion, with each circle
-    // gradually growing larger, then smaller.
     @Override
     public void draw(Graphics g) {
         g.setColor(getRandomColor());
@@ -86,7 +84,6 @@ public class ExplodingRegularBullet extends Sprite {
         setRadius((int)nRadius);
     }
 
-    // Randomly returns a color - white has a 40% chance of being selected, while yellow, cyan, and aqua have a 20% chance each
     public Color getRandomColor(){
         int nColorID = R.nextInt(5);
 
@@ -106,7 +103,6 @@ public class ExplodingRegularBullet extends Sprite {
         return col;
     }
 
-    // Overrides the expire method - once an object expires remove it from the movFriends array list
     @Override
     public void expire() {
         if (getExpire() == 0){
