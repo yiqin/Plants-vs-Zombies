@@ -364,7 +364,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                 if ((movSun instanceof Sun) ){
                     tupMarkForRemovalsFromMouseSelect.add(new Tuple(CommandCenter.movSun, movSun));
                     CommandCenter.setSunCredit(CommandCenter.getSunCredit() + ((Sun) movSun).credit);
-                    Sound.playSound("pacman_eatghost.wav");
+                    Sound.playSound("select.wav");
                 }
             }//end if
         }//end outer for
