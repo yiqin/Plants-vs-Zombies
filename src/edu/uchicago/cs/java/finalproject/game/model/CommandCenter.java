@@ -51,18 +51,8 @@ public class CommandCenter {
 		setLevel(1);
 		setScore(0);
         setSunCredit(300);
-		setNumFalcons(3);
 	}
 
-
-    public static void initGame(int numFalcon, int nScore){
-        setLevel(1);
-
-        setScore(nScore);
-        setSunCredit(300);
-
-        setNumFalcons(numFalcon);
-    }
 
 	
 	public static void clearAll(){
@@ -97,9 +87,11 @@ public class CommandCenter {
 	}
 	
 	public static boolean isGameOver() {		//if the number of falcons is zero, then game over
-		if (getNumFalcons() == 0) {
+		/*
+        if (getNumFalcons() == 0) {
 			return true;
 		}
+		*/
 		return false;
 	}
 
@@ -108,6 +100,10 @@ public class CommandCenter {
 	public static int getLevel() {
 		return nLevel;
 	}
+
+    public static void setLevel(int n) {
+        nLevel = n;
+    }
 
 	public static long getScore() {
 		return lScore;
@@ -126,11 +122,7 @@ public class CommandCenter {
     }
 
 
-	public static void setLevel(int n) {
 
-
-		nLevel = n;
-	}
 
 	public static int getNumFalcons() {
 		return nNumFalcon;
@@ -157,17 +149,12 @@ public class CommandCenter {
 
     public static void setPlantPosition(Point newPoint){
         plant.setCenter(newPoint);
-        // plant.mainColor = Color.CYAN;
-
-
         if(plantType == 0){
             plant.mainColor = Color.green;
         }
         else if(plantType == 1){
             plant.mainColor = Color.CYAN;
         }
-
-
     }
 
 

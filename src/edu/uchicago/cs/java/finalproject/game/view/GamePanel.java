@@ -168,6 +168,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	}
 	
 	// This method draws some text to the middle of the screen before/after a game
+    // Instruction.
 	private void displayTextOnScreen() {
 
 		strDisplay = "GAME OVER";
@@ -212,6 +213,8 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 320);
+
+
 	}
 	
 	public GameFrame getFrm() {return this.gmf;}

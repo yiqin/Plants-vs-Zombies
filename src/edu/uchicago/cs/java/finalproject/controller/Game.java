@@ -13,8 +13,6 @@ import javax.sound.sampled.Clip;
 import edu.uchicago.cs.java.finalproject.game.model.*;
 import edu.uchicago.cs.java.finalproject.game.view.*;
 import edu.uchicago.cs.java.finalproject.sounds.Sound;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 // ===============================================
 // == This Game class is the CONTROLLER
@@ -435,9 +433,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 		CommandCenter.clearAll();
 
-        // CommandCenter.initGame();
-        CommandCenter.initGame(5, 6);
-
+        CommandCenter.initGame();
 
 		CommandCenter.setLevel(0);
 		CommandCenter.setPlaying(true);
