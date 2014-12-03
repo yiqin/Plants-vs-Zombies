@@ -103,6 +103,10 @@ public class CommandCenter {
 		return nLevel;
 	}
 
+    public static void addLevel() {
+        setLevel(nLevel+1);
+    }
+
     public static void setLevel(int n) {
         if (nLevel != n){
             System.out.println("Change playing music.................");
@@ -137,6 +141,14 @@ public class CommandCenter {
 	public static void setScore(long lParam) {
 		lScore = lParam;
 	}
+
+    public static void addScore(long lParam) {
+        lScore = lScore+lParam;
+
+        if(lScore%500==0){
+            addLevel();
+        }
+    }
 
     public static long getSunCredit() {
         return lSunCredit;

@@ -216,8 +216,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                         RegularBullet.bulletSoundEffect(((RegularBullet) movFriend).bulletType);
                         CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY+5)));
 
-                        CommandCenter.setLevel(2);
-
                         killFoe(movFriend, movFoe);
                     }
 
@@ -331,6 +329,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			if(astExploded.getSize() == 1) {
                 // Remove
                 tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
+                CommandCenter.addScore(100);
             }
             else {
                 // Head down
@@ -443,16 +442,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		   // clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
-    // No use anymore.....
-    // Generate new Asteroid....................
-	//this method spawns new asteroids
-	private void spawnAsteroids(int nNum) {
-		for (int nC = 0; nC < nNum; nC++) {
-			//Asteroids with size of zero are big
-			// CommandCenter.movFoes.add(new Asteroid(0));
-		}
-	}
-
     private static void generateNewSun(){
         int tick = getTick();
         if (tick%30 == 0){
@@ -474,7 +463,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }
         }
     }
-
 
     private void generateNewPeashooter(Point newPoint){
         // Need to update later.......
@@ -593,15 +581,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	public void keyTyped(KeyEvent e) {
         
 	}
-
-
-    // ===============================================
-    // FireBase METHODS
-    // ===============================================
-
-    // Two methods are needed to control the fal........
-
-
 
     // ===============================================
     // Mouse click METHODS
