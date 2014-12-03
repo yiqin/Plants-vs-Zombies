@@ -108,10 +108,13 @@ public class CommandCenter {
 	}
 
     public static void setLevel(int n) {
-        nLevel = n;
 
-        System.out.println("Change playing music.................");
-        changePlayingMusic(nLevel);
+        if (nLevel != n){
+            System.out.println("Change playing music.................");
+            changePlayingMusic(n);
+        }
+
+        nLevel = n;
     }
 
     private static void changePlayingMusic(int level_){
@@ -138,9 +141,6 @@ public class CommandCenter {
     public static void setSunCredit(long lParam) {
         lSunCredit = lParam;
     }
-
-
-
 
 	public static int getNumFalcons() {
 		return nNumFalcon;

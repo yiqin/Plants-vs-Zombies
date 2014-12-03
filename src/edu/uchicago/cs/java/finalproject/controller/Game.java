@@ -437,7 +437,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
         CommandCenter.initGame();
 
-		CommandCenter.setLevel(1);
 		CommandCenter.setPlaying(true);
 		CommandCenter.setPaused(false);
 		//if (!bMuted)
