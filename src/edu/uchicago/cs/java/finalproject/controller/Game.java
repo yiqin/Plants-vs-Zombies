@@ -1,5 +1,6 @@
 package edu.uchicago.cs.java.finalproject.controller;
 
+import javafx.scene.media.MediaPlayer;
 import sun.audio.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -12,6 +13,8 @@ import javax.sound.sampled.Clip;
 import edu.uchicago.cs.java.finalproject.game.model.*;
 import edu.uchicago.cs.java.finalproject.game.view.*;
 import edu.uchicago.cs.java.finalproject.sounds.Sound;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 // ===============================================
 // == This Game class is the CONTROLLER
@@ -58,8 +61,12 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	// NUM_ENTER = 10, 				// hyp
 	 SPECIAL = 70; 					// fire special weapon;  F key
 
+    private MediaPlayer backgroundMeida;
+
 	private Clip clpThrust;
 	private Clip clpMusicBackground;
+
+    private Clip clpLevel1;
 
 	private static final int SPAWN_NEW_SHIP_FLOATER = 1200;
 
@@ -71,6 +78,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 	public Game() throws IOException {
 
+        clpMusicBackground = Sound.clipForLoopFactory("plants_vs_zombies.wav");
+        clpLevel1 = Sound.clipForLoopFactory("level1.wav");
+
         System.out.println("Start game");
 
 		gmpPanel = new GamePanel(DIM);
@@ -78,9 +88,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         gmpPanel.addMouseListener(this);
         gmpPanel.addMouseMotionListener(this);
 
-		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
-		clpMusicBackground = Sound.clipForLoopFactory("music-background.wav");
+		// clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
 
+        clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
         // System.out.println(HTTPRequest.get("https://javafinalpro.firebaseio.com/.json"));
 	}
 
@@ -425,6 +435,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	// Called when user presses 's'
 	private void startGame() {
         System.out.println("user presses s");
+        stopLoopingSounds(clpMusicBackground);
+        clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
+
 
 		CommandCenter.clearAll();
 
