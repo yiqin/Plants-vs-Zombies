@@ -226,7 +226,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }//end inner for
         }//end outer for
 
-
         for (Tuple tup : tupMarkForRemovals)
             tup.removeMovable();
 
@@ -234,88 +233,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         if (nTick % 300 == 0) {
             System.gc();
         }
-        /*
-		for (Movable movFriend : CommandCenter.movFriends) {
-			for (Movable movFoe : CommandCenter.movFoes) {
-
-				pntFriendCenter = movFriend.getCenter();
-				pntFoeCenter = movFoe.getCenter();
-				nFriendRadiux = movFriend.getRadius();
-				nFoeRadiux = movFoe.getRadius();
-
-				//detect collision
-				if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
-
-					//falcon
-                    // Check the flight. If the falcon is not protected. it will die....
-					if ((movFriend instanceof Falcon) ){
-						if (!CommandCenter.getFalcon().getProtected()){
-							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-							CommandCenter.spawnFalcon(false);
-							killFoe(movFoe);
-						}
-					}
-					//not the falcon
-                    //
-					else {
-						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-						killFoe(movFoe);
-					}//end else 
-
-					//explode/remove foe
-					
-					
-				
-				}//end if 
-			}//end inner for
-		}//end outer for
-
-
-		//check for collisions between falcon and floaters
-		if (CommandCenter.getFalcon() != null){
-			Point pntFalCenter = CommandCenter.getFalcon().getCenter();
-			int nFalRadiux = CommandCenter.getFalcon().getRadius();
-			Point pntFloaterCenter;
-			int nFloaterRadiux;
-			
-			for (Movable movFloater : CommandCenter.movFloaters) {
-				pntFloaterCenter = movFloater.getCenter();
-				nFloaterRadiux = movFloater.getRadius();
-	
-				//detect collision
-				if (pntFalCenter.distance(pntFloaterCenter) < (nFalRadiux + nFloaterRadiux)) {
-	
-					
-					tupMarkForRemovals.add(new Tuple(CommandCenter.movFloaters, movFloater));
-					Sound.playSound("pacman_eatghost.wav");
-	
-				}//end if 
-			}//end inner for
-		}//end if not null
-
-
-
-        // Find collisions first.
-        // We create an arrayList, and then we remove them.
-
-
-		//remove these objects from their appropriate ArrayLists
-		//this happens after the above iterations are done
-		for (Tuple tup : tupMarkForRemovals) 
-			tup.removeMovable();
-		
-		//add these objects to their appropriate ArrayLists
-		//this happens after the above iterations are done
-		for (Tuple tup : tupMarkForAdds) 
-			tup.addMovable();
-
-
-		*/
 	}//end meth
-
-
-    // When the bullet hit the Asteroid, or any collision.
-    // Control the animation
 
 	private void killFoe(Movable movFriend, Movable movFoe) {
 		

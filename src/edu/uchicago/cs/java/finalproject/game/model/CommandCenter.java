@@ -12,7 +12,6 @@ import javax.sound.sampled.Clip;
 // Able to get access to methods and my movMovables ArrayList from the static context.
 public class CommandCenter {
 
-	private static int nNumFalcon;
 	private static int nLevel;
 	private static long lScore;
 
@@ -22,14 +21,12 @@ public class CommandCenter {
     private static boolean bPlaying;
 	private static boolean bPaused;
 
-
     //
 	// These ArrayLists are thread-safe
 	public static CopyOnWriteArrayList<Movable> movDebris = new CopyOnWriteArrayList<Movable>();
 	public static CopyOnWriteArrayList<Movable> movFriends = new CopyOnWriteArrayList<Movable>();
 	public static CopyOnWriteArrayList<Movable> movFoes = new CopyOnWriteArrayList<Movable>();
 	public static CopyOnWriteArrayList<Movable> movFloaters = new CopyOnWriteArrayList<Movable>();
-
 
     // Suns
     // We use ArrayList to hold all movSun...
@@ -115,10 +112,21 @@ public class CommandCenter {
 
     private static void changePlayingMusic(int level_){
         Game.stopLoopingSounds(Game.clpLevel1);
-        if(level_ == 2){
-            Game.clpLevel1 = Sound.clipForLoopFactory("level2.wav");
+        if (level_ == 1){
+            Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");
+            playMusic();
         }
+        else if(level_ == 2){
+            Game.clpLevel1 = Sound.clipForLoopFactory("level2.wav");
+            playMusic();
+        }
+        else if(level_==3){
+            Game.clpLevel1 = Sound.clipForLoopFactory("level3.wav");
+            playMusic();
+        }
+    }
 
+    public static void playMusic(){
         // When the background music is changed, always wait for 50000
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
@@ -128,7 +136,7 @@ public class CommandCenter {
                         Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
                     }
                 },
-               3000
+                3000
         );
     }
 
@@ -167,14 +175,6 @@ public class CommandCenter {
             lSunCredit = 0;
         }
     }
-
-	public static int getNumFalcons() {
-		return nNumFalcon;
-	}
-
-	public static void setNumFalcons(int nParam) {
-		nNumFalcon = nParam;
-	}
 
     public static void setPlant(Peashooter newPlant, int type){
         // Outside the screen
