@@ -8,26 +8,29 @@ import java.util.ArrayList;
  */
 public class Sun extends Sprite {
 
-    private final static int SUN_RADIUS = 100;
+    private final static int SUN_RADIUS = 40;
+    private final static int SCALER = 2;
 
     public long credit = 100;
 
     public Sun(int x){
         super();
 
-        // ArrayList<Point> pntCs = new ArrayList<Point>();
-
         setExpire(400);
         setRadius(SUN_RADIUS);
 
         setCenter(new Point(x, 0));
-
-
         setDeltaY(1);
 
+
+        ArrayList<Point> pntCs = new ArrayList<Point>();
         // plot some figure...
-        // pntCs.add(new Point(0,3));
-        // assignPolarPoints(pntCs);
+        pntCs.add(new Point(0,18*SCALER));
+        pntCs.add(new Point(10*SCALER, 18*SCALER));
+        pntCs.add(new Point(12*SCALER, 20*SCALER));
+
+        assignPolarPoints(pntCs);
+        setOrientation(-90);
     }
 
     public void move(){
@@ -57,14 +60,15 @@ public class Sun extends Sprite {
 
     @Override
     public void draw(Graphics g) {
-        // super.draw(g);
+        super.draw(g);
+        g.setColor(Color.WHITE);
         //fill this polygon (with whatever color it has)
-        // g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
+        g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
         //now draw a white border
-        // g.setColor(Color.WHITE);
-        // g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
+
+        g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
 
         g.setColor(Color.YELLOW);
-        g.fillOval(getCenter().x, getCenter().y, SUN_RADIUS, SUN_RADIUS);
+        g.fillOval(getCenter().x-SUN_RADIUS, getCenter().y-SUN_RADIUS, 2*SUN_RADIUS, 2*SUN_RADIUS);
     }
 }

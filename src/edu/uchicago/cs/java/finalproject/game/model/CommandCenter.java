@@ -166,12 +166,14 @@ public class CommandCenter {
     }
 
     public static void setPlantPosition(Point newPoint){
-        plant.setCenter(newPoint);
-        if(plantType == 0){
-            plant.mainColor = Color.green;
-        }
-        else if(plantType == 1){
-            plant.mainColor = Color.CYAN;
+        if(isPlanting){
+            plant.setCenter(newPoint);
+            if(plantType == 0){
+                plant.mainColor = Color.green;
+            }
+            else if(plantType == 1){
+                plant.mainColor = Color.CYAN;
+            }
         }
     }
 
