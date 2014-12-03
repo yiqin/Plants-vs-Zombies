@@ -208,20 +208,14 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                 if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux-20+offset)) {
 
                     if ((movFriend instanceof RegularBullet) ){
+                        offset = 15;
 
                         tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-                        offset = 15;
+
                         int explodeX = (int)movFriend.getCenter().getX();
                         int explodeY = (int)movFriend.getCenter().getY();
 
-                        // sound effect...
-                        if (((RegularBullet) movFriend).bulletType==0){
-                            Sound.playSound("woodchopping.wav");
-                        }
-                        else if(((RegularBullet) movFriend).bulletType==1){
-                            Sound.playSound("icebreaking.wav");
-                        }
-
+                        RegularBullet.bulletSoundEffect(((RegularBullet) movFriend).bulletType);
                         CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY+5)));
 
                         killFoe(movFriend, movFoe);

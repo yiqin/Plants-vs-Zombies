@@ -1,5 +1,7 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
+import edu.uchicago.cs.java.finalproject.sounds.Sound;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -54,6 +56,16 @@ public class RegularBullet extends Sprite  {
     public void draw(Graphics g) {
         g.setColor(bulletColor);
         g.fillOval(getCenter().x, getCenter().y, REGULAR_BULLET_RADIUS, REGULAR_BULLET_RADIUS);
+    }
+
+    public static void bulletSoundEffect(int bulletType_){
+        if (bulletType_==0){
+            Sound.playSound("woodchopping.wav");
+        }
+        else if(bulletType_==1){
+            Sound.playSound("icebreaking.wav");
+        }
+
     }
 
 }
