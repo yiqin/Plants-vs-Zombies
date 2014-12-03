@@ -197,22 +197,24 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                 //detect collision
                 if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux-20+offset)) {
 
-                    //falcon
-                    // Check the flight. If the falcon is not protected. it will die....
                     if ((movFriend instanceof RegularBullet) ){
 
                         tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-                        offset = 20;
+                        offset = 15;
                         int explodeX = (int)movFriend.getCenter().getX();
                         int explodeY = (int)movFriend.getCenter().getY();
 
+                        // sound effect...
+                        if (((RegularBullet) movFriend).bulletType==0){
+                            Sound.playSound("woodchopping.wav");
+                        }
+                        else if(((RegularBullet) movFriend).bulletType==1){
+                            Sound.playSound("icebreaking.wav");
+                        }
+
                         CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY+5)));
 
-                        // Kill Zombie..............................
-                            // CommandCenter.spawnFalcon(false);
                         killFoe(movFriend, movFoe);
-                        // killlllll
-                        // tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
                     }
 
 
@@ -460,7 +462,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewZombie(){
         int tick = getTick();
-        if (tick%5 == 0){
+        if (tick%20 == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (Game.R.nextInt()%4)*100+200;

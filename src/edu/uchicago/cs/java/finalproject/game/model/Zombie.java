@@ -1,5 +1,7 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
+import edu.uchicago.cs.java.finalproject.sounds.Sound;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -136,6 +138,11 @@ public class Zombie extends Sprite {
         nSize--;
         if (bulletType==1){
             frozen();
+
+        }
+        else {
+
+
         }
     }
 
