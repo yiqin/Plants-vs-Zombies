@@ -19,6 +19,10 @@ public class Zombie extends Sprite {
     private int rightFootX = stepLength;
 
     private int speed = 1;
+    private int newSpeed = 1;
+    private int speedRatio = 1;
+
+    private boolean isFozen = false;
 
     private int nSize = 3;
 
@@ -75,6 +79,7 @@ public class Zombie extends Sprite {
 
     @Override
     public void draw(Graphics g) {
+        updateSpeed();
         if(speed==0){
             g.setColor(Color.cyan);
             g.fillRect(getCenter().x-33, getCenter().y-50, 60, 92);
@@ -150,12 +155,33 @@ public class Zombie extends Sprite {
         speed = 0;
         iceTime = 0;
         setDeltaX(-speed*0.25);
+        isFozen = true;
     }
 
     public void recover(){
-        speed =1;
+        speed =checkSpeed();
         iceTime = 0;
         setDeltaX(-speed*0.5);
     }
 
+    public int checkSpeed(){
+        if(isFozen){
+            newSpeed = 0;
+            return newSpeed;
+        }
+
+        if(CommandCenter.getLevel()>2){
+            newSpeed = 4;
+            setDeltaX(-speed*0.5);
+            stepLength = 14;
+        }
+        else {
+            newSpeed = 1; // double size?
+        }
+        return newSpeed;
+    }
+
+    public void updateSpeed(){
+        speed = checkSpeed()*speedRatio;
+    }
 }
