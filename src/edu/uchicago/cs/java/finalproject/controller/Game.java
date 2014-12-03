@@ -362,7 +362,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
                 if ((movSun instanceof Sun) ){
                     tupMarkForRemovalsFromMouseSelect.add(new Tuple(CommandCenter.movSun, movSun));
-                    CommandCenter.setSunCredit(CommandCenter.getSunCredit() + ((Sun) movSun).credit);
+                    CommandCenter.addSunCredit(((Sun) movSun).credit);
                     Sound.playSound("select.wav");
                 }
             }//end if

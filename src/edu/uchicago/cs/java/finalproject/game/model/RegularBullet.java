@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class RegularBullet extends Sprite  {
 
     private final static int REGULAR_BULLET_RADIUS = 40;
-    private final double FIRE_POWER = 10.0;
+    private final double FIRE_POWER = 15.0;
 
     private Color bulletColor;
     public int bulletType;
@@ -27,7 +27,6 @@ public class RegularBullet extends Sprite  {
         else if(bulletColor.equals(Color.cyan)){
             bulletType = 1;
         }
-
 
         setRadius(REGULAR_BULLET_RADIUS);
 

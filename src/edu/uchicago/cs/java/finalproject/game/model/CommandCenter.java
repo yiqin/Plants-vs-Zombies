@@ -56,8 +56,6 @@ public class CommandCenter {
         setSunCredit(300);
 	}
 
-
-	
 	public static void clearAll(){
         System.out.println("Clean....");
 		movDebris.clear();
@@ -150,12 +148,24 @@ public class CommandCenter {
         }
     }
 
+
     public static long getSunCredit() {
         return lSunCredit;
     }
 
     public static void setSunCredit(long lParam) {
         lSunCredit = lParam;
+    }
+
+    public static void addSunCredit(long lParam) {
+        lSunCredit = lSunCredit + lParam;
+    }
+
+    public static void minusSunCredit(long lParam) {
+        lSunCredit = lSunCredit-lParam;
+        if(lSunCredit < 0){
+            lSunCredit = 0;
+        }
     }
 
 	public static int getNumFalcons() {
