@@ -64,7 +64,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	private Clip clpThrust;
 	private Clip clpMusicBackground;
 
-    private Clip clpLevel1;
+    public static Clip clpLevel1;
 
 	private static final int SPAWN_NEW_SHIP_FLOATER = 1200;
 
@@ -215,6 +215,8 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
                         RegularBullet.bulletSoundEffect(((RegularBullet) movFriend).bulletType);
                         CommandCenter.movDebris.add(new ExplodingRegularBullet(new Point(explodeX+30, explodeY+5)));
+
+                        CommandCenter.setLevel(2);
 
                         killFoe(movFriend, movFoe);
                     }
@@ -435,7 +437,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
         CommandCenter.initGame();
 
-		CommandCenter.setLevel(0);
+		CommandCenter.setLevel(1);
 		CommandCenter.setPlaying(true);
 		CommandCenter.setPaused(false);
 		//if (!bMuted)
@@ -511,14 +513,16 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	}
 	
 	private void checkNewLevel(){
-		if (isLevelClear() ){
+		/*
+        if (isLevelClear() ){
 			CommandCenter.setLevel(CommandCenter.getLevel() + 1);
 		}
+		*/
 	}
 
 
 	// Varargs for stopping looping-music-clips
-	private static void stopLoopingSounds(Clip... clpClips) {
+	public static void stopLoopingSounds(Clip... clpClips) {
 		for (Clip clp : clpClips) {
 			clp.stop();
 		}

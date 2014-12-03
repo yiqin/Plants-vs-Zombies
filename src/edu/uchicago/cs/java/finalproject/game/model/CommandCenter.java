@@ -3,7 +3,10 @@ package edu.uchicago.cs.java.finalproject.game.model;
 import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import edu.uchicago.cs.java.finalproject.controller.Game;
 import edu.uchicago.cs.java.finalproject.sounds.Sound;
+
+import javax.sound.sampled.Clip;
 
 // I only want one Command Center and therefore this is a perfect candidate for static
 // Able to get access to methods and my movMovables ArrayList from the static context.
@@ -98,11 +101,26 @@ public class CommandCenter {
 
     // Game setting
 	public static int getLevel() {
+
+
+
 		return nLevel;
 	}
 
     public static void setLevel(int n) {
         nLevel = n;
+
+        System.out.println("Change playing music.................");
+        changePlayingMusic(nLevel);
+    }
+
+    private static void changePlayingMusic(int level_){
+        Game.stopLoopingSounds(Game.clpLevel1);
+        if(level_ == 2){
+            Game.clpLevel1 = Sound.clipForLoopFactory("level2.wav");
+        }
+
+        Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
 	public static long getScore() {
