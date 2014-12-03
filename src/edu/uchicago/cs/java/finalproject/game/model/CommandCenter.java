@@ -98,22 +98,16 @@ public class CommandCenter {
 		return false;
 	}
 
-
     // Game setting
 	public static int getLevel() {
-
-
-
 		return nLevel;
 	}
 
     public static void setLevel(int n) {
-
         if (nLevel != n){
             System.out.println("Change playing music.................");
             changePlayingMusic(n);
         }
-
         nLevel = n;
     }
 
@@ -123,7 +117,17 @@ public class CommandCenter {
             Game.clpLevel1 = Sound.clipForLoopFactory("level2.wav");
         }
 
-        Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
+        // When the background music is changed, always wait for 50000
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        // your code here
+                        Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
+                    }
+                },
+               3000
+        );
     }
 
 	public static long getScore() {

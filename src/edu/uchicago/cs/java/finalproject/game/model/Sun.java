@@ -99,9 +99,6 @@ public class Sun extends Sprite {
 
     @Override
     public void draw(Graphics g) {
-
-
-
         super.draw(g);
 
         g.setColor(Color.ORANGE);
