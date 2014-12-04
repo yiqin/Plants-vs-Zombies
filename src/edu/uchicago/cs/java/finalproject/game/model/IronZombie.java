@@ -34,7 +34,7 @@ public class IronZombie extends Zombie {
 
             g2.setStroke(new BasicStroke(1));
         }
-        
+
     }
 
 

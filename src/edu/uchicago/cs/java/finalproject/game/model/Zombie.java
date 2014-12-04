@@ -18,9 +18,10 @@ public class Zombie extends Sprite {
     private int leftFootX = -stepLength;
     private int rightFootX = stepLength;
 
-    private int speed = 1;
+    public int speed = 1;
     private int newSpeed = 1;
-    private int speedRatio = 1;
+
+    public int speedRatio = 1;
 
     private boolean isFozen = false;
 
