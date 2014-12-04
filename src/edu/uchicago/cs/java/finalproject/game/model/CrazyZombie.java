@@ -194,7 +194,7 @@ public class CrazyZombie extends Sprite {
         if(CommandCenter.getLevel()>2){
             newSpeed = 2;
             setDeltaX(-speed*0.5);
-            stepLength = 11;
+            stepLength = 8;
         }
         else {
             newSpeed = 1; // double size?

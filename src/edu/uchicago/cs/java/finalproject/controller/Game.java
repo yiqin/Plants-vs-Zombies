@@ -448,6 +448,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         else if (CommandCenter.plantType==1){
             CommandCenter.movPlants.add(new IcePeashooter(newPoint));
         }
+        Sound.playSound("plantingpeashooter.wav");
 
 
     }

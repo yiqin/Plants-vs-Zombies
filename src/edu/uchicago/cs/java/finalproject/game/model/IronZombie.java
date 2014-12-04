@@ -29,7 +29,7 @@ public class IronZombie extends Zombie {
             g2.setColor(new Color(192,192,192));
 
 
-            g2.setStroke(new BasicStroke(7));
+            g2.setStroke(new BasicStroke(6));
             g2.drawLine(getCenter().x-32, getCenter().y-10, getCenter().x-32, getCenter().y+38);
 
             g2.setStroke(new BasicStroke(1));
