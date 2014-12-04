@@ -291,7 +291,7 @@ public class GamePanel extends Panel {
         strDisplay = "one sun has 100 sun credits";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
-        strDisplay = "use the mouse to collect suns";
+        strDisplay = "use the mouse to click suns to collect them";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 400);
     }
@@ -306,15 +306,18 @@ public class GamePanel extends Panel {
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 260);
 
-        strDisplay = "two types of plants: regular peashooter and ice peashooter";
+        strDisplay = "use the mouse to drag and drop a new plant";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
-        strDisplay = "peashooters issue bullets";
+        strDisplay = "two types of plants: regular peashooter and ice peashooter";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
-        strDisplay = "ice bullets from ice peashooters will frozen zombies";
+        strDisplay = "peashooters issue bullets";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 400);
+        strDisplay = "ice bullets from ice peashooters will frozen zombies";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 440);
     }
 
     private void tutorialPageFour(){
@@ -368,6 +371,17 @@ public class GamePanel extends Panel {
         strDisplay = "http://www.popcap.com/plants-vs-zombies-1";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 200);
+
+        strDisplay = "thanks to Adam Gerber, Shashank Sharma, Ali Alkhafaji, Varun Kaushal";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 260);
+
+        strDisplay = "created by Yi Qin";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
+        strDisplay = "more info: http://www.yiqin.info/";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
 
     }
 	

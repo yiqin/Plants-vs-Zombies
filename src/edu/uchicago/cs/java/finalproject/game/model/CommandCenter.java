@@ -92,13 +92,7 @@ public class CommandCenter {
         bisGameOver = b;
     }
 
-	public static boolean isGameOver() {		//if the number of falcons is zero, then game over
-		/*
-        if (getNumFalcons() == 0) {
-			return true;
-		}
-		*/
-        System.out. println("....................");
+	public static boolean isGameOver() {
 		return bisGameOver;
 	}
 
