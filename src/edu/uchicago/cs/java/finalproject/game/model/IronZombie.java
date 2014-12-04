@@ -30,7 +30,7 @@ public class IronZombie extends Zombie {
 
 
             g2.setStroke(new BasicStroke(7));
-            g2.drawLine(getCenter().x-32, getCenter().y-10, getCenter().x-32, getCenter().y+40);
+            g2.drawLine(getCenter().x-32, getCenter().y-10, getCenter().x-32, getCenter().y+38);
 
             g2.setStroke(new BasicStroke(1));
         }

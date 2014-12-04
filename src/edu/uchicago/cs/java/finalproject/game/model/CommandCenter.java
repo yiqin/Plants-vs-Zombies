@@ -222,8 +222,6 @@ public class CommandCenter {
 		return movFloaters;
 	}
 
-
-
     public static CopyOnWriteArrayList<Movable> getMovSun() {
         return movSun;
     }

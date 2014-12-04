@@ -37,7 +37,7 @@ public class Zombie extends Sprite {
 
 
     public Zombie(int y){
-            super();
+        super();
 
         ArrayList<Point> pntCs = new ArrayList<Point>();
 
@@ -90,7 +90,7 @@ public class Zombie extends Sprite {
         updateSpeed();
         if(speed==0){
             g.setColor(Color.cyan);
-            g.fillRect(getCenter().x-35, getCenter().y-50, 60, 92);
+            g.fillRect(getCenter().x-35, getCenter().y-50, 63, 92);
             iceTime++;
         }
 

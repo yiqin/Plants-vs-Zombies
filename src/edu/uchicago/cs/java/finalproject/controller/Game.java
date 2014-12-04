@@ -166,35 +166,15 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
 
 	private void checkCollisions() {
-
-        // System.out.println("Check Collisions..............");
-
-		//@formatter:off
-		//for each friend in movFriends
-			//for each foe in movFoes
-				//if the distance between the two centers is less than the sum of their radii
-					//mark it for removal
-		
-		//for each mark-for-removal
-			//remove it
-		//for each mark-for-add
-			//add it
-		//@formatter:on
-		
-		//we use this ArrayList to keep pairs of movMovables/movTarget for either
-		//removal or insertion into our arrayLists later on
 		tupMarkForRemovals = new ArrayList<Tuple>();
 		tupMarkForAdds = new ArrayList<Tuple>();
 
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
 
-
-
         for (Movable movFriend : CommandCenter.movFriends) {
 
             int offset = 0;
-
             for (Movable movFoe : CommandCenter.movFoes) {
 
                 pntFriendCenter = movFriend.getCenter();
@@ -238,8 +218,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	private void killFoe(Movable movFriend, Movable movFoe) {
 		
 		if (movFoe instanceof Zombie){
-
-			//we know this is an Asteroid, so we can cast without threat of ClassCastException
 			Zombie astExploded = (Zombie)movFoe;
             RegularBullet bullet = (RegularBullet)movFriend;
 
@@ -256,9 +234,20 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                     CommandCenter.movDebris.add(new ExplodingHead(new Point(astExploded.getCenter()), astExploded.mainColor));
                 }
             }
-			//remove the original Foe
+		}
+        else if (movFoe instanceof CrazyZombie){
+            CrazyZombie astExploded = (CrazyZombie)movFoe;
+            RegularBullet bullet = (RegularBullet)movFriend;
 
-		} 
+            if(astExploded.getSize() == 1) {
+                // Remove
+                tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
+                CommandCenter.addScore(100);
+            }
+            else {
+                astExploded.isHit(bullet.bulletType);
+            }
+        }
 
 	}
 
@@ -274,7 +263,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             pntSumCenter = movSun.getCenter();
             pntFoeCenter = new Point(e.getX(), e.getY());
             nFriendRadiux = movSun.getRadius();
-            nFoeRadiux = 10;
+            nFoeRadiux = 20;
 
             //detect collision
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
@@ -308,12 +297,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             //detect collision
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
                 if ((movSun instanceof Peashooter) ){
-
-
                     CommandCenter.setPlant(new Peashooter(e.getX()-50,e.getY()-50),((Peashooter) movSun).typeIndicator);
-
-
-
                     // Sound.playSound("pacman_eatghost.wav");
                 }
             }//end if
