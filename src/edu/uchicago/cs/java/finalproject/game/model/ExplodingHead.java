@@ -21,13 +21,17 @@ public class ExplodingHead extends Sprite  {
 
     private final int originalY;
     private int headRotation=1;
+
+    public Color mainColor;
     // ==============================================================
     // CONSTRUCTOR
     // ==============================================================
 
     // Sets up the basic settings
-    public ExplodingHead(Point pnt) {
+    public ExplodingHead(Point pnt, Color mainColor_) {
         super();
+
+        mainColor = mainColor_;
 
         originalY = pnt.y;
 
@@ -109,7 +113,7 @@ public class ExplodingHead extends Sprite  {
     public void draw(Graphics g) {
         super.draw(g);
         // 1
-        g.setColor(Color.red);
+        g.setColor(mainColor);
         g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
         // 2
         g.setColor(Color.lightGray);

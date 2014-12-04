@@ -14,7 +14,7 @@ public class IronZombie extends Zombie {
 
         nSize = 5;
 
-        mainColor = new Color(255, 140, 0);;
+        mainColor = new Color(255, 140, 0);
     }
 
     public void draw(Graphics g) {

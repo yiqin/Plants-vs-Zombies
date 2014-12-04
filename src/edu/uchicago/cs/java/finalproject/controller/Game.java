@@ -253,7 +253,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
                 // Head down
                 astExploded.isHit(bullet.bulletType);
                 if(astExploded.getSize()==1){
-                    CommandCenter.movDebris.add(new ExplodingHead(new Point(astExploded.getCenter())));
+                    CommandCenter.movDebris.add(new ExplodingHead(new Point(astExploded.getCenter()), astExploded.mainColor));
                 }
             }
 			//remove the original Foe
