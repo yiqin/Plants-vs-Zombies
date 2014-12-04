@@ -338,7 +338,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         generateNewSun();
         generateNewZombie();
         generateNewIronZombie();
-        // generateNewCrazyZombie();
+        generateNewCrazyZombie();
 	}
 
 	public static int getTick() {
@@ -396,7 +396,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         }
     }
 
-    /*
+
     private static void generateNewCrazyZombie(){
         int tick = getTick();
         if (tick%50 == 0){
@@ -407,7 +407,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }
         }
     }
-    */
+
 
     private void generateNewPeashooter(Point newPoint){
         // Need to update later.......

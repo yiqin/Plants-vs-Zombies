@@ -14,7 +14,7 @@ public class Zombie extends Sprite {
     private final static int SCALER = 3;
 
     private boolean isSwingToLeft = true;
-    private int stepLength = 10;
+    public int stepLength = 10;
     private int leftFootX = -stepLength;
     private int rightFootX = stepLength;
 
@@ -37,7 +37,7 @@ public class Zombie extends Sprite {
 
 
     public Zombie(int y){
-        super();
+            super();
 
         ArrayList<Point> pntCs = new ArrayList<Point>();
 
@@ -192,5 +192,6 @@ public class Zombie extends Sprite {
 
     public void updateSpeed(){
         speed = checkSpeed()*speedRatio;
+        setDeltaX(-speed*0.5);
     }
 }

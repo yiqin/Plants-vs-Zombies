@@ -1,6 +1,8 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
 /**
@@ -8,18 +10,16 @@ import edu.uchicago.cs.java.finalproject.controller.Game;
  */
 public class CrazyZombie extends Zombie {
 
-
     public CrazyZombie(int y){
 
         super(y);
 
+        stepLength = 6;
 
-        setRadius(25);
+        nSize = 1;
+        speedRatio = 5;
 
-        nSize = 5;
-        speedRatio = 2;
-        mainColor = new Color(255, 140, 0);
-        setCenter(new Point((int)getCenter().getX(), (int)getCenter().getY()+20));
+        // setCenter(new Point((int)getCenter().getX(), (int)getCenter().getY()));
     }
 
     public void move(){
@@ -27,13 +27,9 @@ public class CrazyZombie extends Zombie {
 
     }
 
-
     public void draw(Graphics g) {
-
         mainColor = getRandomColor();
-
         super.draw(g);
-
     }
 
     public Color getRandomColor(){
@@ -47,17 +43,12 @@ public class CrazyZombie extends Zombie {
             col = Color.yellow;
         }
         else if(nColorID == 3){
-            col = Color.cyan;
+            col = mainColor = new Color(255, 140, 0);;
         }
         else if(nColorID == 4){
             col = new Color(0,255,255);			// 'aqua' color
         }
         return col;
-    }
-
-    public void updateSpeed(){
-        super.updateSpeed();
-        speed = checkSpeed()*speedRatio;
     }
 
 }
