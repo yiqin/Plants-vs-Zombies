@@ -33,6 +33,7 @@ public class CrazyZombie extends Sprite {
     public Color mainColor = Color.red;
 
 
+
     public Point handPoint;
 
     public CrazyZombie(int y){
@@ -160,6 +161,7 @@ public class CrazyZombie extends Sprite {
 
     public void isHit(int bulletType){
         nSize--;
+
         if (bulletType==1){
             frozen();
 
