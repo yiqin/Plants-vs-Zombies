@@ -13,6 +13,8 @@ public class Peashooter extends Sprite {
 
     public int typeIndicator = 0;
 
+    public int plantScore;
+
     public Peashooter(int x, int y){
         super();
 

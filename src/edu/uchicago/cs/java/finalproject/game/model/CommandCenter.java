@@ -178,6 +178,7 @@ public class CommandCenter {
         if(lSunCredit < 0){
             lSunCredit = 0;
         }
+        System.out.println(lSunCredit);
     }
 
     public static void setPlant(Peashooter newPlant, int type){
@@ -186,9 +187,11 @@ public class CommandCenter {
         plant = new Peashooter(-200,-200);
         if(type == 0){
             plantType = 0;
+
         }
         else if(type == 1){
             plantType = 1;
+
         }
         movTemp.clear();
         movTemp.add(plant);

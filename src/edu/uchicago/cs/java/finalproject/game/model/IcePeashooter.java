@@ -13,8 +13,10 @@ public class IcePeashooter extends RegularPeashooter {
     }
 
     public IcePeashooter(Point newPoint){
+
         super(newPoint);
         mainColor = Color.CYAN;
+        CommandCenter.minusSunCredit(50);
     }
 
 

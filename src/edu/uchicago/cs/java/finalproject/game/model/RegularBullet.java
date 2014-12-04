@@ -16,6 +16,8 @@ public class RegularBullet extends Sprite  {
     private Color bulletColor;
     public int bulletType;
 
+    
+
     public RegularBullet(Peashooter peashooter){
 
         super();

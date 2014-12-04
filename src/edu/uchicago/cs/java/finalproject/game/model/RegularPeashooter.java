@@ -18,6 +18,9 @@ public class RegularPeashooter extends Peashooter {
 
     public RegularPeashooter(Point newPoint){
         super(newPoint);
+        plantScore = 100;
+        CommandCenter.minusSunCredit(plantScore);
+
         initBullet =  (int)(Math.random()*130);
 
         mainColor = Color.green;
