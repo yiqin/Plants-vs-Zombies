@@ -10,15 +10,10 @@ import java.awt.Panel;
 import java.awt.Point;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import edu.uchicago.cs.java.finalproject.game.model.Sun;
+import edu.uchicago.cs.java.finalproject.game.model.*;
 import edu.uchicago.cs.java.finalproject.controller.Game;
-import edu.uchicago.cs.java.finalproject.game.model.CandidateIcePeashooter;
-import edu.uchicago.cs.java.finalproject.game.model.CandidateRegularPeashooter;
-import edu.uchicago.cs.java.finalproject.game.model.CommandCenter;
-import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
-
- public class GamePanel extends Panel {
+public class GamePanel extends Panel {
 	
 	// ==============================================================
 	// FIELDS 
@@ -167,56 +162,57 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
     // Instruction.
 	private void displayTextOnScreen() {
 
+        grpOff.setColor(Color.red);
+        strDisplay = "PLANTS VS ZOMBIES";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2-10, Game.DIM.height / 4);
+
+        grpOff.setColor(Color.white);
 		strDisplay = "GAME OVER";
 		grpOff.drawString(strDisplay,
-				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4);
+				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
 
-		strDisplay = "use the arrow keys to turn and thrust";
-		grpOff.drawString(strDisplay,
-				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
-						+ nFontHeight + 40);
-
-		strDisplay = "use the space bar to fire";
+		strDisplay = "use the mouse to collect suns";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 80);
 
-		strDisplay = "'S' to Start";
+		strDisplay = "use suns to plant peashooter";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 120);
 
-		strDisplay = "'P' to Pause";
+		strDisplay = "'S' to Start";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 160);
 
-		strDisplay = "'Q' to Quit";
+		strDisplay = "'P' to Pause";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 200);
-		strDisplay = "left pinkie on 'A' for Shield";
+
+		strDisplay = "'Q' to Quit";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 240);
 
-		strDisplay = "left index finger on 'F' for Guided Missile";
-		grpOff.drawString(strDisplay,
-				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
-						+ nFontHeight + 280);
-
-		strDisplay = "'Numeric-Enter' for Hyperspace";
-		grpOff.drawString(strDisplay,
-				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
-						+ nFontHeight + 320);
-
         CommandCenter.movCandidate.clear();
-        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,600+50));
-        CommandCenter.movCandidate.add(new CandidateIcePeashooter(450,600+50));
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,650));
+        CommandCenter.movCandidate.add(new CandidateIcePeashooter(450,650));
+        CommandCenter.movCandidate.add(new Sun(600,650));
 
-        CommandCenter.movCandidate.add(new Sun(600,600+50));
+        Zombie tempZombie = new Zombie(650);
+        tempZombie.setCenter(new Point(750, 650));
+        CommandCenter.movCandidate.add(tempZombie);
 
+        IronZombie tempIronZombie = new IronZombie(650);
+        tempIronZombie.setCenter(new Point(900, 650));
+        CommandCenter.movCandidate.add(tempIronZombie);
 
+        CrazyZombie tempCrayZombie = new CrazyZombie(Game.DIM.height / 4);
+        tempCrayZombie.setCenter(new Point(700+17, 180));
+        CommandCenter.movCandidate.add(tempCrayZombie);
 
         iterateMovables(grpOff,
                 CommandCenter.movCandidate);

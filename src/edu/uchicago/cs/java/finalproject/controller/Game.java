@@ -463,10 +463,12 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 			switch (nKey) {
 			case PAUSE:
 				CommandCenter.setPaused(!CommandCenter.isPaused());
+                /*
 				if (CommandCenter.isPaused())
-					stopLoopingSounds(clpMusicBackground, clpThrust);
+					// stopLoopingSounds(clpMusicBackground, clpThrust);
 				else
-					clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
+					// clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
+					*/
 				break;
 			case QUIT:
 				System.exit(0);
