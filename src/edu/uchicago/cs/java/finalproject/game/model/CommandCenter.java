@@ -96,8 +96,22 @@ public class CommandCenter {
 		return bisGameOver;
 	}
 
-    public static void zombieCrossYard(){
-        setIsGameOver(true);
+    public static void zombieCrossYard() {
+
+        Game.stopLoopingSounds(Game.clpLevel1);
+        Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");  // I need a new sound effect here.
+        Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        // your code here
+                        setIsGameOver(true);
+                    }
+                },
+                1000  // One second.....................
+        );
     }
 
     public static void setCheckTutorialOnlyOneTime(){
