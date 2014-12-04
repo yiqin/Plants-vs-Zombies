@@ -1,7 +1,5 @@
 package edu.uchicago.cs.java.finalproject.controller;
 
-import javafx.scene.media.MediaPlayer;
-import sun.audio.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -46,20 +44,14 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
     // ASCII value
 	private final int PAUSE = 80, // p key
 			QUIT = 81, // q key
-			LEFT = 37, // rotate left; left arrow
-			RIGHT = 39, // rotate right; right arrow
-			UP = 38, // thrust; up arrow
 			START = 83, // s key
-			FIRE = 32, // space key
-			MUTE = 77, // m-key mute
+
 
 	// for possible future use
 	// HYPER = 68, 					// d key
 	// SHIELD = 65, 				// a key arrow
 	// NUM_ENTER = 10, 				// hyp
 	 SPECIAL = 70; 					// fire special weapon;  F key
-
-    private MediaPlayer backgroundMeida;
 
 	private Clip clpThrust;
 	private Clip clpMusicBackground;
@@ -349,7 +341,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewSun(){
         int tick = getTick();
-        if (tick%30 == 0){
+        if (tick%10 == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (int)(Math.random()*SCREEN_WIDTH);
@@ -502,30 +494,6 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	public void keyReleased(KeyEvent e) {
 		int nKey = e.getKeyCode();
 		 System.out.println(nKey);
-
-
-			switch (nKey) {
-			case FIRE:
-				// CommandCenter.movFriends.add(new Bullet(fal));
-				Sound.playSound("laser.wav");
-				break;
-
-
-			case MUTE:
-				if (!bMuted){
-					stopLoopingSounds(clpMusicBackground);
-					bMuted = !bMuted;
-				} 
-				else {
-					clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
-					bMuted = !bMuted;
-				}
-				break;
-				
-				
-			default:
-				break;
-			}
 	}
 
 	@Override

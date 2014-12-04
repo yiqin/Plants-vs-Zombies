@@ -107,7 +107,7 @@ public class CommandCenter {
     }
 
     public static void setLevel(int n) {
-        if (nLevel != n){
+        if (nLevel != n && n < 4){
             System.out.println("Change playing music.................");
             changePlayingMusic(n);
         }

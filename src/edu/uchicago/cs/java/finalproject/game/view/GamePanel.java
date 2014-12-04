@@ -283,6 +283,20 @@ public class GamePanel extends Panel {
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
 
         CommandCenter.movCandidate.add(new Sun(600,400));
+
+        strDisplay = "SUN";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 260);
+
+        strDisplay = "planting a new peashooter costs sun credits";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
+        strDisplay = "one sun has 100 sun credits";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
+        strDisplay = "use the mouse to collect suns";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 400);
     }
 
     private void tutorialPageThree(){
@@ -290,6 +304,20 @@ public class GamePanel extends Panel {
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
         CommandCenter.movCandidate.add(new CandidateRegularPeashooter(600,400));
+
+        strDisplay = "PEASHOOTER";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 260);
+
+        strDisplay = "two types of plants: regular peashooter and ice peashooter";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
+        strDisplay = "peashooters issue bullets";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
+        strDisplay = "ice bullets from ice peashooters will frozen zombies";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 400);
     }
 
     private void tutorialPageFour(){
@@ -298,7 +326,25 @@ public class GamePanel extends Panel {
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
         Zombie tempZombie = new Zombie(400);
         tempZombie.setCenter(new Point(600, 400));
+
+
+        strDisplay = "ZOMBIE";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 260);
+
         CommandCenter.movCandidate.add(tempZombie);
+        strDisplay = "three types of zombies: regular zombie, iron zombie and crazy zombie";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
+        strDisplay = "the iron zombie is coming with a shield (more bullets are needed to kill it)";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
+
+        strDisplay = "the crazy zombie is running, rather than walking";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 400);
+
+
     }
 
     private void tutorialPageFive(){
