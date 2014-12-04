@@ -306,15 +306,37 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         Point pntSumCenter, pntFoeCenter;
         int nFriendRadiux, nFoeRadiux;
 
-        RegularPeashooter tempP = new RegularPeashooter(position_);
+        // RegularPeashooter tempP = new RegularPeashooter(position_);
+
+        int x = (int)position_.getX();
+        int y = (int)position_.getY();
+
+        int modX = x%100;
+        int modY = y%100;
+
+        if(modX<50){
+            x = x-modX;
+        }
+        else {
+            x = x+100-modX;
+        }
+
+        if(modY<50){
+            y = y-modY;
+        }
+        else {
+            y = y+100-modY;
+        }
+
+        pntFoeCenter = new Point(x, y);
 
         for (Movable movSun : CommandCenter.movPlants) {
 
             pntSumCenter = movSun.getCenter();
-            pntFoeCenter = new Point((int)tempP.getCenter().getX(), (int)tempP.getCenter().getY());
+
             nFriendRadiux = movSun.getRadius();
 
-            nFoeRadiux = tempP.getRadius();
+            nFoeRadiux = 0;
 
             //detect collision
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
@@ -326,6 +348,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }//end if
         }//end outer for
 
+        System.out.println("NO OOOOOOOO      DUPlicate.........");
         return true;
     }
 
