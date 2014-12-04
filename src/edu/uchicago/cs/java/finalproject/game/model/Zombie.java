@@ -24,12 +24,15 @@ public class Zombie extends Sprite {
 
     private boolean isFozen = false;
 
-    private int nSize = 3;
+    public int nSize = 3;
 
     private int iceTime = 0;
 
 
     public Color mainColor = Color.red;
+
+
+    public Point handPoint;
 
 
     public Zombie(int y){
@@ -86,7 +89,7 @@ public class Zombie extends Sprite {
         updateSpeed();
         if(speed==0){
             g.setColor(Color.cyan);
-            g.fillRect(getCenter().x-33, getCenter().y-50, 60, 92);
+            g.fillRect(getCenter().x-35, getCenter().y-50, 60, 92);
             iceTime++;
         }
 
@@ -133,7 +136,8 @@ public class Zombie extends Sprite {
         g2.drawLine(getCenter().x+3,getCenter().y+20,getCenter().x-rightFootX, getCenter().y+40);
 
         g2.setStroke(new BasicStroke(2));
-        g2.drawLine(getCenter().x,getCenter().y+10, getCenter().x-15, getCenter().y+20);
+        handPoint = new Point(getCenter().x-15, getCenter().y+20);
+        g2.drawLine(getCenter().x,getCenter().y+10, (int)handPoint.getX(), (int)handPoint.getY());
         g2.drawLine(getCenter().x,getCenter().y+10, getCenter().x+12, getCenter().y+18);
 
         g2.setStroke(new BasicStroke(1));

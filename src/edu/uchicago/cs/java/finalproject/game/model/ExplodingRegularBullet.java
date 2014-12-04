@@ -43,28 +43,6 @@ public class ExplodingRegularBullet extends Sprite {
         // This is the reason that generate a null???????
     }
 
-
-    // ==============================================================
-    // METHODS
-    // ==============================================================
-
-    // Randomly plays one of 4 explosion sounds (each sound is actually a sword sound effect from Link's Awakening, a Zelda game)
-    public void playExplosionSounds(){
-        int nSound = R.nextInt(4);
-        if(nSound == 0){
-            Sound.playSound("LA_Sword_Slash1.wav");
-        }
-        else if(nSound == 1){
-            Sound.playSound("LA_Sword_Slash2.wav");
-        }
-        else if(nSound == 2){
-            Sound.playSound("LA_Sword_Slash3.wav");
-        }
-        else if(nSound == 3){
-            Sound.playSound("LA_Sword_Slash4.wav");
-        }
-    }
-
     @Override
     public void draw(Graphics g) {
         g.setColor(getRandomColor());

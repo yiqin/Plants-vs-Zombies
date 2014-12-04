@@ -337,6 +337,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         // System.out.println("Updating in Game.....");
         generateNewSun();
         generateNewZombie();
+        generateNewIronZombie();
 	}
 
 	public static int getTick() {
@@ -381,6 +382,20 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }
         }
     }
+
+
+    private static void generateNewIronZombie(){
+        int tick = getTick();
+        if (tick%40 == 0){
+            int tempTick = (int)(Math.random()*10);
+            if (tempTick%7 == 0){
+                int randomNum = (Game.R.nextInt()%4)*100+200;
+                CommandCenter.movFoes.add(new IronZombie(randomNum));
+            }
+        }
+    }
+
+
 
     private void generateNewPeashooter(Point newPoint){
         // Need to update later.......
