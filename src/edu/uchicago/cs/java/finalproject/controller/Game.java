@@ -290,6 +290,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
                 if ((movSun instanceof Peashooter) ){
 
+
                     CommandCenter.setPlant(new Peashooter(e.getX()-50,e.getY()-50),((Peashooter) movSun).typeIndicator);
 
                 }
@@ -298,6 +299,35 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     }
 
+
+
+    // Remove sunflower
+    private boolean checkNoDuplicatePeashoooter(Point position_) {
+        Point pntSumCenter, pntFoeCenter;
+        int nFriendRadiux, nFoeRadiux;
+
+        RegularPeashooter tempP = new RegularPeashooter(position_);
+
+        for (Movable movSun : CommandCenter.movPlants) {
+
+            pntSumCenter = movSun.getCenter();
+            pntFoeCenter = new Point((int)tempP.getCenter().getX(), (int)tempP.getCenter().getY());
+            nFriendRadiux = movSun.getRadius();
+
+            nFoeRadiux = tempP.getRadius();
+
+            //detect collision
+            if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
+
+
+                System.out.println("DUPlicate.........");
+
+                return false;
+            }//end if
+        }//end outer for
+
+        return true;
+    }
 
 
     // ===============================================
@@ -524,7 +554,13 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
     // Create a candidate
     public void mouseReleased(MouseEvent e) {
         if (CommandCenter.isPlanting && e.getY()<550 && e.getY()> 51){
-            generateNewPeashooter(new Point(e.getX(),e.getY()));
+
+            // No duplicate
+            if(checkNoDuplicatePeashoooter(new Point(e.getX(),e.getY()))){
+                generateNewPeashooter(new Point(e.getX(),e.getY()));
+            }
+
+
 
         }
         CommandCenter.clearMovTemp();

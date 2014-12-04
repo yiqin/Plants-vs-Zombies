@@ -34,18 +34,14 @@ public class CommandCenter {
     // Suns
     // We use ArrayList to hold all movSun...
     public static CopyOnWriteArrayList<Movable> movSun = new CopyOnWriteArrayList<Movable>();
-
     public static CopyOnWriteArrayList<Movable> movPlants = new CopyOnWriteArrayList<Movable>();
-
     public static CopyOnWriteArrayList<Movable> movCandidate = new CopyOnWriteArrayList<Movable>();
-
     public static CopyOnWriteArrayList<Movable> movTemp = new CopyOnWriteArrayList<Movable>();
 
     public static Peashooter plant;
 
     public static int plantType = 0;
     public static Boolean isPlanting = false;
-
 
 	// Constructor made private - static Utility class only
 	private CommandCenter() {}
@@ -184,15 +180,22 @@ public class CommandCenter {
     public static void setPlant(Peashooter newPlant, int type){
         // Outside the screen
         // Be careful about this type...........
-        plant = new Peashooter(-200,-200);
+        long currentScore = getSunCredit();
+
         if(type == 0){
             plantType = 0;
-
+            if(currentScore < 100){
+                // System.out.println("No enough credits");
+                return;
+            }
         }
         else if(type == 1){
             plantType = 1;
-
+            if(currentScore<150){
+                return;
+            }
         }
+        plant = new Peashooter(-200,-200);
         movTemp.clear();
         movTemp.add(plant);
         isPlanting = true;
