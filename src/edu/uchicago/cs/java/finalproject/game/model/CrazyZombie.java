@@ -93,6 +93,11 @@ public class CrazyZombie extends Sprite {
 
         int xUpdate = x+(int)getDeltaX();
         setCenter(new Point(xUpdate, y));
+
+        if(xUpdate<50){
+            System.out.println("Game Over....................");
+            CommandCenter.zombieCrossYard();
+        }
     }
 
     @Override

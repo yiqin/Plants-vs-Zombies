@@ -22,7 +22,10 @@ public class CommandCenter {
 
     private static boolean bPlaying;
     private static boolean bTutorial = false;
+    private static boolean checkTutorialOnlyOneTime = true;
 	private static boolean bPaused;
+
+    private static boolean bisGameOver;
 
     //
 	// These ArrayLists are thread-safe
@@ -50,6 +53,7 @@ public class CommandCenter {
 		setLevel(1);
 		setScore(0);
         setSunCredit(0);
+        setIsGameOver(false);
         CommandCenter.movCandidate.clear();
 	}
 
@@ -83,15 +87,34 @@ public class CommandCenter {
 	public static void setPaused(boolean bPaused) {
 		CommandCenter.bPaused = bPaused;
 	}
-	
+
+    public static void setIsGameOver(boolean b){
+        bisGameOver = b;
+    }
+
 	public static boolean isGameOver() {		//if the number of falcons is zero, then game over
 		/*
         if (getNumFalcons() == 0) {
 			return true;
 		}
 		*/
-		return false;
+        System.out. println("....................");
+		return bisGameOver;
 	}
+
+    public static void zombieCrossYard(){
+        setIsGameOver(true);
+    }
+
+    public static void setCheckTutorialOnlyOneTime(){
+        checkTutorialOnlyOneTime = false;
+    }
+
+    public static boolean getCheckTutorialOnlyOneTime(){
+        return checkTutorialOnlyOneTime;
+    }
+
+
 
     // Game setting
 	public static int getLevel() {
@@ -212,8 +235,6 @@ public class CommandCenter {
             }
         }
     }
-
-
 
     // no called
 	public static CopyOnWriteArrayList<Movable> getMovDebris() {

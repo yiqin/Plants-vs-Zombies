@@ -102,7 +102,7 @@ public class GamePanel extends Panel {
 
 		if (!CommandCenter.isPlaying()) {
 
-            if(CommandCenter.getTutorialPage()!=5){
+            if(CommandCenter.getTutorialPage()!=5 && CommandCenter.getCheckTutorialOnlyOneTime()){
                 displayTutorialOnScreen();
             }
             else {
@@ -168,9 +168,6 @@ public class GamePanel extends Panel {
 	// This method draws some text to the middle of the screen before/after a game
     // Instruction.
 	private void displayTextOnScreen() {
-
-
-
         CommandCenter.movCandidate.clear();
 
         grpOff.setColor(Color.red);

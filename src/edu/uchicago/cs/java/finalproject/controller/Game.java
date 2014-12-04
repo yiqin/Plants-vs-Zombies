@@ -492,6 +492,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
         if(!CommandCenter.isPlaying() && !CommandCenter.isTutorialing()){
             startGame();
+            CommandCenter.setCheckTutorialOnlyOneTime();
             return;
         }
 
