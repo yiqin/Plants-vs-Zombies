@@ -297,8 +297,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             //detect collision
             if (pntSumCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux)) {
                 if ((movSun instanceof Peashooter) ){
+
                     CommandCenter.setPlant(new Peashooter(e.getX()-50,e.getY()-50),((Peashooter) movSun).typeIndicator);
-                    // Sound.playSound("pacman_eatghost.wav");
+
                 }
             }//end if
         }//end outer for

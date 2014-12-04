@@ -17,8 +17,21 @@ public class Sun extends Sprite {
     private int isLeftRotation = 1;
     private int stopRotationY = 0;
 
+    private int isStatic = 1;
+
+    public Sun(int x, int y){
+        super();
+
+        setRadius(SUN_RADIUS*2);
+
+        setCenter(new Point(x, y));
+
+        figure();
+    }
+
     public Sun(int x){
         super();
+        isStatic = 0;
 
         setExpire(400);
         setRadius(SUN_RADIUS*2);
@@ -26,6 +39,13 @@ public class Sun extends Sprite {
         setCenter(new Point(x, 0));
         setDeltaY(1);
 
+
+        figure();
+
+
+    }
+
+    public void figure(){
 
         ArrayList<Point> pntCs = new ArrayList<Point>();
         // plot some figure...
@@ -48,12 +68,8 @@ public class Sun extends Sprite {
         pntCs.add(new Point(20*SCALER, 5*SCALER));
         pntCs.add(new Point(6*SCALER, 8*SCALER));
 
-
-
-
         assignPolarPoints(pntCs);
         setOrientation(-90);
-
 
         if(Game.R.nextInt()%2 == 0){
             isLeftRotation=1;
@@ -72,7 +88,7 @@ public class Sun extends Sprite {
         int y = getCenter().y;
 
         int yUpdate = 0;
-        if (y>540){
+        if (y>540 && isStatic == 0){
             yUpdate = 540;
         }
         else {

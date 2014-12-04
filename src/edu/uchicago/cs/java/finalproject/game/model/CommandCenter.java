@@ -50,7 +50,8 @@ public class CommandCenter {
 	public static void initGame(){
 		setLevel(1);
 		setScore(0);
-        setSunCredit(300);
+        setSunCredit(0);
+        CommandCenter.movCandidate.clear();
 	}
 
 	public static void clearAll(){

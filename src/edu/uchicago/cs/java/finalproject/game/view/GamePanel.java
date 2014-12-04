@@ -10,8 +10,10 @@ import java.awt.Panel;
 import java.awt.Point;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-
+import edu.uchicago.cs.java.finalproject.game.model.Sun;
 import edu.uchicago.cs.java.finalproject.controller.Game;
+import edu.uchicago.cs.java.finalproject.game.model.CandidateIcePeashooter;
+import edu.uchicago.cs.java.finalproject.game.model.CandidateRegularPeashooter;
 import edu.uchicago.cs.java.finalproject.game.model.CommandCenter;
 import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
@@ -96,8 +98,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.setColor(Color.black);
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
-        grpOff.setColor(Color.white);
-        grpOff.fillRect(0, Game.DIM.height-200, Game.DIM.width, 200);
+
 
 		drawScore(grpOff);
         drawSunCredit(grpOff);
@@ -114,9 +115,8 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		
 		//playing and not paused!
 		else {
-
-            // Generate sun randomly
-
+            grpOff.setColor(Color.white);
+            grpOff.fillRect(0, Game.DIM.height-200, Game.DIM.width, 200);
 
 			//draw them in decreasing level of importance
 			//friends will be on top layer and debris on the bottom
@@ -137,12 +137,8 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		}
 		//draw the double-Buffered Image to the graphics context of the panel
 		g.drawImage(imgOff, 0, 0, this);
-	} 
+	}
 
-
-     // O(n^2), this is not efficient.
-
-	
 	//for each movable array, process it.
 	private void iterateMovables(Graphics g, CopyOnWriteArrayList<Movable>...movMovz){
 		
@@ -213,6 +209,17 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 320);
+
+        CommandCenter.movCandidate.clear();
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,600+50));
+        CommandCenter.movCandidate.add(new CandidateIcePeashooter(450,600+50));
+
+        CommandCenter.movCandidate.add(new Sun(600,600+50));
+
+
+
+        iterateMovables(grpOff,
+                CommandCenter.movCandidate);
 
 
 	}
