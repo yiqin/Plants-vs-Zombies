@@ -12,7 +12,7 @@ import javax.sound.sampled.Clip;
 // Able to get access to methods and my movMovables ArrayList from the static context.
 public class CommandCenter {
 
-    private static int nTutorialPage = 6;
+    private static int nTutorialPage = 5;
 
 	private static int nLevel;
 	private static long lScore;

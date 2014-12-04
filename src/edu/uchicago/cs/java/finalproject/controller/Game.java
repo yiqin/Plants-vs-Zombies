@@ -440,7 +440,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     public void sIsPressed(){
         int temp = CommandCenter.getTutorialPage();
-        if(temp == 6){
+        if(temp == 5){
             CommandCenter.setTutorialing(true);
         }
 

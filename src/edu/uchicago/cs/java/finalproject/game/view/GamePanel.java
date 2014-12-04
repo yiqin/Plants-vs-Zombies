@@ -102,7 +102,7 @@ public class GamePanel extends Panel {
 
 		if (!CommandCenter.isPlaying()) {
 
-            if(CommandCenter.getTutorialPage()!=6){
+            if(CommandCenter.getTutorialPage()!=5){
                 displayTutorialOnScreen();
             }
             else {
@@ -183,30 +183,35 @@ public class GamePanel extends Panel {
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
 
-		strDisplay = "use the mouse to collect suns";
-		grpOff.drawString(strDisplay,
-				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
-						+ nFontHeight + 80);
+        strDisplay = "a mob of fun-loving zombies is about to invade your home";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                        + nFontHeight + 80);
 
-		strDisplay = "use suns to plant peashooter";
+		strDisplay = "use the mouse to collect suns";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 120);
 
-		strDisplay = "'S' to Start";
+		strDisplay = "use suns to plant peashooter to defense";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 160);
 
-		strDisplay = "'P' to Pause";
+		strDisplay = "'S' to Start";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 200);
 
-		strDisplay = "'Q' to Quit";
+		strDisplay = "'P' to Pause";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 240);
+
+		strDisplay = "'Q' to Quit";
+		grpOff.drawString(strDisplay,
+				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+						+ nFontHeight + 280);
 
 
         CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,650));
@@ -250,9 +255,6 @@ public class GamePanel extends Panel {
         CommandCenter.movCandidate.add(tempCrayZombie);
 
         switch (CommandCenter.getTutorialPage()) {
-            case 5:
-                tutorialPageOne();
-                break;
             case 4:
                 tutorialPageTwo();
                 break;
@@ -275,55 +277,55 @@ public class GamePanel extends Panel {
                 CommandCenter.movCandidate);
     }
 
-
-    private void tutorialPageOne(){
-
-        strDisplay = "INSTRUCTION - I";
-        grpOff.drawString(strDisplay,
-                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
-
-        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,650));
-        CommandCenter.movCandidate.add(new CandidateIcePeashooter(450,650));
-        CommandCenter.movCandidate.add(new Sun(600,650));
-
-        Zombie tempZombie = new Zombie(650);
-        tempZombie.setCenter(new Point(750, 650));
-        CommandCenter.movCandidate.add(tempZombie);
-
-        IronZombie tempIronZombie = new IronZombie(650);
-        tempIronZombie.setCenter(new Point(900, 650));
-        CommandCenter.movCandidate.add(tempIronZombie);
-    }
-
     private void tutorialPageTwo(){
-        strDisplay = "TUTORIAL - II";
+        strDisplay = "TUTORIAL - I";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+
+        CommandCenter.movCandidate.add(new Sun(600,400));
     }
 
     private void tutorialPageThree(){
-        strDisplay = "TUTORIAL - III";
+        strDisplay = "TUTORIAL - II";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(600,400));
     }
 
     private void tutorialPageFour(){
-        strDisplay = "TUTORIAL - IV";
+        strDisplay = "TUTORIAL - III";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
-
+        Zombie tempZombie = new Zombie(400);
+        tempZombie.setCenter(new Point(600, 400));
+        CommandCenter.movCandidate.add(tempZombie);
     }
 
     private void tutorialPageFive(){
-        strDisplay = "TUTORIAL - V";
+        strDisplay = "TUTORIAL - IV";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+        strDisplay = "when any zombie reach your front door (the left end of the screen),";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 160);
+        strDisplay = "game over.";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 200);
     }
 
     private void tutorialPageSix(){
         strDisplay = "you finish the tutorial";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+
+        strDisplay = "the game is inspired by plants vs. zombies | PopCap Games";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 160);
+
+        strDisplay = "http://www.popcap.com/plants-vs-zombies-1";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 200);
+
     }
 	
 	public GameFrame getFrm() {return this.gmf;}
