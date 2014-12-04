@@ -21,7 +21,7 @@ public class CommandCenter {
 
 
     private static boolean bPlaying;
-    private static boolean bTutorial = true;
+    private static boolean bTutorial = false;
 	private static boolean bPaused;
 
     //

@@ -102,15 +102,13 @@ public class GamePanel extends Panel {
 
 		if (!CommandCenter.isPlaying()) {
 
+            if(CommandCenter.getTutorialPage()!=6){
+                displayTutorialOnScreen();
+            }
+            else {
+                displayTextOnScreen();
+            }
 
-
-
-
-
-
-
-
-			displayTextOnScreen();
 		} else if (CommandCenter.isPaused()) {
 			strDisplay = "Game Paused";
 			grpOff.drawString(strDisplay,
@@ -171,13 +169,17 @@ public class GamePanel extends Panel {
     // Instruction.
 	private void displayTextOnScreen() {
 
+
+
+        CommandCenter.movCandidate.clear();
+
         grpOff.setColor(Color.red);
         strDisplay = "PLANTS VS ZOMBIES";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2-10, Game.DIM.height / 4);
 
         grpOff.setColor(Color.white);
-		strDisplay = "GAME OVER";
+		strDisplay = "INSTRUCTION";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
 
@@ -206,7 +208,7 @@ public class GamePanel extends Panel {
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 240);
 
-        CommandCenter.movCandidate.clear();
+
         CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,650));
         CommandCenter.movCandidate.add(new CandidateIcePeashooter(450,650));
         CommandCenter.movCandidate.add(new Sun(600,650));
@@ -225,9 +227,104 @@ public class GamePanel extends Panel {
 
         iterateMovables(grpOff,
                 CommandCenter.movCandidate);
-
-
 	}
+
+    private void displayTutorialOnScreen() {
+        CommandCenter.movCandidate.clear();
+
+        grpOff.setColor(Color.red);
+        strDisplay = "PLANTS VS ZOMBIES";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2-10, Game.DIM.height / 4);
+
+        grpOff.setColor(Color.white);
+
+
+        strDisplay = "'S' to Continue";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+                        + nFontHeight + 80);
+
+        CrazyZombie tempCrayZombie = new CrazyZombie(Game.DIM.height / 4);
+        tempCrayZombie.setCenter(new Point(700+17, 180));
+        CommandCenter.movCandidate.add(tempCrayZombie);
+
+        switch (CommandCenter.getTutorialPage()) {
+            case 5:
+                tutorialPageOne();
+                break;
+            case 4:
+                tutorialPageTwo();
+                break;
+            case 3:
+                tutorialPageThree();
+                break;
+            case 2:
+                tutorialPageFour();
+                break;
+            case 1:
+                tutorialPageFive();
+                break;
+            case 0:
+                tutorialPageSix();
+            default:
+                break;
+        }
+
+        iterateMovables(grpOff,
+                CommandCenter.movCandidate);
+    }
+
+
+    private void tutorialPageOne(){
+
+        strDisplay = "INSTRUCTION - I";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(300,650));
+        CommandCenter.movCandidate.add(new CandidateIcePeashooter(450,650));
+        CommandCenter.movCandidate.add(new Sun(600,650));
+
+        Zombie tempZombie = new Zombie(650);
+        tempZombie.setCenter(new Point(750, 650));
+        CommandCenter.movCandidate.add(tempZombie);
+
+        IronZombie tempIronZombie = new IronZombie(650);
+        tempIronZombie.setCenter(new Point(900, 650));
+        CommandCenter.movCandidate.add(tempIronZombie);
+    }
+
+    private void tutorialPageTwo(){
+        strDisplay = "TUTORIAL - II";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+    }
+
+    private void tutorialPageThree(){
+        strDisplay = "TUTORIAL - III";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+    }
+
+    private void tutorialPageFour(){
+        strDisplay = "TUTORIAL - IV";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+
+    }
+
+    private void tutorialPageFive(){
+        strDisplay = "TUTORIAL - V";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+    }
+
+    private void tutorialPageSix(){
+        strDisplay = "you finish the tutorial";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
+    }
 	
 	public GameFrame getFrm() {return this.gmf;}
 	public void setFrm(GameFrame frm) {this.gmf = frm;}	
