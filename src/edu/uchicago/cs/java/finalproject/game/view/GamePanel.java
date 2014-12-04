@@ -101,6 +101,15 @@ public class GamePanel extends Panel {
 
 
 		if (!CommandCenter.isPlaying()) {
+
+
+
+
+
+
+
+
+
 			displayTextOnScreen();
 		} else if (CommandCenter.isPaused()) {
 			strDisplay = "Game Paused";

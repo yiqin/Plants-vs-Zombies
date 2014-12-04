@@ -438,6 +438,21 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	}
 
 
+    public void sIsPressed(){
+        int temp = CommandCenter.getTutorialPage();
+        if(temp>0){
+            CommandCenter.setTutorialPage((temp-1));
+        }
+
+        System.out.println(temp);
+
+        if(!CommandCenter.isPlaying() && !CommandCenter.isTutorialing()){
+
+            startGame();
+        }
+
+    }
+
 	// Varargs for stopping looping-music-clips
 	public static void stopLoopingSounds(Clip... clpClips) {
 		for (Clip clp : clpClips) {
@@ -458,7 +473,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		// System.out.println(nKey);
 
 		if (nKey == START && !CommandCenter.isPlaying())
-			startGame();
+            sIsPressed();
 
 			switch (nKey) {
 			case PAUSE:

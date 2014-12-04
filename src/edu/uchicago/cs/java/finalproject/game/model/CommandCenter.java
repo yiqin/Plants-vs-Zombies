@@ -12,6 +12,8 @@ import javax.sound.sampled.Clip;
 // Able to get access to methods and my movMovables ArrayList from the static context.
 public class CommandCenter {
 
+    private static int nTutorialPage = 6;
+
 	private static int nLevel;
 	private static long lScore;
 
@@ -19,6 +21,7 @@ public class CommandCenter {
 
 
     private static boolean bPlaying;
+    private static boolean bTutorial = true;
 	private static boolean bPaused;
 
     //
@@ -232,4 +235,24 @@ public class CommandCenter {
         movTemp.clear();
         isPlanting = false;
     }
+
+    public static int getTutorialPage(){
+        return nTutorialPage;
+    }
+
+    public static void setTutorialPage(int n){
+        nTutorialPage = n;
+        if(nTutorialPage == 0){
+            setTutorialing(false);
+        }
+    }
+
+    public static boolean isTutorialing(){
+        return bTutorial;
+    }
+
+    public static void setTutorialing(boolean n){
+        bTutorial = n;
+    }
+
 }
