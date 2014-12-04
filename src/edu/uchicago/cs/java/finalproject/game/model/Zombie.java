@@ -28,6 +28,10 @@ public class Zombie extends Sprite {
 
     private int iceTime = 0;
 
+
+    public Color mainColor = Color.red;
+
+
     public Zombie(int y){
         super();
 
@@ -93,7 +97,7 @@ public class Zombie extends Sprite {
         if (nSize >= 2){
             super.draw(g);
             // 1
-            g.setColor(Color.red);
+            g.setColor(mainColor);
             g.fillPolygon(getXcoords(), getYcoords(), dDegrees.length);
             // 2
             g.setColor(Color.lightGray);
@@ -106,7 +110,7 @@ public class Zombie extends Sprite {
             g.fillOval(getCenter().x-20, getCenter().y-30, 12, 10);
         }
 
-        g.setColor(Color.red);
+        g.setColor(mainColor);
         if(leftFootX < -stepLength){
             isSwingToLeft = false;
         }
