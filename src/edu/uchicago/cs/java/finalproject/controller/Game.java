@@ -368,7 +368,10 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         generateNewSun();
         generateNewZombie();
         generateNewIronZombie();
-        generateNewCrazyZombie();
+
+        if (CommandCenter.getLevel()>1){
+            generateNewCrazyZombie();
+        }
 	}
 
 	public static int getTick() {
