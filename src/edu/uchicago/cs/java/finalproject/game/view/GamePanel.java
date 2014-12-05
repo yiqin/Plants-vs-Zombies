@@ -25,8 +25,8 @@ public class GamePanel extends Panel {
 	private Graphics grpOff;
 	
 	private GameFrame gmf;
-	private Font fnt = new Font("Times", Font.BOLD, 20);  // set font size.
-	private Font fntBig = new Font("Times", Font.BOLD + Font.ITALIC, 36);
+	public static Font fnt = new Font("Times", Font.BOLD, 20);  // set font size.
+    public static Font fntBig = new Font("Times", Font.BOLD + Font.ITALIC, 36);
 	private FontMetrics fmt; 
 	private int nFontWidth;
 	private int nFontHeight;
@@ -130,7 +130,8 @@ public class GamePanel extends Panel {
                        CommandCenter.movCandidate,
                        CommandCenter.movTemp,
                        CommandCenter.movPlants,
-                       CommandCenter.movDebris);
+                       CommandCenter.movDebris,
+                       CommandCenter.movLevelInstruction);
 
 			if (CommandCenter.isGameOver()) {
 				CommandCenter.setPlaying(false);

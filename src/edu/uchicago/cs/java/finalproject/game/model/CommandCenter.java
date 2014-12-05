@@ -41,6 +41,8 @@ public class CommandCenter {
     public static CopyOnWriteArrayList<Movable> movCandidate = new CopyOnWriteArrayList<Movable>();
     public static CopyOnWriteArrayList<Movable> movTemp = new CopyOnWriteArrayList<Movable>();
 
+    public static CopyOnWriteArrayList<Movable> movLevelInstruction = new CopyOnWriteArrayList<Movable>();
+
     public static Peashooter plant;
 
     public static int plantType = 0;
@@ -68,6 +70,7 @@ public class CommandCenter {
         movCandidate.clear();
         movTemp.clear();
         movPlants.clear();
+        movLevelInstruction.clear();
 	}
 
 
@@ -102,6 +105,8 @@ public class CommandCenter {
         Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");  // I need a new sound effect here.
         Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
 
+        movLevelInstruction.add(new LevelInstruction(500,500, "Zombies Reach Your Front Door. Game Over"));
+
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -110,7 +115,7 @@ public class CommandCenter {
                         setIsGameOver(true);
                     }
                 },
-                1000  // One second.....................
+                3000  // One second.....................
         );
     }
 
@@ -146,14 +151,17 @@ public class CommandCenter {
         if (level_ == 1){
             Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");
             playMusic();
+            movLevelInstruction.add(new LevelInstruction(500,500, "Zombies are Coming!"));
         }
         else if(level_ == 2){
             Game.clpLevel1 = Sound.clipForLoopFactory("level2.wav");
             playMusic();
+            movLevelInstruction.add(new LevelInstruction(500,500, "Level Two"));
         }
         else if(level_==3){
             Game.clpLevel1 = Sound.clipForLoopFactory("level3.wav");
             playMusic();
+            movLevelInstruction.add(new LevelInstruction(500,500, "Level Three"));
         }
     }
 
