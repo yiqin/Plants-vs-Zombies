@@ -21,13 +21,32 @@ public class LevelInstruction  extends Sprite  {
 
         strDisplay = str_;
 
-        setExpire(100);
+        setExpire(150);
 
         setRadius(500);
+
+        setDeltaY(1.5);
 
         setCenter(new Point(x, y));
 
 
+    }
+
+    public void move(){
+        super.move();
+
+        int x = getCenter().x;
+        int y = getCenter().y;
+
+        int yUpdate = 0;
+        if (y>200){
+            yUpdate = 200;
+        }
+        else {
+            yUpdate = y+(int)getDeltaY();
+        }
+
+        setCenter(new Point(x, yUpdate));
     }
 
     //override the expire method - once an object expires, then remove it from the arrayList.
@@ -47,9 +66,9 @@ public class LevelInstruction  extends Sprite  {
         fmt = g.getFontMetrics();
         nFontHeight = fmt.getHeight();
 
-        g.setColor(Color.yellow);
+        g.setColor(new Color(118,210,182));
         g.drawString(strDisplay,
-                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4 + nFontHeight + 0);
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, (int)getCenter().getY());
 
         g.setFont(GamePanel.fnt);
     }

@@ -105,7 +105,9 @@ public class CommandCenter {
         Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");  // I need a new sound effect here.
         Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
 
-        movLevelInstruction.add(new LevelInstruction(500,500, "Zombies Reach Your Front Door. Game Over"));
+        LevelInstruction tempLevleInstruction = new LevelInstruction(500,200, "Zombies Reach Your Front Door. Game Over");
+        tempLevleInstruction.setDeltaY(0);
+        movLevelInstruction.add(tempLevleInstruction);
 
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
@@ -151,17 +153,17 @@ public class CommandCenter {
         if (level_ == 1){
             Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");
             playMusic();
-            movLevelInstruction.add(new LevelInstruction(500,500, "Zombies are Coming!"));
+            movLevelInstruction.add(new LevelInstruction(500,50, "Zombies are Coming!"));
         }
         else if(level_ == 2){
             Game.clpLevel1 = Sound.clipForLoopFactory("level2.wav");
             playMusic();
-            movLevelInstruction.add(new LevelInstruction(500,500, "Level Two"));
+            movLevelInstruction.add(new LevelInstruction(500,50, "Level Two"));
         }
         else if(level_==3){
             Game.clpLevel1 = Sound.clipForLoopFactory("level3.wav");
             playMusic();
-            movLevelInstruction.add(new LevelInstruction(500,500, "Level Three"));
+            movLevelInstruction.add(new LevelInstruction(500,50, "Level Three"));
         }
     }
 
