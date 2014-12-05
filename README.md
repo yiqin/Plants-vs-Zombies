@@ -20,7 +20,8 @@ The game is inspired by plants vs. zombies from Pop Cap Games. Thanks to
 
 
 ### Contact & Maintainers ###
-Yi Qin
-*Yi's page: [http://yiqin.info]( http://yiqin.info)
-*Tweet: [@YiQin]( http://twitter.com/YiQin1 ) 
-*Email: yiqin.mems@gmail.com
+
+* Yi Qin
+* Yi's page: [http://yiqin.info]( http://yiqin.info)
+* Tweet: [@YiQin]( http://twitter.com/YiQin1 ) 
+* Email: yiqin.mems@gmail.com
