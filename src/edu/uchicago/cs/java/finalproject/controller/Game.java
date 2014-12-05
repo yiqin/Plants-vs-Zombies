@@ -198,6 +198,27 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
             }//end inner for
         }//end outer for
 
+
+        for (Movable movFriend : CommandCenter.movPlants) {
+
+            for (Movable movFoe : CommandCenter.movFoes) {
+
+                pntFriendCenter = movFriend.getCenter();
+                pntFoeCenter = movFoe.getCenter();
+                nFriendRadiux = movFriend.getRadius();
+                nFoeRadiux = movFoe.getRadius();
+
+                //detect collision
+                if (pntFriendCenter.distance(pntFoeCenter) < (nFriendRadiux + nFoeRadiux-80)) {
+                    if ((movFriend instanceof Peashooter) ){
+                        CommandCenter.gameGuide = "It's very dangerous. More and more zombies are coming.";
+                        tupMarkForRemovals.add(new Tuple(CommandCenter.movPlants, movFriend));
+                    }
+                }//end if
+            }//end inner for
+        }//end outer for
+
+
         for (Tuple tup : tupMarkForRemovals)
             tup.removeMovable();
 

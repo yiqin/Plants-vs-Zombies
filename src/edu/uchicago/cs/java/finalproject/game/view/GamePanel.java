@@ -146,13 +146,13 @@ public class GamePanel extends Panel {
 			//draw them in decreasing level of importance
 			//friends will be on top layer and debris on the bottom
 			iterateMovables(grpOff,
-			           CommandCenter.movFloaters, 
-			           CommandCenter.movFoes,
+			           CommandCenter.movFloaters,
 			           CommandCenter.movFriends,
-                       CommandCenter.movSun,
                        CommandCenter.movCandidate,
                        CommandCenter.movTemp,
                        CommandCenter.movPlants,
+                       CommandCenter.movFoes,
+                       CommandCenter.movSun,
                        CommandCenter.movDebris,
                        CommandCenter.movLevelInstruction);
 
