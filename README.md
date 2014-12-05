@@ -5,10 +5,8 @@ The project is the final project in Java Programming at the University of Chicag
 ### What is this repository for? ###
 
 * Quick summary
-
+A mob of fun-loving zombies is about to invade your home. Use peashooters to defense. It's in Java.
 * [Youtube link]( http://youtu.be/nKl3FW-BOaU)
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
@@ -16,7 +14,8 @@ The project is the final project in Java Programming at the University of Chicag
 * Configuration
 * Dependencies
 * Database configuration
-* How to run tests
+* How to run the game
+Fork the repo, and open the project. Run ''
 * Deployment instructions
 
 ### Contribution guidelines ###
