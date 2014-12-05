@@ -117,8 +117,12 @@ public class GamePanel extends Panel {
 		
 		//playing and not paused!
 		else {
-            grpOff.setColor(Color.white);
+            grpOff.setColor(new Color(66, 72, 70));
             grpOff.fillRect(0, Game.DIM.height-200, Game.DIM.width, 200);
+
+            grpOff.setColor(new Color(71, 86, 101));
+            grpOff.fillRect(0, 60, 20, 500);
+
 
 			//draw them in decreasing level of importance
 			//friends will be on top layer and debris on the bottom
@@ -352,16 +356,39 @@ public class GamePanel extends Panel {
         strDisplay = "TUTORIAL - IV";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
-        strDisplay = "when any zombie reach your front door (the left end of the screen),";
+        strDisplay = "when any zombie reach your front door, game over";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 160);
-        strDisplay = "game over.";
+
+        strDisplay = "do you see the area? (the left end of the screen)";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 200);
+
+        grpOff.setColor(getRandomColor());
+        grpOff.fillRect(0, 60, 20, 500);
+    }
+
+    public Color getRandomColor(){
+        int nColorID = Game.R.nextInt(5);
+
+        Color col = null;
+        if(nColorID < 2){
+            col = Color.white;
+        }
+        else if(nColorID == 2){
+            col = Color.yellow;
+        }
+        else if(nColorID == 3){
+            col = Color.red;
+        }
+        else if(nColorID == 4){
+            col = new Color(0,255,255);			// 'aqua' color
+        }
+        return col;
     }
 
     private void tutorialPageSix(){
-        strDisplay = "you finish the tutorial";
+        strDisplay = "congratulations, you finish the tutorial";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
 

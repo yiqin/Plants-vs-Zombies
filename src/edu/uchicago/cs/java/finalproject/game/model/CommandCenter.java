@@ -106,9 +106,11 @@ public class CommandCenter {
 
         // Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
 
+        Sound.playSound("gameover.wav");
+
         movLevelInstruction.clear();
 
-        LevelInstruction tempLevleInstruction = new LevelInstruction(500,200, "Zombies Reach Your Front Door. Game Over");
+        LevelInstruction tempLevleInstruction = new LevelInstruction(500,200, "Zombies Reach Your Front Door. Game Over.");
         tempLevleInstruction.setDeltaY(0);
         movLevelInstruction.add(tempLevleInstruction);
 
@@ -125,7 +127,7 @@ public class CommandCenter {
                         Game.clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
                     }
                 },
-                3000  // One second.....................
+                4000  // One second.....................
         );
     }
 
