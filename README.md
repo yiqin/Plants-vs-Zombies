@@ -1,12 +1,9 @@
 # README #
 
-The project is the final project in Java Programming at the University of Chicago.
+The project is the final project in Java Programming at the University of Chicago. 
 
 ### What is this repository for? ###
-
-* Quick summary
-A mob of fun-loving zombies is about to invade your home. Use peashooters to defense. It's in Java.
-* [Youtube link]( http://youtu.be/nKl3FW-BOaU)
+A mob of fun-loving zombies is about to invade your home. Use peashooters to defense. The game is written in Java. Check out [the video on Youtube]( http://youtu.be/nKl3FW-BOaU)
 
 ### How do I get set up? ###
 
