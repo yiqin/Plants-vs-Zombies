@@ -22,7 +22,8 @@ Open the project in IntellJ. Run 'Game.main()' to start. The first time you star
 
 * Three different types of zombies, regular zombie, iron zombie and crazy zombie are in the game. Each type has different lives. Iron Zombies are coming with a shield. And crazy zombies are in small size, but they are walking faster than others. Zombies will eat peashooters. Be careful.
 
-* Bullets hit zombies. One bullet is able to hit multiple zombies if they are close. 
+* Bullets hit zombies. One bullet is able to hit multiple zombies if zombies are close. 
+![Screen Shot 2014-12-04 at 11.50.18 PM.png](https://bitbucket.org/repo/pnkaLX/images/3685264372-Screen%20Shot%202014-12-04%20at%2011.50.18%20PM.png)
 
 * When the peashooter kills some zombies, the game would advance to the next level. Level #1 only has regular zombies, and iron zombies. Cray zombies will appears after Level #1. When the game is in Level #3, zombies are moving much faster. So be prepared.
 
