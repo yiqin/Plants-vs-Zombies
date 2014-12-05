@@ -16,7 +16,7 @@ public class IcePeashooter extends RegularPeashooter {
 
         super(newPoint);
         mainColor = Color.CYAN;
-        CommandCenter.minusSunCredit(50);
+        CommandCenter.minusSunCredit(100);
     }
 
 

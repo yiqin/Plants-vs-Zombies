@@ -54,7 +54,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 	 SPECIAL = 70; 					// fire special weapon;  F key
 
 	private Clip clpThrust;
-	private Clip clpMusicBackground;
+	public static Clip clpMusicBackground;
 
     public static Clip clpLevel1;
 

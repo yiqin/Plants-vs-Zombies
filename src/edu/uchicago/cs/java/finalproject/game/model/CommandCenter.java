@@ -102,8 +102,11 @@ public class CommandCenter {
     public static void zombieCrossYard() {
 
         Game.stopLoopingSounds(Game.clpLevel1);
-        Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");  // I need a new sound effect here.
-        Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
+        // Game.clpLevel1 = Sound.clipForLoopFactory("level1.wav");  // I need a new sound effect here.
+
+        // Game.clpLevel1.loop(Clip.LOOP_CONTINUOUSLY);
+
+        movLevelInstruction.clear();
 
         LevelInstruction tempLevleInstruction = new LevelInstruction(500,200, "Zombies Reach Your Front Door. Game Over");
         tempLevleInstruction.setDeltaY(0);
@@ -115,6 +118,11 @@ public class CommandCenter {
                     public void run() {
                         // your code here
                         setIsGameOver(true);
+
+                        // Game.stopLoopingSounds(Game.clpMusicBackground);
+
+
+                        Game.clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
                     }
                 },
                 3000  // One second.....................
@@ -232,7 +240,7 @@ public class CommandCenter {
         }
         else if(type == 1){
             plantType = 1;
-            if(currentScore<150){
+            if(currentScore<200){
                 return;
             }
         }
