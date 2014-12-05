@@ -27,6 +27,8 @@ public class CommandCenter {
 
     private static boolean bisGameOver;
 
+
+    public static String gameGuide = "Enjoy the game.";
     //
 	// These ArrayLists are thread-safe
 	public static CopyOnWriteArrayList<Movable> movDebris = new CopyOnWriteArrayList<Movable>();
@@ -237,15 +239,19 @@ public class CommandCenter {
             plantType = 0;
             if(currentScore < 100){
                 // System.out.println("No enough credits");
+                gameGuide = "No enough credits. Collect more suns.";
                 return;
             }
         }
         else if(type == 1){
             plantType = 1;
             if(currentScore<200){
+                gameGuide = "No enough credits. Collect more suns.";
                 return;
             }
         }
+        gameGuide = "Drop the peashooter in one slot.";
+
         plant = new Peashooter(-200,-200);
         movTemp.clear();
         movTemp.add(plant);

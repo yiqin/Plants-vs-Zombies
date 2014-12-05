@@ -344,11 +344,15 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
                 System.out.println("DUPlicate.........");
 
+                CommandCenter.gameGuide = "A peashooter has been there. Each slot can only have one peashooter.";
+
+
                 return false;
             }//end if
         }//end outer for
 
         System.out.println("NO OOOOOOOO      DUPlicate.........");
+
         return true;
     }
 
@@ -477,8 +481,8 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     ///////////////////////////////////////
     private void generateCandidatePlants(){
-        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(400,600+50));
-        CommandCenter.movCandidate.add(new CandidateIcePeashooter(800,600+50));
+        CommandCenter.movCandidate.add(new CandidateRegularPeashooter(250-20,600+50));
+        CommandCenter.movCandidate.add(new CandidateIcePeashooter(500-20-10,600+50));
     }
 
 	private boolean isLevelClear(){

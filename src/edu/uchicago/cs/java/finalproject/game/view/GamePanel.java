@@ -31,7 +31,7 @@ public class GamePanel extends Panel {
 	private int nFontWidth;
 	private int nFontHeight;
 	private String strDisplay = "";
-	
+
 
 	// ==============================================================
 	// CONSTRUCTOR 
@@ -46,7 +46,7 @@ public class GamePanel extends Panel {
 		initView();
 		
 		gmf.setSize(dim);
-		gmf.setTitle("Game Base");
+		gmf.setTitle("Plants vs. Zombies");
 		gmf.setResizable(false);
 		gmf.setVisible(true);
 		this.setFocusable(true);
@@ -71,12 +71,23 @@ public class GamePanel extends Panel {
          g.setColor(Color.white);
          g.setFont(fnt);
          if (CommandCenter.getSunCredit() != 0) {
-             g.drawString("SUN CREDITS :  " + CommandCenter.getSunCredit(), nFontWidth, nFontHeight*2);
+             g.drawString("SUN CREDITS :  " + CommandCenter.getSunCredit(), nFontWidth, nFontHeight*2+5);
          } else {
-             g.drawString("NO SUN CREDITS", nFontWidth, nFontHeight*2);
+             g.drawString("NO SUN CREDITS", nFontWidth, nFontHeight*2+5);
          }
      }
 
+    private void regularPeashooterInstruction(Graphics g){
+        g.setColor(Color.yellow);
+        g.setFont(fnt);
+        g.drawString("100 SUN CREDITS", 150-20, Game.DIM.height-50);
+    }
+
+    private void icePeashooterInstruction(Graphics g){
+        g.setColor(Color.yellow);
+        g.setFont(fnt);
+        g.drawString("200 SUN CREDITS", 410-20-10, Game.DIM.height-50);
+    }
 
 	@SuppressWarnings("unchecked")
 	public void update(Graphics g) {
@@ -119,6 +130,14 @@ public class GamePanel extends Panel {
 		else {
             grpOff.setColor(new Color(66, 72, 70));
             grpOff.fillRect(0, Game.DIM.height-200, Game.DIM.width, 200);
+
+            regularPeashooterInstruction(grpOff);
+            icePeashooterInstruction(grpOff);
+
+            grpOff.setColor(Color.white);
+            grpOff.setFont(fnt);
+            grpOff.drawString(CommandCenter.gameGuide, 590, Game.DIM.height-150);
+
 
             grpOff.setColor(new Color(71, 86, 101));
             grpOff.fillRect(0, 60, 20, 500);
@@ -407,10 +426,12 @@ public class GamePanel extends Panel {
         strDisplay = "created by Yi Qin";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
-        strDisplay = "more info: http://www.yiqin.info/";
+        strDisplay = "yi's page: http://www.yiqin.info/";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
-
+        strDisplay = "bitbucket: https://bitbucket.org/qin23/profinal/overview";
+        grpOff.drawString(strDisplay,
+                (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 400);
     }
 	
 	public GameFrame getFrm() {return this.gmf;}
