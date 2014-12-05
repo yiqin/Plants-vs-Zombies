@@ -388,7 +388,8 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 		CommandCenter.clearAll();
 
         CommandCenter.initGame();
-
+        CommandCenter.setPlaying(true);
+        CommandCenter.setIsGameOver(false);
 
 		CommandCenter.setPaused(false);
 		//if (!bMuted)
@@ -450,7 +451,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewCrazyZombie(){
         int tick = getTick();
-        if (tick%30 == 0){
+        if (tick%15 == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (Game.R.nextInt()%4)*100+200;
@@ -512,7 +513,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         }
 
         if(!CommandCenter.isPlaying() && !CommandCenter.isTutorialing()){
-            CommandCenter.setPlaying(true);
+            // CommandCenter.setPlaying(true);
 
             System.out.println("Check is playing:...."+CommandCenter.isPlaying());
 

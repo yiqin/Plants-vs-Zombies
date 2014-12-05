@@ -192,7 +192,7 @@ public class CommandCenter {
     public static void addScore(long lParam) {
         lScore = lScore+lParam;
 
-        if(lScore%500==0){
+        if(lScore%300==0){
             addLevel();
         }
     }

@@ -13,7 +13,7 @@ public class Sun extends Sprite {
     private final static int SUN_RADIUS = 20;
     private final static int SCALER = 2;
 
-    public long credit = 100;
+    public long credit = 50;
     private int isLeftRotation = 1;
     private int stopRotationY = 0;
 

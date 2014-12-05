@@ -289,7 +289,7 @@ public class GamePanel extends Panel {
         strDisplay = "planting a new peashooter costs sun credits";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 320);
-        strDisplay = "one sun has 100 sun credits";
+        strDisplay = "one sun has 50 sun credits";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 360);
         strDisplay = "use the mouse to click suns to collect them";
