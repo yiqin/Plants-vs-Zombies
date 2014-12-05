@@ -28,7 +28,7 @@ Open the project in IntellJ. Run 'Game.main()' to start. The first time you star
 
 * When the peashooter kills some zombies, the game would advance to the next level. Level #1 only has regular zombies, and iron zombies. Cray zombies will appears after Level #1. When the game is in Level #3, zombies are moving much faster. So be prepared.
 
-* Different levels come with different background music. 
+* Different levels come with different background musics. 
 
 
 
