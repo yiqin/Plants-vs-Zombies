@@ -20,7 +20,7 @@ Open the project in IntellJ. Run 'Game.main()' to start. The first time you star
 
 * The positions peashooters are organized very well. When you drop the peashooter, the peashooter is automatically planted into the nearest slot. Each slot can only host one peashooter. The game controller can handle it. No worry. If a peashooter has been there, the planting won't success. You need to plant it in another slot. 
 
-* Three different types of zombies, regular zombie, iron zombie and crazy zombie are in the game. Each type has different lives. Iron Zombies are coming with a shield. And crazy zombies are in small size, but they are walking faster than others. Zombies will eat peashooters.Be careful.
+* Three different types of zombies, regular zombie, iron zombie and crazy zombie are in the game. Each type has different lives. Iron Zombies are coming with a shield. And crazy zombies are in small size, but they are walking faster than others. Zombies will eat peashooters. Be careful.
 
 * Bullets hit zombies. One bullet is able to hit multiple zombies if they are close. 
 
