@@ -2,8 +2,8 @@
 
 The project is the final project in Java Programming at the University of Chicago. 
 
-### What is this repository for? ###
-A mob of fun-loving zombies is about to invade your home. Use peashooters to defense. The game is written in Java. Check out [the video on Youtube]( http://youtu.be/nKl3FW-BOaU)
+### Summary ###
+A mob of fun-loving zombies is about to invade your home. Use peashooters to defense. The game is written in Java. Check out [the video on Youtube]( http://youtu.be/nKl3FW-BOaU).
 
 ### How do I get set up? ###
 
@@ -15,13 +15,12 @@ A mob of fun-loving zombies is about to invade your home. Use peashooters to def
 Fork the repo, and open the project. Run ''
 * Deployment instructions
 
-### Contribution guidelines ###
+### Contribution###
+The game is inspired by plants vs. zombies from Pop Cap Games. Thanks to 
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### Contact & Maintainers ###
+Yi Qin
+*Yi's page: [http://yiqin.info]( http://yiqin.info)
+*Tweet: [@YiQin]( http://twitter.com/YiQin1 ) 
+*Email: yiqin.mems@gmail.com
