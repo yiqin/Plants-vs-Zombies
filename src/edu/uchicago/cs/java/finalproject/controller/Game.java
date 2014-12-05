@@ -423,7 +423,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewSun(){
         int tick = getTick();
-        if (tick%20 == 0){
+        if (tick%13 == 0){
             int tempTick = (int)(Math.random()*5);
             if (tempTick%4 == 0){
                 int randomNum = (int)(Math.random()*SCREEN_WIDTH);

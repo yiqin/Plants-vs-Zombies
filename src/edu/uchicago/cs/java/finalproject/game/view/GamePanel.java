@@ -375,11 +375,11 @@ public class GamePanel extends Panel {
         strDisplay = "TUTORIAL - IV";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 40);
-        strDisplay = "when any zombie reach your front door, game over";
+        strDisplay = "when any zombie reaches your front door, game over";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 160);
 
-        strDisplay = "do you see the area? (the left end of the screen)";
+        strDisplay = "do you see the area (the left end of the screen)?";
         grpOff.drawString(strDisplay,
                 (Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4+ nFontHeight + 200);
 
