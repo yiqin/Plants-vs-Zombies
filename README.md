@@ -6,6 +6,7 @@ The project is the final project in Java Programming at the University of Chicag
 
 * Quick summary
 
+* [Youtube link]( http://youtu.be/nKl3FW-BOaU)
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
