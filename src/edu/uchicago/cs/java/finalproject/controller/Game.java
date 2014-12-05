@@ -369,7 +369,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         generateNewZombie();
         generateNewIronZombie();
 
-        if (CommandCenter.getLevel()>1){
+        if (CommandCenter.getLevel()>=2){
             generateNewCrazyZombie();
         }
 	}
@@ -389,7 +389,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
         CommandCenter.initGame();
 
-		CommandCenter.setPlaying(true);
+
 		CommandCenter.setPaused(false);
 		//if (!bMuted)
 		   // clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
@@ -397,9 +397,9 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewSun(){
         int tick = getTick();
-        if (tick%10 == 0){
-            int tempTick = (int)(Math.random()*10);
-            if (tempTick%7 == 0){
+        if (tick%20 == 0){
+            int tempTick = (int)(Math.random()*5);
+            if (tempTick%4 == 0){
                 int randomNum = (int)(Math.random()*SCREEN_WIDTH);
                 CommandCenter.movSun.add(new Sun(randomNum));
             }
@@ -408,7 +408,16 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewZombie(){
         int tick = getTick();
-        if (tick%20 == 0){
+
+        int n = 0;
+        if(CommandCenter.getLevel() <= 1){
+            n = 50;
+        }
+        else {
+            n = 20;
+        }
+
+        if (tick%n == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (Game.R.nextInt()%4)*100+200;
@@ -420,7 +429,16 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewIronZombie(){
         int tick = getTick();
-        if (tick%40 == 0){
+
+        int n = 0;
+        if(CommandCenter.getLevel() <= 1){
+            n = 80;
+        }
+        else {
+            n = 40;
+        }
+
+        if (tick%n == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (Game.R.nextInt()%4)*100+200;
@@ -432,7 +450,7 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
 
     private static void generateNewCrazyZombie(){
         int tick = getTick();
-        if (tick%50 == 0){
+        if (tick%30 == 0){
             int tempTick = (int)(Math.random()*10);
             if (tempTick%7 == 0){
                 int randomNum = (Game.R.nextInt()%4)*100+200;
@@ -494,8 +512,13 @@ public class Game implements Runnable, KeyListener, MouseListener, MouseMotionLi
         }
 
         if(!CommandCenter.isPlaying() && !CommandCenter.isTutorialing()){
+            CommandCenter.setPlaying(true);
+
+            System.out.println("Check is playing:...."+CommandCenter.isPlaying());
+
             startGame();
             CommandCenter.setCheckTutorialOnlyOneTime();
+
             return;
         }
 
