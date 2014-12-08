@@ -30,10 +30,8 @@ Open the project in IntellJ. Run 'Game.main()' to start. The first time you star
 * Different levels come with different background musics. 
 
 
-
 ### Contribution###
 The game is inspired by plants vs. zombies from Pop Cap Games. Thanks to Adam Gerber, Shashank Sharma, Ali Alkhafaji, Varun Kaushal.
-
 
 ### Contact & Maintainers ###
 
