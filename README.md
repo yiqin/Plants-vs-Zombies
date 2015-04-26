@@ -1,6 +1,5 @@
 # README #
 
-The project is the final project in Java Programming at the University of Chicago. 
 
 ### Summary ###
 ### [Video on Youtube]( http://youtu.be/nKl3FW-BOaU) ###
