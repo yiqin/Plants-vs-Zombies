@@ -11,7 +11,7 @@ A mob of fun-loving zombies is about to invade your home. Use peashooters to def
 2. Run 'Game.main()' to start. 
 
 ====
-<img src="https://github.com/yiqin/Plants-vs-Zombies/blob/master/screenshots/How%20to%20run.png" alt="app screenshot 1" width="80%"/>
+<img src="https://github.com/yiqin/Plants-vs-Zombies/blob/master/screenshots/How%20to%20run.png" alt="app screenshot 1" width="100%"/>
 
 
  
