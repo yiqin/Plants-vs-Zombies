@@ -7,7 +7,10 @@ A mob of fun-loving zombies is about to invade your home. Use peashooters to def
 ![a](https://bitbucket.org/repo/pnkaLX/images/4028864453-Screen%20Shot%202014-12-04%20at%2011.45.43%20PM.png) 
 
 ### How to Play ###
-Open the project in IntellJ. Run 'Game.main()' to start. The first time you start the start, you will need to finish the tutorials first. After you finish, the tutorials won't show up anymore. 
+1. Open the project in IntellJ. 
+2. Run 'Game.main()' to start. 
+
+The first time you start the start, you will need to finish the tutorials first. After you finish, the tutorials won't show up anymore. 
 
 ### Notes ###
 * You have two types of peashooters, regular peashooters (in green color) and ice peashooters (in cyan color). The ice peashooter is more powerful than the regular one, but it also costs more sun credits.
