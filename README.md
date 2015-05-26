@@ -10,9 +10,15 @@ A mob of fun-loving zombies is about to invade your home. Use peashooters to def
 1. Open the project in IntellJ. 
 2. Run 'Game.main()' to start. 
 
-The first time you start the start, you will need to finish the tutorials first. After you finish, the tutorials won't show up anymore. 
+====
+<img src="https://github.com/yiqin/Plants-vs-Zombies/blob/master/screenshots/How%20to%20run.png" alt="app screenshot 1" width="80%"/>
+
+
+ 
 
 ### Notes ###
+* The first time you start the start, you will need to finish the tutorials first. After you finish, the tutorials won't show up anymore.
+
 * You have two types of peashooters, regular peashooters (in green color) and ice peashooters (in cyan color). The ice peashooter is more powerful than the regular one, but it also costs more sun credits.
 
 
