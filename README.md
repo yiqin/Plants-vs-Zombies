@@ -6,13 +6,15 @@
 A mob of fun-loving zombies is about to invade your home. Use peashooters to defense. The game is written in Java. Check it out.
 ![a](https://bitbucket.org/repo/pnkaLX/images/4028864453-Screen%20Shot%202014-12-04%20at%2011.45.43%20PM.png) 
 
+<img src="https://github.com/yiqin/Plants-vs-Zombies/blob/master/screenshots/GameScreenshot1.png" width="100%"/>
+
+
 ### How to Play ###
 1. Open the project in IntellJ. 
 2. Run 'Game.main()' to start. 
 
 ====
 <img src="https://github.com/yiqin/Plants-vs-Zombies/blob/master/screenshots/How%20to%20run.png" alt="app screenshot 1" width="100%"/>
-
 
  
 
